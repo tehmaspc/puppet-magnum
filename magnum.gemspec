@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Magnum::VERSION
   spec.authors       = ['Tehmasp Chaudhri']
   spec.email         = ['tehmasp@gmail.com', 'tehmasp.chaudhri@pearson.com']
-  spec.description   = %q{Magnum - a tool for rapid, consistent, and best practices Puppet module development.}
-  spec.summary       = %q{Magnum - a tool for rapid, consistent, and best practices Puppet module development.}
+  spec.description   = %q{Magnum - a tool for rapid, consistent, and best practice Puppet module development.}
+  spec.summary       = %q{Magnum - a tool for rapid, consistent, and best practice Puppet module development.}
   spec.homepage      = 'https://devops-tools.pearson.com/stash/projects/CD/repos/magnum'
   spec.license       = 'All Rights Reserved'
 
