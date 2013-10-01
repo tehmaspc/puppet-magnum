@@ -39,10 +39,6 @@ module Magnum
       template 'Gemfile.erb', target.join('Gemfile')
     end
 
-    def write_gitignore
-      template 'gitignore.erb', target.join('.gitignore')
-    end
-
     def write_modulefile
       template 'ModuleFile.erb', target.join('ModuleFile')
     end
@@ -57,6 +53,18 @@ module Magnum
 
     def write_manifests
       template 'init.pp.erb', target.join('manifests/init.pp')
+    end
+
+    def write_git
+      template 'gitignore.erb', target.join('.gitignore')
+      unless File.exists?(target.join(".git"))
+        inside target do
+          run 'git init', capture: true
+          run 'git add -A', capture: true
+          run "git commit -m 'initial commit; Puppet module created by Magnum'", capture: true
+          say "\n\tNOTE: Remember to setup a git repo and a remote to push your changes to.", :red
+        end
+      end
     end
 
     private

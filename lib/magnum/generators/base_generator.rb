@@ -3,6 +3,7 @@ require 'pathname'
 module Magnum
   class BaseGenerator < Thor::Group
     include Thor::Actions
+    include Thor::Shell
 
     argument :path,
       type: :string,
