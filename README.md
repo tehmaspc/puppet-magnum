@@ -1,6 +1,6 @@
 # Magnum
 
-Magnum - a tool for rapid, consistent, and best practices Puppet module development.
+Magnum - a tool for rapid, consistent, and best practice Puppet module development.
 
 Magnum is a wrapper around [Puppet](http://puppetlabs.com/), [rspec-puppet](http://rspec-puppet.com/),
 [serverspec](http://serverspec.org/), [puppet-lint](http://puppet-lint.com/), and other Puppet testing tools.
