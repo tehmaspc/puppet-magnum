@@ -9,17 +9,9 @@ The intention of Magnum is to ensure that we are creating and testing our Puppet
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Install Magnum for yourself by doing the following inside a copy of this repo:
 
-    gem 'magnum'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install magnum
+    $ bundle install && bundle exec rake install
 
 ## Usage
 
