@@ -23,10 +23,10 @@ Or install it yourself as:
 
 ## Usage
 
-% magnum --help
-Commands:
-  magnum help [COMMAND]  # Describe available commands or one specific command
-  magnum module          # Module related tasks. Type 'magnum module' for more help.
+    % magnum --help
+    Commands:
+      magnum help [COMMAND]  # Describe available commands or one specific command
+      magnum module          # Module related tasks. Type 'magnum module' for more help.
 
 ## Contributing
 
