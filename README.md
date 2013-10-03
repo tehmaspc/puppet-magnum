@@ -30,6 +30,6 @@ Install Magnum for yourself by doing the following inside a copy of this repo:
 
 Standing on the shoulder's of giants - thanks to the following projects for inspiration!:
 
-[Thor](http://whatisthor.com/)
-[Berkshelf](http://berkshelf.com/)
-[Jackchop](http://rubygems.org/gems/jackchop)
+* [Thor](http://whatisthor.com/)
+* [Berkshelf](http://berkshelf.com/)
+* [Jackchop](http://rubygems.org/gems/jackchop)
