@@ -1,0 +1,106 @@
+#!/bin/bash
+
+# External requirements:
+#
+#    * Git
+#    * sed
+#    * Ruby with ERB and YAML support
+#    * Puppet >= 2.7
+#    * puppet-lint
+#
+#    Adjust LINTFLAGS as appropriate
+
+# Redirect output to stderr.
+exec 1>&2
+
+PUPPETLINT_FLAGS=${PUPPETLINT_FLAGS:-'--no-autoloader_layout-check --no-80chars-check'}
+TMPDIR=${TMPDIR:-'/tmp'}
+TMPFILE=$(mktemp "${TMPDIR}"/tmp.XXXXXXXXXX)
+STATUS=0
+
+# Register exit trap for removing temporary files
+trap 'rm -rf $TMPFILE' EXIT INT HUP
+
+# Check for ruby binary
+which ruby >/dev/null 2>&1 || exit 1
+
+# Check for Puppet binary
+which puppet >/dev/null 2>&1 || exit 1
+
+# Check for puppet-lint
+which puppet-lint >/dev/null 2>&1 || exit 1
+
+# Check for erb
+which erb >/dev/null 2>&1 || exit 1
+
+# Get correct git revision
+if git rev-parse --quiet --verify HEAD > /dev/null
+then
+    revision=HEAD
+else
+    # Initial commit: diff against an empty tree object
+    revision=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+fi
+
+IFS="
+ "
+
+# Get a list of files changed in this transaction
+declare -a FILES
+FILES=$(git diff --cached --name-only --diff-filter=ACM "${revision}")
+
+for file in ${FILES[@]}
+do
+    # Don't check empty files
+    if [[ $(git cat-file -s ":0:${file}") -eq 0 ]]; then
+        continue
+    fi
+
+    extension="${file##*.}"
+    git cat-file blob ":0:${file}" > $TMPFILE
+
+    if [[ $? -ne 0 ]]; then
+        echo "Unable to checkout ${file}"
+        STATUS=2
+    else
+        case $extension in
+            pp)
+                # Remove import lines while parsing
+                # http://projects.puppetlabs.com/issues/9670#note-14
+                sed -i -e '/^import / d' $TMPFILE >/dev/null 2>&1
+                # Puppet syntax check
+                puppet parser validate $TMPFILE >/dev/null 2>&1
+                if [[ $? -ne 0 ]]; then
+                    echo "Puppet syntax error in ${file}. Run 'puppet parser validate ${file}'" >&2
+                    STATUS=2
+                fi
+
+                # puppet-lint check
+                puppet-lint $PUPPETLINT_FLAGS --log-format "${file}:%{linenumber} %{KIND} - %{message}" $TMPFILE 2> /dev/null
+                if [[ $? -ne 0 ]] ; then
+                    STATUS=2
+                fi
+            ;;
+    
+            erb)
+                # syntax check templates - this doesn't catch a lot of mistakes,
+                # but it should catch gross mistakes
+                erb -x -T - "${TMPFILE}" | ruby -c >/dev/null 2>&1
+                if [[ $? -ne 0 ]]; then
+                    echo "ERB syntax error in ${file}" >&2
+                    STATUS=2
+                fi
+            ;;
+            yml|yaml)
+                # syntax YAML files, https://ttboj.wordpress.com/2013/08/25/finding-yaml-errors-in-puppet/
+                ruby -ryaml -e "YAML.parse(File.open('${TMPFILE}'))" >/dev/null 2>&1
+                if [[ $? -ne 0 ]]; then
+                    echo "YAML syntax error in ${file}" >&2
+                    STATUS=2
+                fi
+            ;;
+        esac
+    fi
+done
+
+exit $STATUS

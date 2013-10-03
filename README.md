@@ -25,3 +25,11 @@ Install Magnum for yourself by doing the following inside a copy of this repo:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Credits
+
+Standing on the shoulder's of giants - thanks to the following projects for inspiration!:
+
+[Thor](http://whatisthor.com/)
+[Berkshelf](http://berkshelf.com/)
+[Jackchop](http://rubygems.org/gems/jackchop)

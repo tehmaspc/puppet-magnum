@@ -1,5 +1,5 @@
 module Magnum
-  class ModuleGenerator < BaseGenerator
+  class CreateGenerator < BaseGenerator
 
     argument :module_name,
       type: :string,
@@ -55,16 +55,22 @@ module Magnum
       template 'init.pp.erb', target.join('manifests/init.pp')
     end
 
-    def write_git
+    def write_git_setup
       template 'gitignore.erb', target.join('.gitignore')
-      unless File.exists?(target.join(".git"))
+
+      unless File.exists?(target.join('.git'))
         inside target do
           run 'git init', capture: true
+          
           run 'git add -A', capture: true
           run "git commit -m 'initial commit; Puppet module created by Magnum'", capture: true
-          say "\n\tNOTE: Remember to setup a git repo and a remote to push your changes to.", :red
+          
+          say "\n\tNOTE: Remember to setup a git repo and a remote to push your changes to.\n", :red
         end
       end
+
+      template 'puppet-git-hooks-pre-commit.erb', target.join('.git/hooks/pre-commit')
+      chmod target.join('.git/hooks/pre-commit'), 0755
     end
 
     private
