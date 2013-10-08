@@ -24,4 +24,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'thor', '~> 0.18.1'
   spec.add_development_dependency 'version', '~> 1.0.0'
+  spec.add_development_dependency 'rspec-puppet', '~> 0.1.6'
+  spec.add_development_dependency 'serverspec', '~> 0.9.7'
 end
