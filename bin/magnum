@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 $:.push File.expand_path('../../lib', __FILE__)
-require 'rubygems' # ruby1.9 doesn't "require" it though
+require 'rubygems' # ruby1.9 doesn't 'require' it though
 require 'magnum'
 
 Magnum::Cli.start
