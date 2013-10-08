@@ -47,10 +47,6 @@ module Magnum
       template 'Rakefile.erb', target.join('Rakefile')
     end
 
-    def write_spec_helper
-      template 'spec_helper.rb.erb', target.join('spec/spec_helper.rb')
-    end
-
     def write_manifests
       template 'init.pp.erb', target.join('manifests/init.pp')
     end
@@ -71,6 +67,21 @@ module Magnum
 
       template 'puppet-git-hooks-pre-commit.erb', target.join('.git/hooks/pre-commit')
       chmod target.join('.git/hooks/pre-commit'), 0755
+    end
+
+    def write_spec_setup
+      inside target do
+        run 'rspec-puppet-init &>/dev/null'
+      end
+
+      # remove rspec-puppet only spec_helper.rb
+      remove_file target.join('spec/spec_helper.rb')
+        
+      # write our rspec-puppet / serverspec combined spec_helper
+      template 'spec_helper.rb.erb', target.join('spec/spec_helper.rb')
+
+      # create default serverspec directory
+      empty_directory target.join('spec/serverspec')
     end
 
     private

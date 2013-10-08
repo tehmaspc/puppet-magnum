@@ -19,7 +19,7 @@ end
 
 desc 'Run serverspec functional tests'
 RSpec::Core::RakeTask.new(:func) do |t|
-  t.pattern = 'spec/default/*_spec.rb'
+  t.pattern = 'spec/serverspec/*_spec.rb'
 end
 
 desc 'Run lint, unit, and functional tests'
