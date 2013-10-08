@@ -37,7 +37,3 @@ Standing on the shoulder's of giants - thanks to the following projects for insp
 * [Thor](http://whatisthor.com/)
 * [Berkshelf](http://berkshelf.com/)
 * [Jackchop](http://rubygems.org/gems/jackchop)
-* [rspec-puppet](http://rspec-puppet.com/)
-* [serverspec](http://serverspec.org/)
-* [puppet-lint](http://puppet-lint.com/)
-* [puppet-git-hooks](http://github.com/gini/puppet-git-hooks)
