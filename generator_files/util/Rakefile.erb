@@ -2,29 +2,21 @@ require 'rake'
 require 'rspec/core/rake_task'
 require 'puppet-lint/tasks/puppet-lint'
 
-task :default => :test
-
-desc 'Run puppet-lint tests'
-RSpec::Core::RakeTask.new(:lint) do |t|
-  Rake::Task['lint'].invoke
-end
-
-desc 'Run rspec-puppet unit tests'
+desc 'Run unit tests'
 RSpec::Core::RakeTask.new(:unit) do |t|
-  t.pattern = 'spec/classes/*_spec.rb'
-  t.pattern = 'spec/defines/*_spec.rb'
-  t.pattern = 'spec/hosts/*_spec.rb'
-  t.pattern = 'spec/functions/*_spec.rb'
+  t.pattern = 'spec/*/*_spec.rb'
 end
 
-desc 'Run serverspec functional tests'
-RSpec::Core::RakeTask.new(:func) do |t|
-  t.pattern = 'spec/serverspec/*_spec.rb'
+desc 'Run integration tests'
+RSpec::Core::RakeTask.new(:integ) do |t|
+  t.pattern = 'serverspec/*/*_spec.rb'
 end
 
-desc 'Run lint, unit, and functional tests'
+desc 'Run all lint, unit, and integration tests'
 RSpec::Core::RakeTask.new(:test) do |t|
   Rake::Task['lint'].invoke
   Rake::Task['unit'].invoke
-  Rake::Task['func'].invoke
+  Rake::Task['integ'].invoke
 end
+
+task :default => :test
