@@ -4,4 +4,3 @@ require 'rake/version_task'
 Rake::VersionTask.new
 
 task :default => 'build'
-
