@@ -57,10 +57,10 @@ module Magnum
       unless File.exists?(target.join('.git'))
         inside target do
           run 'git init', capture: true
-          
+
           run 'git add -A', capture: true
-          run "git commit -m 'initial commit; Puppet module created by Magnum'", capture: true
-          
+          run "git commit -m 'initial commit. Puppet module created by Magnum'", capture: true
+
           say "\n\tNOTE: Remember to setup a git repo and a remote to push your changes to.\n", :red
         end
       end
@@ -76,7 +76,7 @@ module Magnum
 
       # remove rspec-puppet only spec_helper.rb
       remove_file target.join('spec/spec_helper.rb')
-        
+
       # write our rspec-puppet / serverspec combined spec_helper
       template 'spec_helper.rb.erb', target.join('spec/spec_helper.rb')
 
