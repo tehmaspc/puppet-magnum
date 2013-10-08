@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    magnum (0.0.2)
+    magnum (0.0.3)
 
 GEM
   remote: https://rubygems.org/
