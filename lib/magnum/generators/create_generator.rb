@@ -59,7 +59,7 @@ module Magnum
             "\n\tPlease install it from http://www.vagrantup.com/", :red
       end
 
-      say "\n\tNOTE: Installing Vagrantfile with 'default' box.\n", :green
+      say "\n\tNOTE: Installing Vagrantfile with 'magnum-vagrant' box.\n", :green
       template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
       template 'vagrant/vagrant.pp.erb', target.join('vagrant/vagrant.pp')
     end
