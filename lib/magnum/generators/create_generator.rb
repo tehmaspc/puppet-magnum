@@ -26,6 +26,7 @@ module Magnum
       empty_directory target.join('templates')
       empty_directory target.join('spec')
       empty_directory target.join('serverspec/spec')
+      empty_directory target.join('vagrant')
     end
 
     def write_readme
@@ -60,6 +61,7 @@ module Magnum
 
       say "\n\tNOTE: Installing Vagrantfile with 'default' box.\n", :green
       template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
+      template 'vagrant/vagrant.pp.erb', target.join('vagrant/vagrant.pp')
     end
 
     def write_spec_setup

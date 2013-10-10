@@ -10,11 +10,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "magnum-serverspec"
+  config.vm.box = "magnum-vagrant"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  # For 'magnum-serverspec' we acquire vagrant boxes from: http://puppet-vagrant-boxes.puppetlabs.com/
+  # For 'magnum-vagrant' we acquire vagrant boxes from: http://puppet-vagrant-boxes.puppetlabs.com/
   config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210.box"
 
   # Create a forwarded port mapping which allows access to a specific port
@@ -44,8 +44,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "manifests"
-    puppet.manifest_file  = "init.pp"
+    puppet.manifests_path = "vagrant"
+    puppet.manifest_file  = "vagrant.pp"
+    puppet.module_path = "../"
     puppet.options = "--verbose"
   end
 end
