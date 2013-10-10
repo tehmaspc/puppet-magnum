@@ -13,10 +13,10 @@ RSpec::Core::RakeTask.new(:integ) do |t|
 end
 
 desc 'Run all lint, unit, and integration tests'
-RSpec::Core::RakeTask.new(:test) do |t|
-  Rake::Task['lint'].invoke
-  Rake::Task['unit'].invoke
-  Rake::Task['integ'].invoke
+task :test do
+  Rake::Task[:lint].invoke
+  Rake::Task[:unit].invoke
+  Rake::Task[:integ].invoke
 end
 
 task :default => :test
