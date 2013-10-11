@@ -86,8 +86,8 @@ module Magnum
         inside target do
           run 'git init', capture: true
           run 'git add -A', capture: true
-          run "git commit --author=\"Magnum Tool <archautomation@pearson.com>\" " +
-              "-m 'Initial commit. Puppet module created by Magnum'", capture: true
+          # disabled till a better solution is found - git doesn't want empty user information on commits
+          # run "git commit -m 'Initial commit. Puppet module created by Magnum'", capture: true
 
           say "\n\tNOTE: Remember to setup a git repo and a remote to push your changes to.\n", :green
         end
