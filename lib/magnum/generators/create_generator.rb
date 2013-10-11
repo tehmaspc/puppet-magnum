@@ -47,6 +47,7 @@ module Magnum
 
     def write_spec_setup
       inside target do
+        remove_file target.join('Rakefile')
         run 'rspec-puppet-init &>/dev/null', capture: true
       end
 
