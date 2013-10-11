@@ -23,7 +23,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rake', '~> 10.1.0'
   spec.add_runtime_dependency 'thor', '~> 0.18.1'
   spec.add_runtime_dependency 'version', '~> 1.0.0'
-  spec.add_runtime_dependency 'iconv', '~> 1.0.3'
   spec.add_runtime_dependency 'puppet', '~> 3.3.1'
   spec.add_runtime_dependency 'rspec', '~> 2.14.1'
   spec.add_runtime_dependency 'rspec-puppet', '~> 0.1.6'
