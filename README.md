@@ -19,6 +19,7 @@ NOTE: Install a recent version of Ruby (e.g. 1.9.3) and make sure [bundler](http
     Commands:
       magnum help [COMMAND]  # Describe available commands or one specific command
       magnum module          # Module related tasks. Type 'magnum module' for more help.
+      magnum version         # Display version and copyright information
 
 ## Example
 
@@ -30,29 +31,26 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/templates
           create  nginx/spec
           create  nginx/serverspec/spec
+          create  nginx/vagrant
           create  nginx/README.md
           create  nginx/LICENSE
-          create  nginx/Gemfile
-          create  nginx/Rakefile
           create  nginx/ModuleFile
           create  nginx/manifests/init.pp
-
-      NOTE: Installing Vagrantfile with 'default' box.
-
-          create  nginx/Vagrantfile
+          remove  nginx/Rakefile
              run  rspec-puppet-init &>/dev/null from "./nginx"
           remove  nginx/spec/spec_helper.rb
           create  nginx/spec/spec_helper.rb
           create  nginx/spec/classes/nginx_spec.rb
           create  nginx/serverspec/spec_helper.rb
           create  nginx/serverspec/spec/nginx_spec.rb
+          create  nginx/Gemfile
+          remove  nginx/Rakefile
+          create  nginx/Rakefile
+          create  nginx/Vagrantfile
+          create  nginx/vagrant/vagrant.pp
           create  nginx/.gitignore
              run  git init from "./nginx"
              run  git add -A from "./nginx"
-             run  git commit -m 'Initial commit. Puppet module created by Magnum' from "./nginx"
-
-      NOTE: Remember to setup a git repo and a remote to push your changes to.
-
           create  nginx/.git/hooks/pre-commit
            chmod  nginx/.git/hooks/pre-commit
 
