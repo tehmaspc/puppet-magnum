@@ -47,7 +47,6 @@ module Magnum
 
     def write_spec_setup
       inside target do
-        # use rspec-puppet-init to create spec folder layout
         run 'rspec-puppet-init &>/dev/null', capture: true
       end
 
@@ -60,26 +59,26 @@ module Magnum
       template 'spec/serverspec/init_spec.rb.erb', target.join("serverspec/spec/#{module_name}_spec.rb")
     end
 
+    def write_gemfile
+      template 'util/Gemfile.erb', target.join('Gemfile')
+    end
+
+    def write_rakefile
+      remove_file target.join('Rakefile')
+      template 'util/Rakefile.erb', target.join('Rakefile')
+    end
+
     def write_vagrantfile
       unless which('vagrant')
         say "\n\tNOTE: Vagrant does NOT appear to be installed." +
             "\n\tPlease install it from http://www.vagrantup.com/", :red
       end
 
-      say "\n\tNOTE: Installing Vagrantfile with 'magnum-vagrant' box.\n", :green
       template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
       template 'vagrant/vagrant.pp.erb', target.join('vagrant/vagrant.pp')
     end
 
-    def write_gemfile
-      template 'util/Gemfile.erb', target.join('Gemfile')
-    end
-
-    def write_rakefile
-      template 'util/Rakefile.erb', target.join('Rakefile')
-    end
-
-    # setup the git configuration for this module; this function should be called last
+    # due to the 'git add' operation, this function should be called last
     def write_git_setup
       template 'git/gitignore.erb', target.join('.gitignore')
 
@@ -87,10 +86,6 @@ module Magnum
         inside target do
           run 'git init', capture: true
           run 'git add -A', capture: true
-          # disabled till a better solution is found - git doesn't want empty user information on commits
-          # run "git commit -m 'Initial commit. Puppet module created by Magnum'", capture: true
-
-          say "\n\tNOTE: Remember to setup a git repo and a remote to push your changes to.\n", :green
         end
       end
 
