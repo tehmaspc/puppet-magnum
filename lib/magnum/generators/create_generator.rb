@@ -37,31 +37,12 @@ module Magnum
       template license_file, target.join('LICENSE')
     end
 
-    def write_gemfile
-      template 'util/Gemfile.erb', target.join('Gemfile')
-    end
-
-    def write_rakefile
-      template 'util/Rakefile.erb', target.join('Rakefile')
-    end
-
     def write_modulefile
       template 'puppet/ModuleFile.erb', target.join('ModuleFile')
     end
 
     def write_manifests
       template 'puppet/init.pp.erb', target.join('manifests/init.pp')
-    end
-
-    def write_vagrantfile
-      unless which('vagrant')
-        say "\n\tNOTE: Vagrant does NOT appear to be installed." +
-            "\n\tPlease install it from http://www.vagrantup.com/", :red
-      end
-
-      say "\n\tNOTE: Installing Vagrantfile with 'magnum-vagrant' box.\n", :green
-      template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
-      template 'vagrant/vagrant.pp.erb', target.join('vagrant/vagrant.pp')
     end
 
     def write_spec_setup
@@ -79,6 +60,26 @@ module Magnum
       template 'spec/serverspec/init_spec.rb.erb', target.join("serverspec/spec/#{module_name}_spec.rb")
     end
 
+    def write_vagrantfile
+      unless which('vagrant')
+        say "\n\tNOTE: Vagrant does NOT appear to be installed." +
+            "\n\tPlease install it from http://www.vagrantup.com/", :red
+      end
+
+      say "\n\tNOTE: Installing Vagrantfile with 'magnum-vagrant' box.\n", :green
+      template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
+      template 'vagrant/vagrant.pp.erb', target.join('vagrant/vagrant.pp')
+    end
+
+    def write_gemfile
+      template 'util/Gemfile.erb', target.join('Gemfile')
+    end
+
+    def write_rakefile
+      template 'util/Rakefile.erb', target.join('Rakefile')
+    end
+
+    # setup the git configuration for this module; this function should be called last
     def write_git_setup
       template 'git/gitignore.erb', target.join('.gitignore')
 
