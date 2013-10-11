@@ -9,7 +9,7 @@ module Magnum
 
     desc 'version', 'Display version and copyright information'
     def version
-      puts "#{version_header}\n#{licese}"
+      puts "#{version_header}\n#{license}"
     end
 
     private
