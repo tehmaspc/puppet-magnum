@@ -71,7 +71,7 @@ module Magnum
     def write_vagrantfile
       unless which('vagrant')
         say "\n\tNOTE: Vagrant does NOT appear to be installed." +
-            "\n\tPlease install it from http://www.vagrantup.com/", :red
+            "\n\tPlease install it from http://www.vagrantup.com/\n", :red
       end
 
       template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
