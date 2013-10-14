@@ -26,7 +26,7 @@ module Magnum
       empty_directory target.join('templates')
       empty_directory target.join('spec')
       empty_directory target.join('serverspec/spec')
-      empty_directory target.join('vagrant')
+      empty_directory target.join('.vagrant_puppet')
     end
 
     def write_readme
@@ -76,7 +76,7 @@ module Magnum
       end
 
       template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
-      template 'vagrant/vagrant.pp.erb', target.join('vagrant/vagrant.pp')
+      template 'vagrant/vagrant_puppet.pp.erb', target.join('.vagrant_puppet/vagrant_puppet.pp')
     end
 
     # due to the 'git add' operation, this function should be called last
