@@ -22,4 +22,5 @@ task :test do
   Rake::Task[:integ].invoke
 end
 
+task :spec    => :default
 task :default => :test
