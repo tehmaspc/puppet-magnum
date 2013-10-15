@@ -2,6 +2,9 @@ require 'rake'
 require 'rspec/core/rake_task'
 require 'puppet-lint/tasks/puppet-lint'
 
+# custom puppet-lint options
+PuppetLint.configuration.send('disable_80chars')
+
 desc 'Run unit tests'
 RSpec::Core::RakeTask.new(:unit) do |t|
   t.pattern = 'spec/*/*_spec.rb'
