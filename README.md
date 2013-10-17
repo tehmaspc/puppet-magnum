@@ -5,13 +5,24 @@ Magnum - a tool for rapid, consistent, and best practice Puppet module developme
 Magnum is a wrapper around [Puppet](http://puppetlabs.com/), [rspec-puppet](http://rspec-puppet.com/),
 [serverspec](http://serverspec.org/), [puppet-lint](http://puppet-lint.com/), and other Puppet testing tools.
 
+## Requirements
+
+Magnum is a Ruby gem and thus requires a working Ruby environment on your development machine.
+
+It's recommended to use [RVM](http://rvm.io) or [Rbenv](http://github.com/sstephenson/rbenv) to install and manage the
+Ruby versions on your machine.
+
+Currently, using Ruby 1.9.3 latest and above should work fine with Magnum.
+Additionally, ensure that [bundler](http://bundler.io/) (a Ruby gem manager) is installed and available in your gem path.
+
 ## Installation
 
 Install Magnum for yourself by doing the following inside a copy of this repo:
 
     $ bundle install && bundle exec rake install
 
-NOTE: Install a recent version of Ruby (e.g. 1.9.3) and make sure [bundler](http://bundler.io/) is installed.
+A termcast is available here and depicts setting up a VirtualBox development environment for Magnum:
+[showterm.io/ee21d6c55e3eca7e8dc0d](http://showterm.io/ee21d6c55e3eca7e8dc0d)
 
 ## Usage
 
