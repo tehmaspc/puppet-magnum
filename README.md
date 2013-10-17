@@ -7,12 +7,11 @@ Magnum is a wrapper around [Puppet](http://puppetlabs.com/), [rspec-puppet](http
 
 ## Requirements
 
-Magnum is a Ruby gem and thus requires a working Ruby environment on your development machine.
-
+Magnum is a Ruby gem and thus requires a working Ruby environment on your development machine.  
 It's recommended to use [RVM](http://rvm.io) or [Rbenv](http://github.com/sstephenson/rbenv) to install and manage the
 Ruby versions on your machine.
 
-Currently, using Ruby 1.9.3 latest and above should work fine with Magnum.
+Currently, using Ruby 1.9.3 latest and above should work fine with Magnum.  
 Additionally, ensure that [bundler](http://bundler.io/) (a Ruby gem manager) is installed and available in your gem path.
 
 ## Installation
