@@ -51,6 +51,8 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/spec/functions
           create  nginx/spec/hosts
           create  nginx/spec/unit
+          create  nginx/spec/fixtures/modules
+          create  nginx/spec/fixtures/modules/.gitkeep
           create  nginx/spec/fixtures/manifests
           create  nginx/spec/fixtures/manifests/site.pp
           create  nginx/spec/spec_helper.rb
