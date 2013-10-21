@@ -61,6 +61,7 @@ module Magnum
     end
 
     def write_gemfile
+      remove_file target.join('Gemfile')
       template 'util/Gemfile.erb', target.join('Gemfile')
     end
 
@@ -81,6 +82,7 @@ module Magnum
 
     # due to the 'git add' operation, this function should be called last
     def write_git_setup
+      remove_file target.join('.gitignore')
       template 'git/gitignore.erb', target.join('.gitignore')
 
       unless File.exists?(target.join('.git'))
