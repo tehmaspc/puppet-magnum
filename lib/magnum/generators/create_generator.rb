@@ -46,10 +46,13 @@ module Magnum
     end
 
     def write_spec_setup
-      spec_dirs = [ 'classes', 'defines', 'fixtures', 'functions', 'hosts', 'unit' ]
+      spec_dirs = [ 'classes', 'defines', 'functions', 'hosts', 'unit' ]
       spec_dirs.each do |dir|
         empty_directory target.join("spec/#{dir}")
       end
+
+      empty_directory target.join('spec/fixtures/manifests')
+      create_file target.join('spec/fixtures/manifests/site.pp')
 
       template 'spec/rspec/spec_helper.rb.erb', target.join('spec/spec_helper.rb')
       template 'spec/rspec/init_spec.rb.erb', target.join("spec/classes/#{module_name}_spec.rb")
