@@ -60,6 +60,10 @@ module Magnum
       template 'spec/serverspec/init_spec.rb.erb', target.join("serverspec/spec/#{module_name}_spec.rb")
     end
 
+    def write_fixtures
+       template 'spec/fixtures.yml.erb', target.join('.fixtures.yml')
+    end
+
     def write_gemfile
       remove_file target.join('Gemfile')
       template 'util/Gemfile.erb', target.join('Gemfile')
