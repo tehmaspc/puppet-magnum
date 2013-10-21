@@ -51,6 +51,7 @@ module Magnum
         empty_directory target.join("spec/#{dir}")
       end
 
+      empty_directory target.join('spec/fixtures/modules')
       empty_directory target.join('spec/fixtures/manifests')
       create_file target.join('spec/fixtures/manifests/site.pp')
 
