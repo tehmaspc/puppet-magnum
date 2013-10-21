@@ -76,7 +76,7 @@ module Magnum
       end
 
       template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
-      template 'vagrant/vagrant_puppet.pp.erb', target.join('.vagrant_puppet/vagrant_puppet.pp')
+      template 'vagrant/init.pp.erb', target.join('.vagrant_puppet/init.pp')
     end
 
     # due to the 'git add' operation, this function should be called last

@@ -45,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # are contained in a directory path relative to this Vagrantfile.
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "./.vagrant_puppet"
-    puppet.manifest_file  = "vagrant_puppet.pp"
+    puppet.manifest_file  = "init.pp"
     puppet.module_path = [ "../", "./spec/fixtures/modules/" ]
     puppet.options = "--verbose"
   end
