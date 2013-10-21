@@ -46,16 +46,16 @@ module Magnum
     end
 
     def write_spec_setup
-      inside target do
-        remove_file target.join('Rakefile')
-        run 'rspec-puppet-init &>/dev/null', capture: true
+      spec_dirs = [ 'classes', 'defines', 'fixtures', 'functions', 'hosts', 'unit' ]
+      spec_dirs.each do |dir|
+        empty_directory target.join("spec/#{dir}")
       end
 
-      # for now we are controlling the spec_helper.rb file for rspec-puppet testing
-      remove_file target.join('spec/spec_helper.rb')
       template 'spec/rspec/spec_helper.rb.erb', target.join('spec/spec_helper.rb')
       template 'spec/rspec/init_spec.rb.erb', target.join("spec/classes/#{module_name}_spec.rb")
+    end
 
+    def write_serverspec_setup
       template 'spec/serverspec/spec_helper.rb.erb', target.join('serverspec/spec_helper.rb')
       template 'spec/serverspec/init_spec.rb.erb', target.join("serverspec/spec/#{module_name}_spec.rb")
     end
