@@ -41,23 +41,30 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/templates
           create  nginx/spec
           create  nginx/serverspec/spec
-          create  nginx/vagrant
+          create  nginx/.vagrant_puppet
           create  nginx/README.md
           create  nginx/LICENSE
           create  nginx/ModuleFile
           create  nginx/manifests/init.pp
-          remove  nginx/Rakefile
-             run  rspec-puppet-init &>/dev/null from "./nginx"
-          remove  nginx/spec/spec_helper.rb
+          create  nginx/spec/classes
+          create  nginx/spec/defines
+          create  nginx/spec/functions
+          create  nginx/spec/hosts
+          create  nginx/spec/unit
+          create  nginx/spec/fixtures/manifests
+          create  nginx/spec/fixtures/manifests/site.pp
           create  nginx/spec/spec_helper.rb
           create  nginx/spec/classes/nginx_spec.rb
           create  nginx/serverspec/spec_helper.rb
           create  nginx/serverspec/spec/nginx_spec.rb
+          create  nginx/.fixtures.yml
+          remove  nginx/Gemfile
           create  nginx/Gemfile
           remove  nginx/Rakefile
           create  nginx/Rakefile
           create  nginx/Vagrantfile
-          create  nginx/vagrant/vagrant.pp
+          create  nginx/.vagrant_puppet/init.pp
+          remove  nginx/.gitignore
           create  nginx/.gitignore
              run  git init from "./nginx"
              run  git add -A from "./nginx"
