@@ -3,7 +3,7 @@
 Magnum - a tool for rapid, consistent, and best practice [Puppet](http://puppetlabs.com) module development.
 
 Magnum is essentially a Puppet module project generator and a wrapper  
-around tools such as: [puppetlabs_spec_helper](http://github.com/puppetlabs/puppetlabs_spec_helper), [rspec-puppet](http://rspec-puppet.com/), [serverspec](http://serverspec.org/), [puppet-lint](http://puppet-lint.com/), [puppet-git-hooks](http://github.com/gini/puppet-git-hooks), and more!
+around tools such as: [puppetlabs_spec_helper](http://github.com/puppetlabs/puppetlabs_spec_helper), [rspec-puppet](http://rspec-puppet.com/), [serverspec](http://serverspec.org/), [puppet-lint](http://puppet-lint.com/), [puppet-git-hooks](http://github.com/gini/puppet-git-hooks), [Vagrant](http://vagrantup.com), and more!
 
 ## Requirements
 
@@ -72,14 +72,6 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
              run  git add -A from "./nginx"
           create  nginx/.git/hooks/pre-commit
            chmod  nginx/.git/hooks/pre-commit
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
 
 ## Credits
 
