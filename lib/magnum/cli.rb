@@ -14,13 +14,13 @@ module Magnum
 
     private
 
-      def version_header
-        "Magnum (#{Magnum::VERSION.chomp})"
-      end
+    def version_header
+      "Magnum (#{Magnum::VERSION.chomp})"
+    end
 
-      def license
-        File.read(Magnum.root.join('LICENSE'))
-      end
+    def license
+      File.read(Magnum.root.join('LICENSE'))
+    end
 
   end
 end
