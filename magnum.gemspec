@@ -22,6 +22,9 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 1.9.3'
 
   spec.add_runtime_dependency 'bundler', '~> 1.3'
+  spec.add_runtime_dependency 'yard', '~> 0.8.7.2'
+  spec.add_runtime_dependency 'yard-rspec', '~> 0.1'
+  spec.add_runtime_dependency 'redcarpet', '~> 3.0.0'
   spec.add_runtime_dependency 'rake', '~> 10.1.0'
   spec.add_runtime_dependency 'thor', '~> 0.18.1'
   spec.add_runtime_dependency 'version', '~> 1.0.0'
@@ -30,4 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rspec-puppet', '~> 0.1.6'
   spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 0.4.1'
   spec.add_runtime_dependency 'serverspec', '~> 0.9.7'
+
+  spec.add_development_dependency 'rspec', '~> 2.14.1'
+  spec.add_development_dependency 'sem_ver', '~> 0.1.1'
 end

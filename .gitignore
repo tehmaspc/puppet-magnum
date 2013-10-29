@@ -17,3 +17,5 @@ _yardoc
 coverage
 doc/
 pkg
+
+spec/spec_output.txt
