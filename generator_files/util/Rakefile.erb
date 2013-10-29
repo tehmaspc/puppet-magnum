@@ -13,7 +13,7 @@ task :unit => :spec
 
 desc 'Run integration tests'
 RSpec::Core::RakeTask.new(:integ) do |t|
-  t.pattern = 'serverspec/*/*_spec.rb'
+  t.pattern = 'serverspec/**/*_spec.rb'
   t.rspec_opts = ['--color']
   Rake::Task[:spec_prep].invoke
 end
@@ -28,5 +28,5 @@ end
 task :default => []; Rake::Task[:default].clear
 task :default => :test
 
-# puppet-lint options, customize to your needs.
+# puppet-lint options
 PuppetLint.configuration.send('disable_80chars')
