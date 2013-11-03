@@ -10,9 +10,9 @@ describe Magnum::Cli do
   end
 
   context 'when printing version, author, and license information' do
-    subject(:cli) { Magnum::Cli.new() }
-    it { expect(cli).to_not be_nil }
-    it { expect(cli.version().to_s).to_not be_nil }
+    subject(:cli) { Magnum::Cli.new }
+    it { expect(cli).to be }
+    it { expect(cli.version.to_s).to be }
   end
   
 end

@@ -10,4 +10,11 @@
 require 'spec_helper'
 
 describe Magnum do
+
+  context 'when setting up the project root' do
+    subject(:magnum_root) { Magnum::root }
+    it { expect(magnum_root).to_not be_nil }
+    it { expect(magnum_root.to_s).to match(/magnum/) }
+  end
+
 end
