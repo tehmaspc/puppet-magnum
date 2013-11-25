@@ -23,4 +23,5 @@ task :help do
 end
 
 task :unit    => 'spec'
+task :test    => 'spec'
 task :default => 'build'
