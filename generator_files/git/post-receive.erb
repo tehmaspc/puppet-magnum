@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# External requirements:
+#
+#    * Git
+
+# Redirect output to stderr.
+exec 1>&2
+
+STATUS=0
+
+# ensure we push out all tags that we have created
+git push --tags
+
+exit $STATUS
