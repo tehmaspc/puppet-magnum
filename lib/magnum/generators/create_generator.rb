@@ -104,8 +104,6 @@ module Magnum
 
       template 'git/puppet-git-hooks-pre-commit.erb', target.join('.git/hooks/pre-commit')
       chmod target.join('.git/hooks/pre-commit'), 0755
-      template 'git/post-receive.erb', target.join('.git/hooks/post-receive')
-      chmod target.join('.git/hooks/post-receive'), 0755
     end
 
     private
