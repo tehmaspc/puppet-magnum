@@ -4,12 +4,12 @@ require 'puppet-lint/tasks/puppet-lint'
 require 'puppetlabs_spec_helper/rake_tasks'
 
 desc 'Run unit tests'
-task :spec => []; Rake::Task[:spec].clear
-task :spec do
+task :unit do
   Rake::Task[:spec_prep].invoke
   Rake::Task[:spec_standalone].invoke
 end
-task :unit => :spec
+task :spec => []; Rake::Task[:spec].clear
+task :spec => :unit
 
 desc 'Run integration tests'
 RSpec::Core::RakeTask.new(:integ) do |t|
