@@ -25,6 +25,11 @@ task :test do
   Rake::Task[:integ].invoke
 end
 
+# remove undesired rake tasks
+task :build => []; Rake::Task[:build].clear
+task :clean => []; Rake::Task[:clean].clear
+task :coverage => []; Rake::Task[:coverage].clear
+
 task :default => []; Rake::Task[:default].clear
 task :default => :test
 
