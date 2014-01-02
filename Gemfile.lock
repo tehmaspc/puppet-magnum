@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    magnum (1.4.4)
+    magnum (1.4.5)
       bundler (>= 1.3)
       puppet (>= 3.4.1)
       puppetlabs_spec_helper (>= 0.4.1)
