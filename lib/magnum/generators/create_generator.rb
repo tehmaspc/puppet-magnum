@@ -51,8 +51,10 @@ module Magnum
         empty_directory target.join("spec/#{dir}")
       end
 
-      empty_directory target.join('spec/fixtures/modules')
-      create_file target.join('spec/fixtures/modules/.gitkeep')
+      empty_directory target.join("spec/fixtures/modules/#{module_name}")
+
+      # add custom lib puppet parser functions directory and install any custom function template files we need
+      directory 'spec/custom_lib_puppet_parser_functions', target.join("spec/fixtures/modules/#{module_name}/lib/puppet/parser/functions")
 
       empty_directory target.join('spec/fixtures/manifests')
       create_file target.join('spec/fixtures/manifests/site.pp')
@@ -88,6 +90,11 @@ module Magnum
 
       template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
       template 'vagrant/init.pp.erb', target.join('.vagrant_puppet/init.pp')
+    end
+
+    def write_magnum_lastinit
+      remove_file target.join('Magnum.lastinit')
+      template 'Magnum.lastinit.erb', target.join('Magnum.lastinit')
     end
 
     # due to the 'git add' operation, this function should be called last
@@ -161,6 +168,10 @@ module Magnum
 
     def copyright_holder
       options[:copyright_holder] || maintainer
+    end
+
+    def magnum_lastinit_timestamp
+      "Magnum (#{Magnum::VERSION.chomp}) last initialized this Puppet module directory on #{Time.now.ctime}."
     end
 
     def default_options

@@ -38,5 +38,7 @@ bin/*
 .vagrant
 pkg
 
+# ignore all module fixtures directories that may exist, expect this
+# module's fixtures lib directory where we install custom functions into.
 spec/fixtures/modules/*
-!spec/fixtures/modules/.gitkeep
+!spec/fixtures/modules/<%= module_name %>/lib

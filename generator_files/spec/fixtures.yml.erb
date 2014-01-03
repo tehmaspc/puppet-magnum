@@ -4,4 +4,6 @@ fixtures:
 # repositories:
 #   stdlib: 'git://github.com/puppetlabs/puppetlabs-stdlib'
   symlinks:
-    <%= module_name %>: "#{source_dir}"
+    <%= module_name %>/files: "#{source_dir}/files"
+    <%= module_name %>/manifests: "#{source_dir}/manifests"
+    <%= module_name %>/templates: "#{source_dir}/templates"
