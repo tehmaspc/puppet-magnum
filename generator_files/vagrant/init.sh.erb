@@ -1,0 +1,35 @@
+#!/bin/bash
+
+STAGE='/tmp/magnum-vagrant-stage'
+
+if [ ! -e $STAGE ]; then
+
+  echo "Initial provision, running the magnum-vagrant shell provisioner script..."
+
+  # update system apt cache
+  apt-get update
+
+  # create the /etc/puppet configuration directory and ensure /etc/puppet/modules symlinks to this
+  # project's spec/fixtures/modules path which is mounted under the /vagrant share on the vagrant vm.
+  if [ ! -d '/etc/puppet' ]; then
+    mkdir /etc/puppet
+    chmod 755 /etc/puppet
+
+    ln -sfn /vagrant/spec/fixtures/modules /etc/puppet/modules
+  else
+    if [ -d '/etc/puppet/modules' ]; then
+      mv /etc/puppet/modules /etc/puppet/modules.orig
+    fi
+
+    ln -sfn /vagrant/spec/fixtures/modules /etc/puppet/modules
+  fi
+
+  touch $STAGE
+
+else
+
+  echo "Not initial provision, skipping the magnum-vagrant shell provisioner script..."
+
+fi
+
+exit 0
