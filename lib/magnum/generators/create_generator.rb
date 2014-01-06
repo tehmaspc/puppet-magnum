@@ -21,9 +21,9 @@ module Magnum
       type: :string
 
     def write_emptydirs
-      empty_directory target.join('files')
       empty_directory target.join('manifests')
       empty_directory target.join('templates')
+      empty_directory target.join('files')
       empty_directory target.join('spec')
       empty_directory target.join('serverspec/spec')
       empty_directory target.join('.vagrant_puppet')
@@ -41,8 +41,11 @@ module Magnum
       template 'puppet/ModuleFile.erb', target.join('ModuleFile')
     end
 
-    def write_manifests
+    def write_manifests_templates_files
       template 'puppet/init.pp.erb', target.join('manifests/init.pp')
+
+      create_file target.join('templates/.gitkeep')
+      create_file target.join('files/.gitkeep')
     end
 
     def write_spec_setup
