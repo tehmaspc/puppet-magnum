@@ -89,6 +89,7 @@ module Magnum
       end
 
       template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
+      template 'vagrant/init.sh.erb', target.join('.vagrant_puppet/init.sh')
       template 'vagrant/init.pp.erb', target.join('.vagrant_puppet/init.pp')
     end
 
