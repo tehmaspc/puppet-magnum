@@ -59,6 +59,10 @@ module Magnum
       # add custom lib puppet parser functions directory and install any custom function template files we need
       directory 'spec/custom_lib_puppet_parser_functions', target.join("spec/fixtures/modules/#{module_name}/lib/puppet/parser/functions")
 
+      create_link target.join("spec/fixtures/modules/#{module_name}/manifests"), "../../../../manifests"
+      create_link target.join("spec/fixtures/modules/#{module_name}/templates"), "../../../../templates"
+      create_link target.join("spec/fixtures/modules/#{module_name}/files"), "../../../../files"
+
       empty_directory target.join('spec/fixtures/manifests')
       create_file target.join('spec/fixtures/manifests/site.pp')
 
