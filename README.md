@@ -44,7 +44,7 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/.vagrant_puppet
           create  nginx/README.md
           create  nginx/LICENSE
-          create  nginx/ModuleFile
+          create  nginx/Modulefile
           create  nginx/manifests/init.pp
           create  nginx/spec/classes
           create  nginx/spec/defines

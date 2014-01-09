@@ -38,7 +38,7 @@ module Magnum
     end
 
     def write_modulefile
-      template 'puppet/ModuleFile.erb', target.join('ModuleFile')
+      template 'puppet/Modulefile.erb', target.join('Modulefile')
     end
 
     def write_manifests_templates_files
