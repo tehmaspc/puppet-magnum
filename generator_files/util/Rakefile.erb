@@ -1,4 +1,5 @@
 require 'rake'
+require 'colorize'
 require 'rspec/core/rake_task'
 require 'puppet-lint/tasks/puppet-lint'
 require 'puppetlabs_spec_helper/rake_tasks'
@@ -16,6 +17,10 @@ RSpec::Core::RakeTask.new(:integ) do |t|
   t.pattern = 'serverspec/**/*_spec.rb'
   t.rspec_opts = ['--color']
   Rake::Task[:spec_prep].invoke
+
+  puts
+  puts 'Running integration tests on Vagrant image, this can take a few moments...'.colorize( :red ).on_white.underline
+  puts
 end
 
 desc 'Run all lint, unit, and integration tests'

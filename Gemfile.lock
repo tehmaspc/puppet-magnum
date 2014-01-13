@@ -24,8 +24,8 @@ GEM
       json_pure
     highline (1.6.20)
     json_pure (1.8.1)
-    metaclass (0.0.1)
-    mocha (0.14.0)
+    metaclass (0.0.2)
+    mocha (1.0.0)
       metaclass (~> 0.0.1)
     net-ssh (2.7.0)
     puppet (3.4.2)
@@ -51,12 +51,12 @@ GEM
     rspec-puppet (1.0.1)
       rspec
     sem_ver (0.1.1)
-    serverspec (0.14.2)
+    serverspec (0.14.3)
       highline
       net-ssh
       rspec (>= 2.13.0)
       specinfra (>= 0.1.0)
-    specinfra (0.1.1)
+    specinfra (0.3.1)
     thor (0.18.1)
     version (1.0.0)
     yard (0.8.7.3)
