@@ -41,3 +41,4 @@ task :default => :test
 # puppet-lint options
 PuppetLint.configuration.ignore_paths = ['spec/**/*.pp']
 PuppetLint.configuration.send('disable_80chars')
+PuppetLint.configuration.send('disable_autoloader_layout')
