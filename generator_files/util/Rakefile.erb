@@ -32,13 +32,14 @@ task :spec => :unit
 
 desc 'Run integration tests'
 RSpec::Core::RakeTask.new(:integ) do |t|
+  Rake::Task[:spec_prep].invoke
+
   t.pattern = 'serverspec/**/*_spec.rb'
   t.rspec_opts = ['--color']
   Rake::Task[:spec_prep].invoke
 
   check_magnum_vagrant_box
   prompt_integ_test_run
-
 end
 
 desc 'Run all lint, unit, and integration tests'
@@ -46,6 +47,23 @@ task :test do
   Rake::Task[:lint].invoke
   Rake::Task[:unit].invoke
   Rake::Task[:integ].invoke
+end
+
+desc 'Install git hooks'
+task :git_hooks do
+  unless File::exists?('./.git_hooks_installed') then
+    source = "#{Dir.pwd}/.git_hooks"
+    target = './.git/hooks'
+    git_hooks_available = Dir.entries(source)
+    git_hooks_available.each do |hook|
+      if (hook != '.' and hook != '..' and hook != 'README.md') then
+        FileUtils.rm_rf  "#{target}/#{hook}"
+        FileUtils::cp "#{source}/#{hook}", "#{target}/#{hook}"
+        FileUtils::chmod 0755, "#{target}/#{hook}"
+      end
+    end
+    FileUtils::touch '.git_hooks_installed'
+  end
 end
 
 # remove undesired rake tasks

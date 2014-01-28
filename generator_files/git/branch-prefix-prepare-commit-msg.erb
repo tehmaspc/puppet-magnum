@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# check for sed
+which sed >/dev/null 2>&1 || exit 1
+
+# insert branch name as first line of commit message.
+sed -i.bak "1s/^/[$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)]: /" "$1"
+
+exit 0

@@ -54,17 +54,18 @@ module Magnum
         empty_directory target.join("spec/#{dir}")
       end
 
+      empty_directory target.join('spec/fixtures/manifests')
+      create_file target.join('spec/fixtures/manifests/site.pp')
+
       empty_directory target.join("spec/fixtures/modules/#{module_name}")
+      spec_dirs = ['manifests', 'templates', 'files']
+      spec_dirs.each { |spec_dir|
+        remove_file target.join("spec/fixtures/modules/#{module_name}/#{spec_dir}")
+        create_link target.join("spec/fixtures/modules/#{module_name}/#{spec_dir}"), "../../../../#{spec_dir}"
+      }
 
       # add custom lib puppet parser functions directory and install any custom function template files we need
       directory 'spec/custom_lib_puppet_parser_functions', target.join("spec/fixtures/modules/#{module_name}/lib/puppet/parser/functions")
-
-      create_link target.join("spec/fixtures/modules/#{module_name}/manifests"), "../../../../manifests"
-      create_link target.join("spec/fixtures/modules/#{module_name}/templates"), "../../../../templates"
-      create_link target.join("spec/fixtures/modules/#{module_name}/files"), "../../../../files"
-
-      empty_directory target.join('spec/fixtures/manifests')
-      create_file target.join('spec/fixtures/manifests/site.pp')
 
       template 'spec/rspec/spec_helper.rb.erb', target.join('spec/spec_helper.rb')
       template 'spec/rspec/init_spec.rb.erb', target.join("spec/classes/#{module_name}_spec.rb")
@@ -110,15 +111,23 @@ module Magnum
       remove_file target.join('.gitignore')
       template 'git/gitignore.erb', target.join('.gitignore')
 
+      template 'git/puppet-git-hooks-pre-commit.erb', target.join('.git_hooks/pre-commit')
+      template 'git/branch-prefix-prepare-commit-msg.erb', target.join('.git_hooks/prepare-commit-msg')
+      chmod target.join('.git_hooks/pre-commit'), 0755
+      chmod target.join('.git_hooks/prepare-commit-msg'), 0755
+
+      create_file target.join('.git_hooks_installed')
+
       unless File.exists?(target.join('.git'))
         inside target do
           run 'git init', capture: true
           run 'git add -A', capture: true
         end
+        template 'git/puppet-git-hooks-pre-commit.erb', target.join('.git/hooks/pre-commit')
+        template 'git/branch-prefix-prepare-commit-msg.erb', target.join('.git/hooks/prepare-commit-msg')
+        chmod target.join('.git/hooks/pre-commit'), 0755
+        chmod target.join('.git/hooks/prepare-commit-msg'), 0755
       end
-
-      template 'git/puppet-git-hooks-pre-commit.erb', target.join('.git/hooks/pre-commit')
-      chmod target.join('.git/hooks/pre-commit'), 0755
     end
 
     private
