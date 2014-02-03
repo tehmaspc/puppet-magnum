@@ -51,19 +51,17 @@ end
 
 desc 'Install git hooks'
 task :install_git_hooks do
-  unless File::exists?('./.git_hooks_installed') then
-    source = "#{Dir.pwd}/.git_hooks"
-    target = './.git/hooks'
-    git_hooks_available = Dir.entries(source)
-    git_hooks_available.each do |hook|
-      if (hook != '.' and hook != '..' and hook != 'README.md') then
-        FileUtils.rm_rf  "#{target}/#{hook}"
-        FileUtils::cp "#{source}/#{hook}", "#{target}/#{hook}"
-        FileUtils::chmod 0755, "#{target}/#{hook}"
-      end
+  source = "#{Dir.pwd}/.git_hooks"
+  target = './.git/hooks'
+  git_hooks_available = Dir.entries(source)
+  git_hooks_available.each do |hook|
+    if (hook != '.' and hook != '..' and hook != 'README.md') then
+      FileUtils.rm_rf  "#{target}/#{hook}"
+      FileUtils::cp "#{source}/#{hook}", "#{target}/#{hook}"
+      FileUtils::chmod 0755, "#{target}/#{hook}"
     end
-    FileUtils::touch '.git_hooks_installed'
   end
+  FileUtils::touch '.git_hooks_installed'
 end
 
 # remove undesired rake tasks
