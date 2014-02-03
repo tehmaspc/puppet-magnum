@@ -50,7 +50,7 @@ task :test do
 end
 
 desc 'Install git hooks'
-task :git_hooks do
+task :install_git_hooks do
   unless File::exists?('./.git_hooks_installed') then
     source = "#{Dir.pwd}/.git_hooks"
     target = './.git/hooks'
