@@ -3,7 +3,7 @@
 
 VAGRANTFILE_API_VERSION = "2"
 
-Vagrant.require_version ">= 1.3.5"
+Vagrant.require_version ">= 1.4.0"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # For 'magnum-vagrant' we acquire vagrant boxes from: http://puppet-vagrant-boxes.puppetlabs.com/
