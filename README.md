@@ -18,7 +18,7 @@ Additionally, ensure that [bundler](http://bundler.io/) (a Ruby gem manager) is 
 
 Install Magnum for yourself by doing the following inside a copy of this repo:
 
-    $ bundle install && bundle exec rake install
+    % bundle install && bundle exec rake install
 
 A termcast is available here and depicts setting up a VirtualBox development environment for Magnum:
 [showterm.io/ee21d6c55e3eca7e8dc0d](http://showterm.io/ee21d6c55e3eca7e8dc0d)
@@ -73,52 +73,9 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/.git/hooks/pre-commit
            chmod  nginx/.git/hooks/pre-commit
 
-## Running Puppet Lint & RSpec Unit/Integration Tests (be sure to write them!)
+## Testing
 
-The following shows how one can use the included Rakefile that Magnum creates for running lint, (RSpec) unit and (RSpec) integration tests:
-
-    % magnum module create nginx
-          create  nginx/files
-          create  nginx/manifests
-          create  nginx/templates
-          ...
-
-    % cd nginx
-
-    % bundle exec rake help
-          rake build            # Build puppet module package
-          rake clean            # Clean a built module package
-          rake coverage         # Generate code coverage information
-          rake help             # Display the list of available rake tasks
-          rake integ            # Run integration tests
-          rake lint             # Run puppet-lint / Check puppet manifests with puppet-lint
-          rake spec_clean       # Clean up the fixtures directory
-          rake spec_prep        # Create the fixtures directory
-          rake spec_standalone  # Run spec tests on an existing fixtures directory
-          rake test             # Run all lint, unit, and integration tests
-          rake unit             # Run unit tests
-
-    % bundle exec rake test
-          /Users/uchaute/.rvm/rubies/ruby-1.9.3-p448/bin/ruby -S rspec spec/classes/nginx_spec.rb --color
-          *
-
-          Pending:
-            nginx should do something
-              # Not yet implemented
-              # ./spec/classes/nginx_spec.rb:5
-
-          Finished in 0.00022 seconds
-          1 example, 0 failures, 1 pending
-          /Users/uchaute/.rvm/rubies/ruby-1.9.3-p448/bin/ruby -S rspec serverspec/spec/nginx_spec.rb --color
-          *
-
-          Pending:
-            nginx should do something
-              # Not yet implemented
-              # ./serverspec/spec/nginx_spec.rb:5
-
-          Finished in 49.88 seconds
-          1 example, 0 failures, 1 pending
+See [Testing](TESTING.md) for an explanation about how to do Puppet module testing within a Magnum managed Puppet module project.
 
 ## Credits
 
