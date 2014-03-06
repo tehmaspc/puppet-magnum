@@ -187,9 +187,13 @@ For more details about serverspec and how to write the actual serverspec tests, 
 
 ### vagrant
 
+[vagrant](http://vagrantup.com) allows the Puppet developer to start local VirtualBox instances in their Puppet module project and provision the instance with the Puppet module being tested. vagrant requires a Vagrantfile which specifies how to launch a VirtualBox instance. Magnum sets up the required Vagrantfile with the proper configurations required to start the VirtualBox VM (w/ 'vagrant up') and provision the instance with the module being tested.
+
+Magnum also creates a .vagrant_puppet/ directory in your Puppet module project and more importantly a .vagrant_puppet/init.pp file containing the necessary configuration for Puppet provisioning your VirtualBox instance. The Puppet module developer should change the .vagrant_puppet/init.pp file to provision their VirtualBox instance according to their needs. The best way to understand this is to take a look at some of the Puppet module examples below.
+
 For more details about vagrant, please check the [project website](http://www.vagrantup.com/).
 
-### Examples of Puppet Modules w/ testing
+### Examples of Puppet Modules (w/ implemented tests):
 
 * [glusterfs](https://devops-tools.pearson.com/stash/projects/OCPSPUPPET/repos/glusterfs/browse)
 * [ntp](https://devops-tools.pearson.com/stash/projects/OCPSPUPPET/repos/ntp/browse)
