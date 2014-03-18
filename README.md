@@ -191,6 +191,10 @@ For more details about serverspec and how to write the actual serverspec tests, 
 
 Magnum also creates a .vagrant_puppet/ directory in your Puppet module project and more importantly a .vagrant_puppet/init.pp file containing the necessary configuration for Puppet provisioning your VirtualBox instance. The Puppet module developer should change the .vagrant_puppet/init.pp file to provision their VirtualBox instance according to their needs. The best way to understand this is to take a look at some of the Puppet module examples below.
 
+During the development of a Puppet module, the Puppet module developer can run 'vagrant provision' to continuously test their Puppet module changes. The developer can login to the VirtualBox instance (w/ 'vagrant ssh') and check the state of their Puppet provisioning.
+
+NOTE: vagrant does NOT implicitly re-provision your VirtualBox instance each time. Only on a new VirtualBox instance creation will VirtualBox automatically run a 'provision' for you. The Puppet module developer should run 'vagrant provision' each time they need to check their latest Puppet code changes.
+
 For more details about vagrant, please check the [project website](http://www.vagrantup.com/).
 
 ### Examples of Puppet Modules (w/ implemented tests):
