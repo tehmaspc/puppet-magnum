@@ -1,11 +1,12 @@
 source 'http://rubygems.org'
 
-puppetversion = ENV['PUPPET_VERSION']
 gem 'rake'
 gem 'colorize'
-gem 'puppet', puppetversion, :require => false
-gem 'puppet-lint'
-gem 'rspec-puppet'
-gem 'puppetlabs_spec_helper'
-gem 'serverspec'
-gem 'vagrant-aws'
+
+gem 'puppet', '~> 3.4.1'
+
+gem 'rspec', '~> 2.14.1'
+gem 'puppet-lint', '~> 0.3.2'
+gem 'rspec-puppet', '~> 1.0.1'
+gem 'puppetlabs_spec_helper', '~> 0.4.1'
+gem 'serverspec', '~> 0.14.2'

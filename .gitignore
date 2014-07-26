@@ -9,6 +9,7 @@
 *.un~
 *.gem
 *.rbc
+*.html
 .bundle
 .config
 .yardoc

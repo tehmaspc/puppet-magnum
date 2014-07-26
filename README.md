@@ -197,11 +197,6 @@ NOTE: vagrant does NOT implicitly re-provision your VirtualBox instance each tim
 
 For more details about vagrant, please check the [project website](http://www.vagrantup.com/).
 
-### Examples of Puppet Modules (w/ implemented tests):
-
-* [glusterfs](https://devops-tools.pearson.com/stash/projects/OCPSPUPPET/repos/glusterfs/browse)
-* [ntp](https://devops-tools.pearson.com/stash/projects/OCPSPUPPET/repos/ntp/browse)
-
 ## Credits
 
 Standing on the shoulder's of giants - thanks to the following projects for inspiration!:
@@ -212,7 +207,7 @@ Standing on the shoulder's of giants - thanks to the following projects for insp
 
 ## Authors and License
 
-* Author:: Tehmasp Chaudhri (<tehmasp@gmail.com>, <tehmasp.chaudhri@pearson.com>)
+* Author:: Tehmasp Chaudhri (<tehmasp@gmail.com>)
 
 Copyright 2013-2014 Tehmasp Chaudhri
 

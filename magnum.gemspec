@@ -7,11 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = 'magnum'
   spec.version       = Magnum::VERSION
   spec.authors       = ['Tehmasp Chaudhri']
-  spec.email         = ['tehmasp@gmail.com', 'tehmasp.chaudhri@pearson.com']
+  spec.email         = ['tehmasp@gmail.com']
   spec.description   = %q{Magnum - a tool for rapid, consistent, and best practice Puppet module development.}
   spec.summary       = %q{Magnum - a tool for rapid, consistent, and best practice Puppet module development.}
-  spec.homepage      = 'https://devops-tools.pearson.com/stash/projects/CD/repos/magnum'
-  spec.license       = 'All Rights Reserved'
+  spec.homepage      = 'https://github.com/tehmaspc/magnum'
+  spec.license       = 'Apache License, Version 2.0'
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
@@ -28,15 +28,16 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'redcarpet', '>= 3.0.0'
 
   spec.add_runtime_dependency 'rake', '>= 10.1.0'
-  spec.add_runtime_dependency 'thor', '>= 0.18.1'
+  spec.add_runtime_dependency 'thor', '>= 0.19.1'
 
-  spec.add_runtime_dependency 'version', '>= 1.0.0'
-  spec.add_runtime_dependency 'puppet', '>= 3.4.1'
-  spec.add_runtime_dependency 'rspec', '>= 2.14.1'
+  spec.add_runtime_dependency 'puppet', '~> 3.4.1'
 
-  spec.add_runtime_dependency 'rspec-puppet', '>= 1.0.1'
-  spec.add_runtime_dependency 'puppetlabs_spec_helper', '>= 0.4.1'
-  spec.add_runtime_dependency 'serverspec', '>= 0.14.2'
+  spec.add_runtime_dependency 'rspec', '~> 2.14.1'
+  spec.add_runtime_dependency 'rspec-puppet', '~> 1.0.1'
+  spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 0.4.1'
+  spec.add_runtime_dependency 'serverspec', '~> 0.14.2'
 
   spec.add_development_dependency 'sem_ver', '>= 0.1.1'
+  spec.add_runtime_dependency 'version', '>= 1.0.0'
+
 end

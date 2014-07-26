@@ -11,11 +11,11 @@ module Magnum
 
     class_option :maintainer,
       type: :string,
-      default: 'Pearson, Inc.'
+      default: 'Example, Inc.'
 
     class_option :maintainer_email,
       type: :string,
-      default: 'archautomation@pearson.com'
+      default: 'puppet@example.com'
 
     class_option :copyright_holder,
       type: :string
