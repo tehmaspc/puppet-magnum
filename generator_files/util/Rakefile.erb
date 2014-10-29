@@ -27,7 +27,7 @@ task :spec => :unit
 desc 'Run integration tests'
 RSpec::Core::RakeTask.new(:integ) do |t|
   Rake::Task[:spec_prep].invoke
-
+  ENV['TARGET_HOST'] = 'default'
   t.pattern = 'serverspec/**/*_spec.rb'
   t.rspec_opts = ['--color']
   Rake::Task[:spec_prep].invoke
