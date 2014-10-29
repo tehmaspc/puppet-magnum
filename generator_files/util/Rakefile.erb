@@ -7,14 +7,8 @@ require 'puppetlabs_spec_helper/rake_tasks'
 def check_magnum_vagrant_box
   # check for the existence of the 'magnum-vagrant' vagrant box;
   # if NOT found, then alert user that it will be downloaded.
-  system 'vagrant box list | grep -q \'magnum-vagrant\''
-  unless $?.to_i.equal?(0) then
-    puts
-    puts ('No Vagrant box named \'magnum-vagrant\' found! ' +
-          'Downloading the box; this will take some time...').colorize(:red).on_white.underline
-    puts
+  puts "wont check this right now"
   end
-end
 
 def prompt_integ_test_run
   puts
