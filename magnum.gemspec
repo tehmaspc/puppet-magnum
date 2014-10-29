@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rake', '>= 10.1.0'
   spec.add_runtime_dependency 'thor', '>= 0.19.1'
 
-  spec.add_runtime_dependency 'puppet', '~> 3.4.1'
+  spec.add_runtime_dependency 'puppet', '~> 3.7.1'
 
   spec.add_runtime_dependency 'rspec', '~> 2.14.1'
   spec.add_runtime_dependency 'rspec-puppet', '~> 1.0.1'
