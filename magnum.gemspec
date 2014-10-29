@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'rspec', '~> 3.1'
   spec.add_runtime_dependency 'rspec-puppet', '~> 1.0.1'
-  spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 0.4.1'
+  spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 0.8.2'
   spec.add_runtime_dependency 'serverspec', '~> 2.3.1'
 
   spec.add_development_dependency 'sem_ver', '>= 0.1.1'
