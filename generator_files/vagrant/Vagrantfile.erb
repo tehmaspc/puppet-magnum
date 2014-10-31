@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "./.vagrant_puppet"
-    puppet.module_path = ["../","~/localch/vcs/environments/production/modules"]
+    puppet.module_path = ["./","~/localch/vcs/environments/production/modules"]
     puppet.manifest_file  = "init.pp"
     puppet.options = "--verbose"
   end
