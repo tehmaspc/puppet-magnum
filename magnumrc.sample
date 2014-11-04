@@ -1,0 +1,6 @@
+---
+  r10kdirectory: ~/localch/vcs/environments
+  r10kenvironment: production
+  vagrantbox: puphpet/debian75-x64
+  mantainer_email: awesomedude@brokenstartup.com
+  copyright_holder: brokenstartup AG
