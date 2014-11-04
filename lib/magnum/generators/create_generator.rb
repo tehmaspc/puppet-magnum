@@ -20,6 +20,8 @@ module Magnum
     class_option :copyright_holder,
       type: :string
 
+
+
     def write_emptydirs
       empty_directory target.join('manifests')
       empty_directory target.join('templates')
@@ -177,6 +179,18 @@ module Magnum
 
     def maintainer_email
       options[:maintainer_email]
+    end
+
+    def r10kdirectory
+      options[:r10kdirectory]
+    end
+
+    def r10kenvironment
+      options[:r10kenvironment]
+    end
+
+    def vagrantbox
+      options[:vagrantbox]
     end
 
     def copyright_year

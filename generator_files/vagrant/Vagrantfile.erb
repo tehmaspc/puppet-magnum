@@ -7,13 +7,13 @@ Vagrant.require_version ">= 1.4.0"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # For 'magnum-vagrant' we acquire vagrant boxes from: http://puppet-vagrant-boxes.puppetlabs.com/
-  config.vm.box = "puphpet/debian75-x64"
+  config.vm.box = "<%= vagrantbox %>"
 
   config.vm.provision :shell, :path => "./.vagrant_puppet/init.sh"
 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "./.vagrant_puppet"
-    puppet.module_path = ["./","~/localch/vcs/environments/production/modules"]
+    puppet.module_path = ["./","<%= r10kdirectory %>/<%= r10kenvironment %>/modules"]
     puppet.manifest_file  = "init.pp"
     puppet.options = "--verbose"
   end
