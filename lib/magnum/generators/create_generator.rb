@@ -71,6 +71,13 @@ module Magnum
 
       template 'spec/rspec/spec_helper.rb.erb', target.join('spec/spec_helper.rb')
       template 'spec/rspec/init_spec.rb.erb', target.join("spec/classes/#{module_name}_spec.rb")
+
+      #hiera fixtures
+      empty_directory target.join("spec/fixtures/hiera")
+      empty_directory target.join("spec/fixtures/hiera/data")
+      template 'spec/rspec/hiera.yaml.erb', target.join('spec/fixtures/hiera/hiera.yaml')
+      template 'spec/rspec/host-dev-dc01.yaml.erb', target.join('spec/fixtures/hiera/data/host-dev-dc01.yaml')
+
     end
 
     def write_serverspec_setup
