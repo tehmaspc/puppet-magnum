@@ -4,18 +4,6 @@ require 'rspec/core/rake_task'
 require 'puppet-lint/tasks/puppet-lint'
 require 'puppetlabs_spec_helper/rake_tasks'
 
-def check_magnum_vagrant_box
-  # check for the existence of the 'magnum-vagrant' vagrant box;
-  # if NOT found, then alert user that it will be downloaded.
-  system 'vagrant box list | grep -q \'magnum-vagrant\''
-  unless $?.to_i.equal?(0) then
-    puts
-    puts ('No Vagrant box named \'magnum-vagrant\' found! ' +
-          'Downloading the box; this will take some time...').colorize(:red).on_white.underline
-    puts
-  end
-end
-
 def prompt_integ_test_run
   puts
   puts 'Running integration tests on Vagrant image; this will take a few moments...'.colorize(:red).on_white.underline
@@ -38,7 +26,6 @@ RSpec::Core::RakeTask.new(:integ) do |t|
   t.rspec_opts = ['--color']
   Rake::Task[:spec_prep].invoke
 
-  check_magnum_vagrant_box
   prompt_integ_test_run
 end
 
@@ -68,6 +55,8 @@ end
 task :build => []; Rake::Task[:build].clear
 task :clean => []; Rake::Task[:clean].clear
 task :coverage => []; Rake::Task[:coverage].clear
+task :beaker => []; Rake::Task[:beaker].clear
+task :beaker_nodes => []; Rake::Task[:beaker_nodes].clear
 
 task :default => []; Rake::Task[:default].clear
 task :default => :test

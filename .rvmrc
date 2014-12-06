@@ -1,1 +1,1 @@
-rvm 1.9.3-p547 && bundle install
+rvm use 2.1.1 && bundle install
