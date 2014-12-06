@@ -64,9 +64,6 @@ module Magnum
         create_link target.join("spec/fixtures/modules/#{module_name}/#{spec_dir}"), "../../../../#{spec_dir}"
       }
 
-      # add custom lib puppet parser functions directory and install any custom function template files we need
-      directory 'spec/custom_lib_puppet_parser_functions', target.join("spec/fixtures/modules/#{module_name}/lib/puppet/parser/functions")
-
       template 'spec/rspec/spec_helper.rb.erb', target.join('spec/spec_helper.rb')
       template 'spec/rspec/init_spec.rb.erb', target.join("spec/classes/#{module_name}_spec.rb")
     end

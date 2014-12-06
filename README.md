@@ -1,5 +1,7 @@
 # Magnum
 
+[![Build Status](https://travis-ci.org/tehmaspc/magnum.svg)](https://travis-ci.org/tehmaspc/magnum)
+
 Magnum - a tool for rapid, consistent, and best practice [Puppet](http://puppetlabs.com) module development.
 
 Magnum is essentially a Puppet module project generator and a wrapper
@@ -11,7 +13,7 @@ Magnum is a Ruby gem and thus requires a working Ruby environment on your develo
 It's recommended to use [rvm](http://rvm.io) or [rbenv](http://github.com/sstephenson/rbenv) to install and manage the
 Ruby versions on your machine.
 
-Currently, using Ruby 1.9.3 latest and above should work fine with Magnum.
+Currently, using Ruby 2.1.1 latest and above should work fine with Magnum.
 Additionally, ensure that [bundler](http://bundler.io/) (a Ruby gem manager) is installed and available in your gem path.
 
 ## Installation
@@ -19,9 +21,6 @@ Additionally, ensure that [bundler](http://bundler.io/) (a Ruby gem manager) is 
 Install Magnum for yourself by doing the following inside a copy of this repo:
 
     % bundle install && bundle exec rake install
-
-A termcast is available here and depicts setting up a VirtualBox development environment for Magnum:
-[showterm.io/ee21d6c55e3eca7e8dc0d](http://showterm.io/ee21d6c55e3eca7e8dc0d)
 
 ## Usage
 
@@ -36,9 +35,9 @@ A termcast is available here and depicts setting up a VirtualBox development env
 The following shows how one can get started quickly creating an 'nginx' Puppet module:
 
     % magnum module create nginx
-          create  nginx/files
           create  nginx/manifests
           create  nginx/templates
+          create  nginx/files
           create  nginx/spec
           create  nginx/serverspec/spec
           create  nginx/.vagrant_puppet
@@ -46,15 +45,22 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/LICENSE
           create  nginx/Modulefile
           create  nginx/manifests/init.pp
+          create  nginx/templates/.gitkeep
+          create  nginx/files/.gitkeep
           create  nginx/spec/classes
           create  nginx/spec/defines
           create  nginx/spec/functions
           create  nginx/spec/hosts
           create  nginx/spec/unit
-          create  nginx/spec/fixtures/modules
-          create  nginx/spec/fixtures/modules/.gitkeep
           create  nginx/spec/fixtures/manifests
           create  nginx/spec/fixtures/manifests/site.pp
+          create  nginx/spec/fixtures/modules/nginx
+          remove  nginx/spec/fixtures/modules/nginx/manifests
+          create  nginx/spec/fixtures/modules/nginx/manifests
+          remove  nginx/spec/fixtures/modules/nginx/templates
+          create  nginx/spec/fixtures/modules/nginx/templates
+          remove  nginx/spec/fixtures/modules/nginx/files
+          create  nginx/spec/fixtures/modules/nginx/files
           create  nginx/spec/spec_helper.rb
           create  nginx/spec/classes/nginx_spec.rb
           create  nginx/serverspec/spec_helper.rb
@@ -65,13 +71,23 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           remove  nginx/Rakefile
           create  nginx/Rakefile
           create  nginx/Vagrantfile
+          create  nginx/.vagrant_puppet/init.sh
           create  nginx/.vagrant_puppet/init.pp
+          remove  nginx/Magnum.lastinit
+          create  nginx/Magnum.lastinit
           remove  nginx/.gitignore
           create  nginx/.gitignore
-             run  git init from "./nginx"
-             run  git add -A from "./nginx"
+          create  nginx/.git_hooks/pre-commit
+          create  nginx/.git_hooks/prepare-commit-msg
+          chmod  nginx/.git_hooks/pre-commit
+          chmod  nginx/.git_hooks/prepare-commit-msg
+          run  git init from "./nginx"
+          run  git add -A from "./nginx"
           create  nginx/.git/hooks/pre-commit
-           chmod  nginx/.git/hooks/pre-commit
+          create  nginx/.git/hooks/prepare-commit-msg
+          chmod  nginx/.git/hooks/pre-commit
+          chmod  nginx/.git/hooks/prepare-commit-msg
+          create  nginx/.git_hooks_installed
 
 ## Testing within a Magnum Managed Puppet Module
 
@@ -203,7 +219,6 @@ Standing on the shoulder's of giants - thanks to the following projects for insp
 
 * [Thor](http://whatisthor.com/)
 * [Berkshelf](http://berkshelf.com/)
-* [Jackchop](http://rubygems.org/gems/jackchop)
 
 ## Authors and License
 
