@@ -15,5 +15,14 @@ module Magnum
       "#{basename} #{task.formatted_usage(self, namespace, subcommand).split(':').join(' ')}"
     end
 
+    private
+      def options
+        original_options = super
+        rcfile = File.expand_path('~/.magnumrc')
+        return original_options unless File.exists?(rcfile)
+        defaults = ::YAML::load_file(rcfile) || {}
+        Thor::CoreExt::HashWithIndifferentAccess.new(defaults.merge(original_options))
+      end
   end
+  
 end

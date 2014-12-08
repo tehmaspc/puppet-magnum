@@ -73,6 +73,27 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/.git/hooks/pre-commit
            chmod  nginx/.git/hooks/pre-commit
 
+## Parameters
+
+You tell magnum several parameters which will be used for populating the templates of things like manifest documentation, licensing information, mantainer, etc.
+
+- maintainer: name of mantainer of puppet module
+- maintainer_email: email of mantainer of module
+- copyright_year: defaults to current year.
+- copyright_holder: defaults to mantainer if not declared.
+
+### .magnumrc file
+The values above can be set via a file in your home directory called *_.magnumrc_*
+
+```
+---
+  maintainer: John Doe
+  mantainer_email: awesomedude@brokenstartup.com
+  copyright_holder: brokenstartup AG
+```
+
+
+
 ## Testing within a Magnum Managed Puppet Module
 
 Magnum provides the following Puppet testing tools to allow the Puppet module developer a means to test their Puppet code. The tools provided are [puppet-lint](http://puppet-lint.com/), [rspec-puppet](http://rspec-puppet.com/), [serverspec](http://serverspec.org/), and [vagrant](http://vagrantup.com).
@@ -151,7 +172,7 @@ As you can see, additional modules - like 'stdlib' - can be added to your Puppet
     HEAD is now at 44c181e Merge branch 'fix/master/add_recursive_merge'
     /Users/ttc/.rvm/rubies/ruby-1.9.3-p448/bin/ruby -S rspec spec/classes/config_spec.rb spec/classes/install_spec.rb spec/classes/ntp_spec.rb spec/classes/service_spec.rb --color
     ........
-    
+
     Finished in 0.53874 seconds
     8 examples, 0 failures
 
@@ -159,7 +180,7 @@ For more details about rspec-puppet and how to write the actual rspec-puppet tes
 
 ### serverspec
 
-[serverspec](http://serverspec.org/) allows the Puppet module developer to write [RSpec](https://relishapp.com/rspec) integration tests for their Puppet code. serverspec integration tests work in conjunction with [vagrant](http://www.vagrantup.com/) and allow a Puppet developer the ability to quickly provision a vagrant virtual box Linux system and then run these tests against this live system. 
+[serverspec](http://serverspec.org/) allows the Puppet module developer to write [RSpec](https://relishapp.com/rspec) integration tests for their Puppet code. serverspec integration tests work in conjunction with [vagrant](http://www.vagrantup.com/) and allow a Puppet developer the ability to quickly provision a vagrant virtual box Linux system and then run these tests against this live system.
 
 Each Magnum managed Puppet module directory will have a subdirectory called 'serverspec' with a directory tree as follows:
 
@@ -174,12 +195,12 @@ All serverspec tests should be written in the 'serverspec/spec/MODULE_spec.rb' f
 
     % bundle exec rake integ
     HEAD is now at 44c181e Merge branch 'fix/master/add_recursive_merge'
-    
+
     Running integration tests on Vagrant image; this will take a few moments...
-    
+
     /Users/ttc/.rvm/rubies/ruby-1.9.3-p448/bin/ruby -S rspec serverspec/spec/ntp_spec.rb --color
     ................
-    
+
     Finished in 48.7 seconds
     16 examples, 0 failures
 
