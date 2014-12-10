@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/tehmaspc/magnum.svg)](https://travis-ci.org/tehmaspc/magnum)
 [![Code Climate](https://codeclimate.com/github/tehmaspc/magnum/badges/gpa.svg)](https://codeclimate.com/github/tehmaspc/magnum)
+[![Security](https://hakiri.io/github/tehmaspc/magnum/master.svg)](https://hakiri.io/github/tehmaspc/magnum/master)
 
 Magnum - a tool for rapid, consistent, and best practice [Puppet](http://puppetlabs.com) module development.
 
