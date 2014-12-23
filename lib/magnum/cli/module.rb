@@ -1,3 +1,5 @@
+require 'thor'
+
 module Magnum
   class Module < Thor
 
