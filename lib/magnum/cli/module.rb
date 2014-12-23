@@ -1,3 +1,5 @@
+require 'thor'
+
 module Magnum
   class Module < Thor
 
@@ -24,5 +26,4 @@ module Magnum
         Thor::CoreExt::HashWithIndifferentAccess.new(defaults.merge(original_options))
       end
   end
-  
 end
