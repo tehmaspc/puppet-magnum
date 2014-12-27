@@ -1,4 +1,5 @@
 require 'thor'
+require 'yaml'
 
 module Magnum
   class Module < Thor
