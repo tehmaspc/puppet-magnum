@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    magnum (1.7.1)
+    magnum (1.7.2)
       bundler (>= 1.3)
       puppet (~> 3.7.1)
       puppetlabs_spec_helper (~> 0.8.2)
@@ -71,7 +71,7 @@ GEM
       rspec (~> 3.0)
       rspec-its
       specinfra (~> 2.10)
-    specinfra (2.10.4)
+    specinfra (2.11.2)
       net-scp
       net-ssh
     thor (0.19.1)
