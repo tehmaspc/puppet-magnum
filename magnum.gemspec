@@ -30,9 +30,12 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rake', '>= 10.4.2'
   spec.add_runtime_dependency 'thor', '>= 0.19.1'
 
+  spec.add_runtime_dependency 'colorize', '~> 0.7.5'
+
   spec.add_runtime_dependency 'puppet', '~> 3.7.1'
 
   spec.add_runtime_dependency 'rspec', '~> 3.1.0'
+  spec.add_runtime_dependency 'puppet-lint', '~> 1.1.0'
   spec.add_runtime_dependency 'rspec-puppet', '~> 1.0.1'
   spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 0.8.2'
   spec.add_runtime_dependency 'serverspec', '~> 2.6.0'
