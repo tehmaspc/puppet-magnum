@@ -185,7 +185,7 @@ As you can see, additional modules - like 'stdlib' - can be added to your Puppet
 
     % bundle exec rake unit
     HEAD is now at 44c181e Merge branch 'fix/master/add_recursive_merge'
-    /Users/ttc/.rvm/rubies/ruby-1.9.3-p448/bin/ruby -S rspec spec/classes/config_spec.rb spec/classes/install_spec.rb spec/classes/ntp_spec.rb spec/classes/service_spec.rb --color
+    /Users/ttc/.rvm/rubies/ruby-2.1.1/bin/ruby -S rspec spec/classes/config_spec.rb spec/classes/install_spec.rb spec/classes/ntp_spec.rb spec/classes/service_spec.rb --color
     ........
 
     Finished in 0.53874 seconds
@@ -213,7 +213,7 @@ All serverspec tests should be written in the 'serverspec/spec/MODULE_spec.rb' f
 
     Running integration tests on Vagrant image; this will take a few moments...
 
-    /Users/ttc/.rvm/rubies/ruby-1.9.3-p448/bin/ruby -S rspec serverspec/spec/ntp_spec.rb --color
+    /Users/ttc/.rvm/rubies/ruby-2.1.1/bin/ruby -S rspec serverspec/spec/ntp_spec.rb --color
     ................
 
     Finished in 48.7 seconds
