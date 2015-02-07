@@ -37,6 +37,10 @@ module Magnum
       template license_file, target.join('LICENSE')
     end
 
+    def write_metadata_json
+      template 'puppet/metadata.json.erb', target.join('metadata.json')
+    end
+
     def write_modulefile
       template 'puppet/Modulefile.erb', target.join('Modulefile')
     end
