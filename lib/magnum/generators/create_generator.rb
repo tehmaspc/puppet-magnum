@@ -19,6 +19,9 @@ module Magnum
 
     class_option :copyright_holder,
       type: :string
+    
+    class_option :puppetfile_git_source,
+      type: :string
 
     def write_emptydirs
       empty_directory target.join('manifests')
@@ -192,9 +195,12 @@ module Magnum
       "Magnum (#{Magnum::VERSION.chomp}) last initialized this Puppet module directory on #{Time.now.ctime}."
     end
 
+    def puppetfile_git_source
+      options[:puppetfile_source]
+    end
+
     def default_options
       { module_name: module_name }
     end
-
   end
 end
