@@ -38,6 +38,9 @@ bin/*
 .vagrant
 pkg
 .git_hooks_installed
+<% if options[:puppetfile_git_source] -%>
+Puppetfile
+<% end -%>
 
 # ignore all module fixtures directories that may exist,
 # except this module's fixtures directory
