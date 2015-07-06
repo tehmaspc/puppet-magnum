@@ -69,3 +69,78 @@ PuppetLint::RakeTask.new :lint do |config|
   config.disable_checks = [ "class_inherits_from_params_class", "disable_autoloader_layout", "80chars" ]
   config.fail_on_warnings = false
 end
+<% if options[:puppetfile_git_source] %>
+Rake::Task[:spec_prep].clear
+desc "Create the fixtures directory"
+task :spec_prep do
+  # Create the required directories and site.pp file
+  FileUtils::mkdir_p("spec/fixtures/modules")
+  FileUtils::mkdir_p("spec/fixtures/manifests")
+  FileUtils::touch("spec/fixtures/manifests/site.pp")
+
+  # First, set up the symlinks that we need (this always includes myself)
+  fixtures("symlinks").each do |source, target|
+    File::exists?(File::dirname(target)) || FileUtils::mkdir(File::dirname(target))
+    File::exists?(target) || FileUtils::ln_sf(source, target)
+  end
+
+  # Pull the latest puppetfile, and cull it to include only the fixtures defined modules
+  sh "git archive --remote=git@<%= options[:puppetfile_git_source] -%> HEAD Puppetfile | tar -x"
+
+  # Create repos var containing only the modules that we actually need.
+  repos = []
+  yaml_content = YAML::load_file("./.fixtures.yml")
+  # If there's a list that I can iterate through, then do that.
+  if yaml_content['fixtures']['repositories'].is_a? Enumerable
+    yaml_content['fixtures']['repositories'].each do |module_name,src|
+      repos << module_name
+    end
+  
+    # Loop through fixtures to keep only the modules that are required.
+    new_pup = File::open("Puppetfile.new","w")
+    valid_module = false
+    old_pup = File::open("Puppetfile","r")
+    old_pup.each_line do |line|
+      if m = line.match("^mod '(.+)'")
+        valid_module = false
+        if repos.include? m[1]
+          valid_module = true
+          new_pup.puts(line)
+        end
+      elsif valid_module ? new_pup.puts(line) : nil
+      end
+    end
+    old_pup.close
+    new_pup.close
+    File::rename("./Puppetfile.new","Puppetfile")
+    sh "librarian-puppet install --path=spec/fixtures/modules"
+  
+    # Check for any missing folders. If anything is missing then actually pull it down the old fashioned way.
+    fixtures("repositories").each do |remote, opts|
+      scm = 'git'
+      if opts.instance_of?(String)
+        target = opts
+      elsif opts.instance_of?(Hash)
+        target = opts["target"]
+        ref = opts["ref"]
+        scm = opts["scm"] if opts["scm"]
+        branch = opts["branch"] if opts["branch"]
+      end
+  
+      unless File::exists?(target) || clone_repo(scm, remote, target, ref, branch)
+        fail "Failed to clone #{scm} repository #{remote} into #{target}"
+      end
+      revision(scm, target, ref) if ref
+    end
+  end
+end
+
+Rake::Task[:spec_clean].clear
+desc "Clean up the fixtures directory"
+task :spec_clean do
+  sh "librarian-puppet clean --path=spec/fixtures/modules"
+  if File.zero?("spec/fixtures/manifests/site.pp")
+    FileUtils::rm_f("spec/fixtures/manifests/site.pp")
+  end
+end
+<% end -%>

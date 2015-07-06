@@ -4,11 +4,13 @@ require 'yaml'
 module Magnum
   class Module < Thor
 
+    option :puppetfile_git_source, :type => :string
     desc 'create [MODULE_NAME]', 'Creates a new Puppet module.'
     def create(module_name)
       Magnum::CreateGenerator.new([File.join(Dir.pwd, module_name), module_name], options).invoke_all
     end
 
+    option :puppetfile_git_source, :type => :string
     desc 'init [MODULE_NAME]', 'Initializes an existing Puppet module.'
     def init(module_name)
       Magnum::CreateGenerator.new([File.join(Dir.pwd, module_name), module_name], options).invoke_all
