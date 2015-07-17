@@ -99,6 +99,7 @@ You tell magnum several parameters which will be used for populating the templat
 - maintainer_email: email of mantainer of module
 - copyright_year: defaults to current year.
 - copyright_holder: defaults to mantainer if not declared.
+- puppetfile_git_source: provide git url for puppetfile to use in .fixture.yml and target master branch of modules
 
 ### .magnumrc file
 The values above can be set via a file in your home directory called *_.magnumrc_*
