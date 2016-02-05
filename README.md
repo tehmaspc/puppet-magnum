@@ -14,7 +14,7 @@ Magnum is a Ruby gem and thus requires a working Ruby environment on your develo
 It's recommended to use [rvm](http://rvm.io) or [rbenv](http://github.com/sstephenson/rbenv) to install and manage the
 Ruby versions on your machine.
 
-Currently, using Ruby 2.1.1 latest and above should work fine with Magnum.
+Currently, using Ruby 2.3.0 latest and above should work fine with Magnum.
 Additionally, ensure that [bundler](http://bundler.io/) (a Ruby gem manager) is installed and available in your gem path.
 
 ## Installation
@@ -186,7 +186,7 @@ As you can see, additional modules - like 'stdlib' - can be added to your Puppet
 
     % bundle exec rake unit
     HEAD is now at 44c181e Merge branch 'fix/master/add_recursive_merge'
-    /Users/ttc/.rvm/rubies/ruby-2.1.1/bin/ruby -S rspec spec/classes/config_spec.rb spec/classes/install_spec.rb spec/classes/ntp_spec.rb spec/classes/service_spec.rb --color
+    /Users/ttc/.rvm/rubies/ruby-2.3.0/bin/ruby -S rspec spec/classes/config_spec.rb spec/classes/install_spec.rb spec/classes/ntp_spec.rb spec/classes/service_spec.rb --color
     ........
 
     Finished in 0.53874 seconds
@@ -214,7 +214,7 @@ All serverspec tests should be written in the 'serverspec/spec/MODULE_spec.rb' f
 
     Running integration tests on Vagrant image; this will take a few moments...
 
-    /Users/ttc/.rvm/rubies/ruby-2.1.1/bin/ruby -S rspec serverspec/spec/ntp_spec.rb --color
+    /Users/ttc/.rvm/rubies/ruby-2.3.0/bin/ruby -S rspec serverspec/spec/ntp_spec.rb --color
     ................
 
     Finished in 48.7 seconds
@@ -245,7 +245,7 @@ Standing on the shoulder's of giants - thanks to the following projects for insp
 
 * Author:: Tehmasp Chaudhri (<tehmasp@gmail.com>)
 
-Copyright 2013-2014 Tehmasp Chaudhri
+Copyright 2013-2016 Tehmasp Chaudhri
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

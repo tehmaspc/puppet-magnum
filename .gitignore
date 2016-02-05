@@ -1,5 +1,4 @@
-.DS_Store
-.DS_Store?
+.DS_Store*
 ._*
 *~
 *#
@@ -15,8 +14,9 @@
 .yardoc
 InstalledFiles
 _yardoc
+vendor
 coverage
 doc/
-pkg
+pkg/
 
 spec/spec_output.txt

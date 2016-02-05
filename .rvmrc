@@ -1,1 +1,1 @@
-rvm use 2.1.1 && bundle install
+rvm use 2.3.0 && bundle install
