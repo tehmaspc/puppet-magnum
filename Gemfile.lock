@@ -75,7 +75,7 @@ GEM
       rspec-its
       specinfra (~> 2.48)
     sfl (2.2)
-    specinfra (2.50.3)
+    specinfra (2.50.4)
       net-scp
       net-ssh (>= 2.7, < 3.1)
       net-telnet
