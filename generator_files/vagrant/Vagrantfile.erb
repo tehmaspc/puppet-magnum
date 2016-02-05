@@ -3,10 +3,10 @@
 
 VAGRANTFILE_API_VERSION = "2"
 
-Vagrant.require_version ">= 1.6.5"
+Vagrant.require_version ">= 1.8.1"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  # Using Puppet Labs official vagrant boxes, from: https://vagrantcloud.com/puppetlabs
+  # Using Puppet Labs official vagrant boxes, from: https://atlas.hashicorp.com/puppetlabs
   config.vm.box = "puppetlabs/ubuntu-14.04-64-puppet"
 
   config.vm.provision :shell, :path => "./.vagrant_puppet/init.sh"
