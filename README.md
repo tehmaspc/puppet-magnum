@@ -1,7 +1,6 @@
 # Magnum
 
-[![Build Status](https://img.shields.io/travis/tehmaspc/magnum.svg?style=flat-square)](https://travis-ci.org/tehmaspc/magnum)
-[![Code Climate](https://img.shields.io/codeclimate/github/tehmaspc/magnum/badges/gpa.svg?style=flat-square)](https://codeclimate.com/github/tehmaspc/magnum)
+[![Build Status](https://travis-ci.org/tehmaspc/magnum.svg?branch=master)](https://travis-ci.org/tehmaspc/magnum)
 
 Magnum - a tool for rapid, consistent, and best practice [Puppet](http://puppetlabs.com) module development.
 
