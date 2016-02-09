@@ -12,8 +12,9 @@ end
 task :spec => []; Rake::Task[:spec].clear
 task :spec => :unit
 
-desc 'Run lint and unit tests'
+desc 'Run syntax, lint and unit tests'
 task :test do
+  Rake::Task[:syntax].invoke
   Rake::Task[:lint].invoke
   Rake::Task[:unit].invoke
 end
