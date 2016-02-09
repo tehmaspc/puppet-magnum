@@ -25,7 +25,7 @@ module Magnum
       empty_directory target.join('templates')
       empty_directory target.join('files')
       empty_directory target.join('spec')
-      empty_directory target.join('serverspec/spec')
+      empty_directory target.join('serverspec')
       empty_directory target.join('.vagrant_puppet')
     end
 
@@ -70,11 +70,12 @@ module Magnum
 
       template 'spec/rspec/spec_helper.rb.erb', target.join('spec/spec_helper.rb')
       template 'spec/rspec/init_spec.rb.erb', target.join("spec/classes/#{module_name}_spec.rb")
+
+      template 'spec/rspec.erb', target.join('.rspec')
     end
 
     def write_serverspec_setup
-      template 'spec/serverspec/spec_helper.rb.erb', target.join('serverspec/spec_helper.rb')
-      template 'spec/serverspec/init_spec.rb.erb', target.join("serverspec/spec/#{module_name}_spec.rb")
+      template 'spec/serverspec/init_spec.rb.erb', target.join("serverspec/#{module_name}_spec.rb")
     end
 
     def write_fixtures
@@ -99,7 +100,12 @@ module Magnum
 
       template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
       template 'vagrant/init.sh.erb', target.join('.vagrant_puppet/init.sh')
-      template 'vagrant/init.pp.erb', target.join('.vagrant_puppet/init.pp')
+
+      # create default puppet environment
+      template 'vagrant/environment/environment.conf.erb',
+                target.join('.vagrant_puppet/environments/vagrant/environment.conf')
+      template 'vagrant/environment/manifests/init.pp.erb',
+                target.join('.vagrant_puppet/environments/vagrant/manifests/init.pp')
     end
 
     def write_magnum_lastinit

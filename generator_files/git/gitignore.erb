@@ -4,7 +4,6 @@
 *.exe
 *.o
 *.so
-
 *.7z
 *.dmg
 *.gz
@@ -13,13 +12,10 @@
 *.rar
 *.tar
 *.zip
-
 *.log
 *.sql
 *.sqlite
-
-.DS_Store
-.DS_Store?
+.DS_Store*
 ._*
 *~
 *#
@@ -27,7 +23,6 @@
 \#*#
 .*.sw[a-z]
 *.un~
-
 .Spotlight-V100
 .Trashes
 ehthumbs.db
@@ -35,11 +30,12 @@ Thumbs.db
 Gemfile.lock
 bin/*
 .bundle/*
-.vagrant
 pkg
-.git_hooks_installed
 
-# ignore all module fixtures directories that may exist,
-# except this module's fixtures directory
+.git_hooks_installed
+.vagrant
+.vagrant_puppet/environments/vagrant/modules
+
+# ignore all fixtures modules, except this module.
 spec/fixtures/modules/*
 !spec/fixtures/modules/<%= module_name %>
