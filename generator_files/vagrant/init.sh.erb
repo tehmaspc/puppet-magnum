@@ -1,40 +1,21 @@
 #!/bin/bash
 
-create_modules_symlink () {
-  ln -sfn /vagrant/spec/fixtures/modules /etc/puppet/modules
-}
-
-create_default_hiera_file() {
-cat <<EOF > /etc/puppet/hiera.yaml
----
-:backends: yaml
-:yaml:
-  :datadir: /var/lib/hiera
-:hierarchy: common
-:logger: console
-EOF
-}
-
 STAGE='/tmp/magnum-vagrant-stage'
+
+FIXTURES_DIR='/vagrant/spec/fixtures/modules'
+VAGRANT_PUPPET_ENV_DIR='/tmp/vagrant-puppet/environments/vagrant'
 
 if [ ! -e $STAGE ]; then
 
   echo "Initial provision, running the magnum-vagrant shell provisioner script..."
 
-  # update system apt cache
   apt-get update
 
-  if [ ! -d '/etc/puppet' ]; then
-    mkdir /etc/puppet
-    chmod 755 /etc/puppet
-  fi
+  # create vagrant puppet environment dir
+  rm -rf $VAGRANT_PUPPET_ENV_DIR
+  mkdir -p $VAGRANT_PUPPET_ENV_DIR
 
-  if [ -d '/etc/puppet/modules' ]; then
-    mv /etc/puppet/modules /etc/puppet/modules.orig
-  fi
-
-  create_modules_symlink
-  create_default_hiera_file
+  ln -sfn $FIXTURES_DIR $VAGRANT_PUPPET_ENV_DIR/modules
 
   touch $STAGE
 
