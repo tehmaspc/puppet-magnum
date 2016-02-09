@@ -47,9 +47,6 @@ module Magnum
 
     def write_manifests_templates_files
       template 'puppet/init.pp.erb', target.join('manifests/init.pp')
-
-      create_file target.join('templates/.gitkeep')
-      create_file target.join('files/.gitkeep')
     end
 
     def write_spec_setup
