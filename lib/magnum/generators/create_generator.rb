@@ -70,10 +70,11 @@ module Magnum
 
       template 'spec/rspec/spec_helper.rb.erb', target.join('spec/spec_helper.rb')
       template 'spec/rspec/init_spec.rb.erb', target.join("spec/classes/#{module_name}_spec.rb")
+
+      template 'spec/rspec.erb', target.join('.rspec')
     end
 
     def write_serverspec_setup
-      template 'spec/serverspec/spec_helper.rb.erb', target.join('serverspec/spec_helper.rb')
       template 'spec/serverspec/init_spec.rb.erb', target.join("serverspec/spec/#{module_name}_spec.rb")
     end
 

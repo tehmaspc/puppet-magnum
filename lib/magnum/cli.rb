@@ -7,9 +7,14 @@ module Magnum
     desc 'module', 'Module related tasks. Type \'magnum module\' for more help.'
     subcommand 'module', Module
 
-    desc 'version', 'Display version and copyright information'
+    desc 'version', 'Display version information'
     def version
-      puts "#{version_header}\n#{license}"
+      puts "#{version_header}"
+    end
+
+    desc 'license', 'Display license information'
+    def license
+      puts "#{license}"
     end
 
     private
