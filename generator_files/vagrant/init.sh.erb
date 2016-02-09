@@ -11,10 +11,7 @@ if [ ! -e $STAGE ]; then
 
   apt-get update
 
-  # create vagrant puppet environment dir
-  rm -rf $VAGRANT_PUPPET_ENV_DIR
   mkdir -p $VAGRANT_PUPPET_ENV_DIR
-
   ln -sfn $FIXTURES_DIR $VAGRANT_PUPPET_ENV_DIR/modules
 
   touch $STAGE
