@@ -99,7 +99,12 @@ module Magnum
 
       template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
       template 'vagrant/init.sh.erb', target.join('.vagrant_puppet/init.sh')
-      template 'vagrant/init.pp.erb', target.join('.vagrant_puppet/init.pp')
+
+      # create default puppet environment
+      template 'vagrant/environment/environment.conf.erb',
+                target.join('.vagrant_puppet/environments/vagrant/environment.conf')
+      template 'vagrant/environment/manifests/init.pp.erb',
+                target.join('.vagrant_puppet/environments/vagrant/manifests/init.pp')
     end
 
     def write_magnum_lastinit
