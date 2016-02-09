@@ -25,7 +25,7 @@ module Magnum
       empty_directory target.join('templates')
       empty_directory target.join('files')
       empty_directory target.join('spec')
-      empty_directory target.join('serverspec/spec')
+      empty_directory target.join('serverspec')
       empty_directory target.join('.vagrant_puppet')
     end
 
@@ -75,7 +75,7 @@ module Magnum
     end
 
     def write_serverspec_setup
-      template 'spec/serverspec/init_spec.rb.erb', target.join("serverspec/spec/#{module_name}_spec.rb")
+      template 'spec/serverspec/init_spec.rb.erb', target.join("serverspec/#{module_name}_spec.rb")
     end
 
     def write_fixtures

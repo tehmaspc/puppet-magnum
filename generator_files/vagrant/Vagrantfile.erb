@@ -18,7 +18,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision :serverspec do |spec|
-    spec.pattern = 'serverspec/spec/*_spec.rb'
+    spec.pattern = 'serverspec/*_spec.rb'
   end
 
+end
+
+unless Vagrant.has_plugin?('vagrant-serverspec')
+  raise 'vagrant-serverspec is not installed!'
 end
