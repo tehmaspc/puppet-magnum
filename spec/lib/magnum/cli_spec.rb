@@ -9,7 +9,7 @@ describe Magnum::Cli do
     it { expect(SemVer.parse(version).valid?).to be_truthy }
   end
 
-  context 'when printing version, author, and license information' do
+  context 'when printing version' do
     subject(:cli) { Magnum::Cli.new }
     it { expect(cli).to be }
     it { expect(cli.version.to_s).to be }

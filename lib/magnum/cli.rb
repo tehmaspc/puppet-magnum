@@ -9,22 +9,7 @@ module Magnum
 
     desc 'version', 'Display version information'
     def version
-      puts "#{version_header}"
-    end
-
-    desc 'license', 'Display license information'
-    def license
-      puts "#{license}"
-    end
-
-    private
-
-    def version_header
-      "Magnum (#{Magnum::VERSION.chomp})"
-    end
-
-    def license
-      File.read(Magnum.root.join('LICENSE'))
+      puts "Magnum (#{Magnum::VERSION.chomp})"
     end
 
   end
