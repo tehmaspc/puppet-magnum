@@ -14,8 +14,6 @@ PATH
       serverspec (~> 2.29.1)
       thor (>= 0.19.1)
       version (>= 1.0.0)
-      yard (>= 0.8.7.6)
-      yard-rspec (>= 0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -82,9 +80,6 @@ GEM
       sfl
     thor (0.19.1)
     version (1.0.0)
-    yard (0.8.7.6)
-    yard-rspec (0.1)
-      yard
 
 PLATFORMS
   ruby

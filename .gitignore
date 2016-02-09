@@ -11,9 +11,7 @@
 *.html
 .bundle
 .config
-.yardoc
 InstalledFiles
-_yardoc
 vendor
 coverage
 doc/
