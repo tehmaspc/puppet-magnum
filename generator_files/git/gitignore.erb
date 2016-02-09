@@ -31,11 +31,11 @@ Gemfile.lock
 bin/*
 .bundle/*
 pkg
+
 .git_hooks_installed
 .vagrant
 .vagrant_puppet/environments/vagrant/modules
 
-# ignore all module fixtures directories that may exist,
-# except this module's fixtures directory
+# ignore all fixtures modules, except this module.
 spec/fixtures/modules/*
 !spec/fixtures/modules/<%= module_name %>
