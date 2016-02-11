@@ -41,10 +41,6 @@ module Magnum
       template 'puppet/metadata.json.erb', target.join('metadata.json')
     end
 
-    def write_modulefile
-      template 'puppet/Modulefile.erb', target.join('Modulefile')
-    end
-
     def write_manifests_templates_files
       template 'puppet/init.pp.erb', target.join('manifests/init.pp')
     end
