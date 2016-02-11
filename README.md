@@ -38,15 +38,12 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/templates
           create  nginx/files
           create  nginx/spec
-          create  nginx/serverspec/spec
+          create  nginx/serverspec
           create  nginx/.vagrant_puppet
           create  nginx/README.md
           create  nginx/LICENSE
           create  nginx/metadata.json
-          create  nginx/Modulefile
           create  nginx/manifests/init.pp
-          create  nginx/templates/.gitkeep
-          create  nginx/files/.gitkeep
           create  nginx/spec/classes
           create  nginx/spec/defines
           create  nginx/spec/functions
@@ -63,8 +60,8 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/spec/fixtures/modules/nginx/files
           create  nginx/spec/spec_helper.rb
           create  nginx/spec/classes/nginx_spec.rb
-          create  nginx/serverspec/spec_helper.rb
-          create  nginx/serverspec/spec/nginx_spec.rb
+          create  nginx/.rspec
+          create  nginx/serverspec/nginx_spec.rb
           create  nginx/.fixtures.yml
           remove  nginx/Gemfile
           create  nginx/Gemfile
@@ -72,26 +69,27 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/Rakefile
           create  nginx/Vagrantfile
           create  nginx/.vagrant_puppet/init.sh
-          create  nginx/.vagrant_puppet/init.pp
+          create  nginx/.vagrant_puppet/environments/vagrant/environment.conf
+          create  nginx/.vagrant_puppet/environments/vagrant/manifests/init.pp
           remove  nginx/Magnum.lastinit
           create  nginx/Magnum.lastinit
           remove  nginx/.gitignore
           create  nginx/.gitignore
           create  nginx/.git_hooks/pre-commit
           create  nginx/.git_hooks/prepare-commit-msg
-          chmod  nginx/.git_hooks/pre-commit
-          chmod  nginx/.git_hooks/prepare-commit-msg
-          run  git init from "./nginx"
-          run  git add -A from "./nginx"
+           chmod  nginx/.git_hooks/pre-commit
+           chmod  nginx/.git_hooks/prepare-commit-msg
+             run  git init from "./nginx"
+             run  git add -A from "./nginx"
           create  nginx/.git/hooks/pre-commit
           create  nginx/.git/hooks/prepare-commit-msg
-          chmod  nginx/.git/hooks/pre-commit
-          chmod  nginx/.git/hooks/prepare-commit-msg
+           chmod  nginx/.git/hooks/pre-commit
+           chmod  nginx/.git/hooks/prepare-commit-msg
           create  nginx/.git_hooks_installed
 
 ## Parameters
 
-You tell magnum several parameters which will be used for populating the templates of things like manifest documentation, licensing information, mantainer, etc.
+You tell Magnum several parameters which will be used for populating the templates of things like manifest documentation, licensing information, mantainer, etc.
 
 - maintainer: name of mantainer of puppet module
 - maintainer_email: email of mantainer of module
