@@ -9,7 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Using Puppet Labs official Vagrant boxes, from: https://atlas.hashicorp.com/puppetlabs
   config.vm.box = 'puppetlabs/ubuntu-14.04-64-puppet'
 
-  config.vm.provider "virtualbox" do |vbox|
+  config.vm.provider 'virtualbox' do |vbox|
     vbox.memory = 1024
 #   vbox.cpus = 2
   end
