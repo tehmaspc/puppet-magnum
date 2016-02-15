@@ -89,21 +89,21 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
 
 ## Parameters
 
-You tell Magnum several parameters which will be used for populating the templates of things like manifest documentation, licensing information, mantainer, etc.
+Magnum can take several parameters which will be used for populating the templates of things like manifest documentation, licensing and maintainer information.
 
-- maintainer: name of mantainer of puppet module
-- maintainer_email: email of mantainer of module
+- maintainer: maintainer name of module.
+- maintainer_email: maintainer email of module.
 - copyright_year: defaults to current year.
-- copyright_holder: defaults to mantainer if not declared.
+- copyright_holder: defaults to maintainer if not declared.
 
 ### .magnumrc file
 The values above can be set via a file in your home directory called *_.magnumrc_*
 
 ```
 ---
-  maintainer: John Doe
-  mantainer_email: awesomedude@brokenstartup.com
-  copyright_holder: brokenstartup AG
+  maintainer: Infrastructure Team
+  maintainer_email: infrastructure_team@example.com
+  copyright_holder: Example.com LLC
 ```
 
 ## Testing within a Magnum Managed Puppet Module
