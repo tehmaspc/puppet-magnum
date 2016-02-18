@@ -22,10 +22,10 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.3.0'
 
   spec.add_development_dependency 'sem_ver', '>= 0.1.1'
+  spec.add_development_dependency 'rake', '>= 10.5.0'
 
   spec.add_runtime_dependency 'bundler', '>= 1.11.2'
   spec.add_runtime_dependency 'redcarpet', '>= 3.3.4'
-  spec.add_runtime_dependency 'rake', '>= 10.5.0'
   spec.add_runtime_dependency 'thor', '>= 0.19.1'
   spec.add_runtime_dependency 'colorize', '~> 0.7.7'
   spec.add_runtime_dependency 'version', '>= 1.0.0'

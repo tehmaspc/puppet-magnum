@@ -1,13 +1,12 @@
 PATH
   remote: .
   specs:
-    magnum (2.0.0)
+    magnum (2.0.1)
       bundler (>= 1.11.2)
       colorize (~> 0.7.7)
       puppet (~> 4.3.2)
       puppet-lint (~> 1.1.0)
       puppetlabs_spec_helper (~> 1.0.1)
-      rake (>= 10.5.0)
       redcarpet (>= 3.3.4)
       rspec (~> 3.1.0)
       rspec-puppet (~> 2.3.2)
@@ -73,7 +72,7 @@ GEM
       rspec-its
       specinfra (~> 2.48)
     sfl (2.2)
-    specinfra (2.51.0)
+    specinfra (2.51.1)
       net-scp
       net-ssh (>= 2.7, < 3.1)
       net-telnet
@@ -86,6 +85,7 @@ PLATFORMS
 
 DEPENDENCIES
   magnum!
+  rake (>= 10.5.0)
   sem_ver (>= 0.1.1)
 
 BUNDLED WITH
