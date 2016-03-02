@@ -19,7 +19,7 @@ Additionally, ensure that [bundler](http://bundler.io/) (a Ruby gem manager) is 
 
 Install Magnum for yourself by doing the following inside a copy of this repo:
 
-    % bundle install && bundle exec rake install
+    % bundle install && rake install
 
 ## Usage
 
@@ -118,7 +118,7 @@ The following will describe what each tool provided does and how it can be used 
 
 Magnum sets up the puppet-lint tool in the Puppet module directory and provides the Rake task 'lint' to run puppet-lint against your code, as shown:
 
-    % bundle exec rake lint
+    % rake lint
       manifests/client.pp - WARNING: class not documented on line 1
       manifests/crowsnest.pp - WARNING: class not documented on line 1
       manifests/params.pp - WARNING: top-scope variable being used without an explicit namespace on line 3
@@ -180,7 +180,7 @@ As you can see, additional modules - like 'stdlib' - can be added to your Puppet
 
 #### Running rspec-puppet tests
 
-    % bundle exec rake unit
+    % rake unit
     HEAD is now at 44c181e Merge branch 'fix/master/add_recursive_merge'
     /usr/local/opt/rbenv/shims/ruby -S rspec spec/classes/config_spec.rb spec/classes/install_spec.rb spec/classes/ntp_spec.rb spec/classes/service_spec.rb --color
     ........
@@ -205,7 +205,7 @@ All serverspec tests should be written in the 'serverspec/spec/MODULE_spec.rb' f
 
 #### Running serverspec tests
 
-    % bundle exec rake integ
+    % rake integ
     HEAD is now at 44c181e Merge branch 'fix/master/add_recursive_merge'
 
     Running integration tests on Vagrant image; this will take a few moments...
