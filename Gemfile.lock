@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    magnum (2.0.1)
+    magnum (2.0.2)
       bundler (>= 1.11.2)
       colorize (~> 0.7.7)
       puppet (~> 4.3.2)
@@ -22,7 +22,7 @@ GEM
     diff-lcs (1.2.5)
     facter (2.4.6)
       CFPropertyList (~> 2.2.6)
-    hiera (3.0.6)
+    hiera (3.1.0)
       json_pure
     json_pure (1.8.3)
     metaclass (0.0.4)
@@ -46,7 +46,7 @@ GEM
       puppet-syntax
       rake
       rspec-puppet
-    rake (10.5.0)
+    rake (11.1.1)
     redcarpet (3.3.4)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
@@ -72,7 +72,7 @@ GEM
       rspec-its
       specinfra (~> 2.48)
     sfl (2.2)
-    specinfra (2.51.1)
+    specinfra (2.53.1)
       net-scp
       net-ssh (>= 2.7, < 3.1)
       net-telnet
