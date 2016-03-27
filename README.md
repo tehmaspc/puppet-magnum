@@ -71,8 +71,8 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/.vagrant_puppet/init.sh
           create  nginx/.vagrant_puppet/environments/vagrant/environment.conf
           create  nginx/.vagrant_puppet/environments/vagrant/manifests/init.pp
-          remove  nginx/Magnum.lastinit
-          create  nginx/Magnum.lastinit
+          remove  nginx/.magnum.init
+          create  nginx/.magnum.init
           remove  nginx/.gitignore
           create  nginx/.gitignore
           create  nginx/.git_hooks/pre-commit
