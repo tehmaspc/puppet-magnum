@@ -102,9 +102,9 @@ module Magnum
                 target.join('.vagrant_puppet/environments/vagrant/manifests/init.pp')
     end
 
-    def write_magnum_lastinit
-      remove_file target.join('Magnum.lastinit')
-      template 'Magnum.lastinit.erb', target.join('Magnum.lastinit')
+    def write_magnum_init
+      remove_file target.join('.magnum.init')
+      template 'magnum.init.erb', target.join('.magnum.init')
     end
 
     # due to the 'git add' operation, this function should be called last
@@ -188,7 +188,7 @@ module Magnum
       options[:copyright_holder] || maintainer
     end
 
-    def magnum_lastinit_timestamp
+    def magnum_init_timestamp
       "Magnum (#{Magnum::VERSION.chomp}) last initialized this Puppet module directory on #{Time.now.ctime}."
     end
 
