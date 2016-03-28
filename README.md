@@ -5,7 +5,7 @@
 Magnum - a tool for rapid, consistent, and best practice [Puppet](http://puppetlabs.com) module development.
 
 Magnum is essentially a Puppet module project generator and a wrapper
-around tools such as: [puppetlabs_spec_helper](http://github.com/puppetlabs/puppetlabs_spec_helper), [rspec-puppet](http://rspec-puppet.com/), [serverspec](http://serverspec.org/), [puppet-lint](http://puppet-lint.com/), [puppet-git-hooks](http://github.com/gini/puppet-git-hooks), [vagrant](http://vagrantup.com), and more!
+around tools such as: [puppetlabs_spec_helper](http://github.com/puppetlabs/puppetlabs_spec_helper), [rspec-puppet](http://rspec-puppet.com/), [serverspec](http://serverspec.org/), [puppet-lint](http://puppet-lint.com/), [vagrant](http://vagrantup.com), and more!
 
 ## Requirements
 
@@ -75,17 +75,8 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/.magnum.init
           remove  nginx/.gitignore
           create  nginx/.gitignore
-          create  nginx/.git_hooks/pre-commit
-          create  nginx/.git_hooks/prepare-commit-msg
-           chmod  nginx/.git_hooks/pre-commit
-           chmod  nginx/.git_hooks/prepare-commit-msg
              run  git init from "./nginx"
              run  git add -A from "./nginx"
-          create  nginx/.git/hooks/pre-commit
-          create  nginx/.git/hooks/prepare-commit-msg
-           chmod  nginx/.git/hooks/pre-commit
-           chmod  nginx/.git/hooks/prepare-commit-msg
-          create  nginx/.git_hooks_installed
 
 ## Parameters
 

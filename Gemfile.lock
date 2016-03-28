@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    magnum (2.0.7)
+    magnum (2.0.8)
       bundler (>= 1.11.2)
       colorize (~> 0.7.7)
       puppet (~> 4.3.2)
