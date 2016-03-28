@@ -33,6 +33,10 @@ module Magnum
       template 'README.md.erb', target.join('README.md')
     end
 
+    def write_changelog
+      template 'CHANGELOG.md.erb', target.join('CHANGELOG.md')
+    end
+
     def write_license
       template license_file, target.join('LICENSE')
     end
