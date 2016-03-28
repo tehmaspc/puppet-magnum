@@ -116,22 +116,11 @@ module Magnum
       remove_file target.join('.gitignore')
       template 'git/gitignore.erb', target.join('.gitignore')
 
-      template 'git/puppet-git-hooks-pre-commit.erb', target.join('.git_hooks/pre-commit')
-      template 'git/branch-prefix-prepare-commit-msg.erb', target.join('.git_hooks/prepare-commit-msg')
-      chmod target.join('.git_hooks/pre-commit'), 0755
-      chmod target.join('.git_hooks/prepare-commit-msg'), 0755
-
       unless File.exists?(target.join('.git'))
         inside target do
           run 'git init', capture: true
           run 'git add -A', capture: true
         end
-        template 'git/puppet-git-hooks-pre-commit.erb', target.join('.git/hooks/pre-commit')
-        template 'git/branch-prefix-prepare-commit-msg.erb', target.join('.git/hooks/prepare-commit-msg')
-        chmod target.join('.git/hooks/pre-commit'), 0755
-        chmod target.join('.git/hooks/prepare-commit-msg'), 0755
-
-        create_file target.join('.git_hooks_installed')
       end
     end
 

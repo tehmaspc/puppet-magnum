@@ -19,21 +19,6 @@ task :test do
   Rake::Task[:unit].invoke
 end
 
-desc 'Install git hooks'
-task :install_git_hooks do
-  source = "#{Dir.pwd}/.git_hooks"
-  target = './.git/hooks'
-  git_hooks_available = Dir.entries(source)
-  git_hooks_available.each do |hook|
-    if (hook != '.' and hook != '..' and hook != 'README.md') then
-      FileUtils.rm_rf  "#{target}/#{hook}"
-      FileUtils::cp "#{source}/#{hook}", "#{target}/#{hook}"
-      FileUtils::chmod 0755, "#{target}/#{hook}"
-    end
-  end
-  FileUtils::touch '.git_hooks_installed'
-end
-
 # puppet-lint options
 Rake::Task[:lint].clear
 PuppetLint::RakeTask.new :lint do |config|
