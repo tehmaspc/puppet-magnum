@@ -27,13 +27,13 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'bundler', '>= 1.11.2'
   spec.add_runtime_dependency 'redcarpet', '>= 3.3.4'
   spec.add_runtime_dependency 'thor', '>= 0.19.1'
-  spec.add_runtime_dependency 'colorize', '~> 0.7.7'
+  spec.add_runtime_dependency 'colorize', '>= 0.7.7'
   spec.add_runtime_dependency 'version', '>= 1.0.0'
-  spec.add_runtime_dependency 'puppet', '~> 4.3.2'
+
+  spec.add_runtime_dependency 'puppet', '~> 4.4.1'
   spec.add_runtime_dependency 'rspec', '~> 3.1.0'
   spec.add_runtime_dependency 'puppet-lint', '~> 1.1.0'
-  spec.add_runtime_dependency 'rspec-puppet', '~> 2.3.2'
-  spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 1.0.1'
-  spec.add_runtime_dependency 'serverspec', '~> 2.29.1'
+  spec.add_runtime_dependency 'rspec-puppet', '~> 2.4.0'
+  spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 1.1.1'
 
 end
