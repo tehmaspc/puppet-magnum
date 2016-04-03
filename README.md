@@ -73,7 +73,7 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
 
 ## Parameters
 
-puppet-magnum can take several parameters which will be used for populating the templates of things like manifest documentation, licensing and maintainer information.
+`puppet-magnum` can take several parameters which will be used for populating the templates of things like manifest documentation, licensing and maintainer information.
 
 - maintainer: maintainer name of module.
 - maintainer_email: maintainer email of module.
