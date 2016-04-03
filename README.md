@@ -2,7 +2,12 @@
 
 [![Build Status](https://travis-ci.org/tehmaspc/puppet-magnum.svg?branch=master)](https://travis-ci.org/tehmaspc/puppet-magnum)
 
-`puppet-magnum` - a Puppet module project generator and a wrapper around tools such as: [puppetlabs_spec_helper](http://github.com/puppetlabs/puppetlabs_spec_helper), [rspec-puppet](http://rspec-puppet.com/), [puppet-lint](http://puppet-lint.com/), [vagrant-serverspec](https://github.com/jvoorhis/vagrant-serverspec), [vagrant](http://vagrantup.com), and more!
+`puppet-magnum` is a tool for rapid, consistent, and best practice Puppet module development. It helps the Puppet module developer to create or maintain a Puppet module and test the module with tools like the following:
+
+* [puppet-lint](http://puppet-lint.com)
+* [rspec-puppet](http://rspec-puppet.com)
+* [puppetlabs_spec_helper](http://github.com/puppetlabs/puppetlabs_spec_helper)
+* [serverspec](http://serverspec.org) (via `vagrant-serverspec`)
 
 ## Installation
 
