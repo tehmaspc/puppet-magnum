@@ -67,7 +67,7 @@ Thanks to the following projects and folks!:
 * [Thor](http://whatisthor.com/)
 * [Berkshelf](http://berkshelf.com/)
 * [Contributors](https://github.com/tehmaspc/puppet-magnum/graphs/contributors)
-* @sepulworld
+* [@sepulworld](https://github.com/sepulworld)
 
 ## Authors and License
 
