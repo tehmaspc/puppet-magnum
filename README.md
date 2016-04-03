@@ -46,17 +46,8 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
              run  git init from "./nginx"
              run  git add -A from "./nginx"
 
-## Parameters
-
-`puppet-magnum` can take several parameters which will be used for populating the templates of things like manifest documentation, licensing and maintainer information.
-
-- maintainer: maintainer name of module.
-- maintainer_email: maintainer email of module.
-- copyright_year: defaults to current year.
-- copyright_holder: defaults to maintainer if not declared.
-
-### .magnumrc file
-The values above can be set via a file in your home directory called *_.magnumrc_*
+### `.magnumrc` File
+The following values can be set via a file in your *home* directory called `.magnumrc`
 
 ```
 ---
