@@ -1,6 +1,6 @@
 require 'pathname'
 
-module Magnum
+module PuppetMagnum
   class BaseGenerator < Thor::Group
     include Thor::Actions
     include Thor::Shell
@@ -10,7 +10,7 @@ module Magnum
       required: true
 
     def self.source_root
-      Magnum.root.join('generator_files')
+      PuppetMagnum.root.join('generator_files')
     end
 
     private 
