@@ -2,24 +2,15 @@
 
 [![Build Status](https://travis-ci.org/tehmaspc/puppet-magnum.svg?branch=master)](https://travis-ci.org/tehmaspc/puppet-magnum)
 
-puppet-magnum - a tool for rapid, consistent, and best practice [Puppet](http://puppetlabs.com) module development.
+`puppet-magnum` - a tool for rapid, consistent, and best practice [Puppet](http://puppetlabs.com) module development.
 
-puppet-magnum is essentially a Puppet module project generator and a wrapper
+`puppet-magnum` is essentially a Puppet module project generator and a wrapper
 around tools such as: [puppetlabs_spec_helper](http://github.com/puppetlabs/puppetlabs_spec_helper), [rspec-puppet](http://rspec-puppet.com/), [puppet-lint](http://puppet-lint.com/), [vagrant-serverspec](https://github.com/jvoorhis/vagrant-serverspec), [vagrant](http://vagrantup.com), and more!
-
-## Requirements
-
-puppet-magnum is a Ruby gem and thus requires a working Ruby environment on your development machine.
-It's recommended to use [rbenv](http://github.com/sstephenson/rbenv) to install and manage the Ruby versions on your machine.
-
-Currently, using Ruby 2.3.0 latest and above should work fine with puppet-magnum.
-Additionally, ensure that [bundler](http://bundler.io/) (a Ruby gem manager) is installed and available in your gem path.
 
 ## Installation
 
-Install puppet-magnum for yourself by doing the following inside a copy of this repo:
-
-    % bundle install && rake install
+* Install Ruby 2.3.0+
+* `gem install puppet-magnum`
 
 ## Usage
 
@@ -41,9 +32,11 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/serverspec
           create  nginx/.vagrant_puppet
           create  nginx/README.md
+          create  nginx/CHANGELOG.md
           create  nginx/LICENSE
           create  nginx/metadata.json
           create  nginx/manifests/init.pp
+          create  nginx/manifests/params.pp
           create  nginx/spec/classes
           create  nginx/spec/defines
           create  nginx/spec/functions
@@ -71,8 +64,8 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
           create  nginx/.vagrant_puppet/init.sh
           create  nginx/.vagrant_puppet/environments/vagrant/environment.conf
           create  nginx/.vagrant_puppet/environments/vagrant/manifests/init.pp
-          remove  nginx/.magnum.init
-          create  nginx/.magnum.init
+          remove  nginx/.puppet-magnum.init
+          create  nginx/.puppet-magnum.init
           remove  nginx/.gitignore
           create  nginx/.gitignore
              run  git init from "./nginx"
@@ -99,11 +92,11 @@ The values above can be set via a file in your home directory called *_.magnumrc
 
 ## Documentation
 
-* [Wiki](https://github.com/tehmaspc/puppet-magnum/wiki)
+* [puppet-magnum Wiki](https://github.com/tehmaspc/puppet-magnum/wiki)
 
 ## Credits
 
-Standing on the shoulder's of giants - thanks to the following projects for inspiration!:
+Thanks to the following projects for inspiration!:
 
 * [Thor](http://whatisthor.com/)
 * [Berkshelf](http://berkshelf.com/)
