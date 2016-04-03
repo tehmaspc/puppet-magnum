@@ -1,4 +1,4 @@
-module Magnum
+module PuppetMagnum
   class CreateGenerator < BaseGenerator
 
     argument :module_name,
@@ -91,11 +91,6 @@ module Magnum
     end
 
     def write_vagrantfile
-      unless which('vagrant')
-        say "\n\tNOTE: Vagrant does NOT appear to be installed." +
-            "\n\tPlease install it from http://www.vagrantup.com/\n", :red
-      end
-
       template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
       template 'vagrant/init.sh.erb', target.join('.vagrant_puppet/init.sh')
 
@@ -106,9 +101,9 @@ module Magnum
                 target.join('.vagrant_puppet/environments/vagrant/manifests/init.pp')
     end
 
-    def write_magnum_init
-      remove_file target.join('.magnum.init')
-      template 'magnum.init.erb', target.join('.magnum.init')
+    def write_puppet_magnum_init
+      remove_file target.join('.puppet-magnum.init')
+      template 'puppet-magnum.init.erb', target.join('.puppet-magnum.init')
     end
 
     # due to the 'git add' operation, this function should be called last
@@ -181,8 +176,8 @@ module Magnum
       options[:copyright_holder] || maintainer
     end
 
-    def magnum_init_timestamp
-      "Magnum (#{Magnum::VERSION.chomp}) last initialized this Puppet module directory on #{Time.now.ctime}."
+    def puppet_magnum_init_timestamp
+      "puppet-magnum (#{PuppetMagnum::VERSION.chomp}) last initialized this Puppet module directory on #{Time.now.ctime}."
     end
 
     def default_options

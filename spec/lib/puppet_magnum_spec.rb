@@ -9,12 +9,12 @@
 # @author Tehmasp Chaudhri {mailto:tehmasp@gmail.com}
 require 'spec_helper'
 
-describe Magnum do
+describe PuppetMagnum do
 
   context 'when setting up the project root' do
-    subject(:magnum_root) { Magnum::root }
-    it { expect(magnum_root).to_not be_nil }
-    it { expect(magnum_root.to_s).to match(/magnum/) }
+    subject(:puppet_magnum_root) { PuppetMagnum::root }
+    it { expect(puppet_magnum_root).to_not be_nil }
+    it { expect(puppet_magnum_root.to_s).to match(/puppet-magnum/) }
   end
 
 end

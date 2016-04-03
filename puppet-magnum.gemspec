@@ -1,16 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'magnum/version'
+
+require 'puppet-magnum/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'magnum'
-  spec.version       = Magnum::VERSION
+  spec.name          = 'puppet-magnum'
+  spec.version       = PuppetMagnum::VERSION
   spec.authors       = ['Tehmasp Chaudhri']
   spec.email         = ['tehmasp@gmail.com']
-  spec.description   = %q{Magnum - a tool for rapid, consistent, and best practice Puppet module development.}
-  spec.summary       = %q{Magnum - a tool for rapid, consistent, and best practice Puppet module development.}
-  spec.homepage      = 'https://github.com/tehmaspc/magnum'
+  spec.description   = %q{puppet-magnum - a tool for rapid, consistent, and best practice Puppet module development.}
+  spec.summary       = %q{puppet-magnum - a tool for rapid, consistent, and best practice Puppet module development.}
+  spec.homepage      = 'https://github.com/tehmaspc/puppet-magnum'
   spec.license       = 'Apache License, Version 2.0'
 
   spec.files         = `git ls-files`.split($/)

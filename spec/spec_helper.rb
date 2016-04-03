@@ -32,4 +32,4 @@ RSpec.configure do |config|
 
 end
 
-require 'magnum'
+require 'puppet-magnum'
