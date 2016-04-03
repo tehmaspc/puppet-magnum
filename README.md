@@ -24,7 +24,7 @@
       puppet-magnum module          # Module related tasks. Type 'puppet-magnum module' for more help.
       puppet-magnum version         # Display version and copyright information
 
-## Example Creating An 'nginx' Puppet Module
+## Example: Creating An `nginx` Puppet Module
 
 The following shows how one can get started quickly creating an 'nginx' Puppet module:
 
