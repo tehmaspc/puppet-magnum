@@ -46,7 +46,7 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
              run  git init from "./nginx"
              run  git add -A from "./nginx"
 
-## .magnumrc File
+## `.magnumrc` File
 The following values can be set via a file in your *home* directory called `.magnumrc`
 
 ```
