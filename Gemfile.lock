@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    magnum (2.0.9)
+    puppet-magnum (3.0.0)
       bundler (>= 1.11.2)
       colorize (>= 0.7.7)
       puppet (~> 4.4.1)
@@ -65,7 +65,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  magnum!
+  puppet-magnum!
   rake (>= 10.5.0)
   sem_ver (>= 0.1.1)
 

@@ -1,39 +1,39 @@
-# Magnum
+# puppet-magnum
 
-[![Build Status](https://travis-ci.org/tehmaspc/magnum.svg?branch=master)](https://travis-ci.org/tehmaspc/magnum)
+[![Build Status](https://travis-ci.org/tehmaspc/puppet-magnum.svg?branch=master)](https://travis-ci.org/tehmaspc/puppet-magnum)
 
-Magnum - a tool for rapid, consistent, and best practice [Puppet](http://puppetlabs.com) module development.
+puppet-magnum - a tool for rapid, consistent, and best practice [Puppet](http://puppetlabs.com) module development.
 
-Magnum is essentially a Puppet module project generator and a wrapper
+puppet-magnum is essentially a Puppet module project generator and a wrapper
 around tools such as: [puppetlabs_spec_helper](http://github.com/puppetlabs/puppetlabs_spec_helper), [rspec-puppet](http://rspec-puppet.com/), [puppet-lint](http://puppet-lint.com/), [vagrant-serverspec](https://github.com/jvoorhis/vagrant-serverspec), [vagrant](http://vagrantup.com), and more!
 
 ## Requirements
 
-Magnum is a Ruby gem and thus requires a working Ruby environment on your development machine.
+puppet-magnum is a Ruby gem and thus requires a working Ruby environment on your development machine.
 It's recommended to use [rbenv](http://github.com/sstephenson/rbenv) to install and manage the Ruby versions on your machine.
 
-Currently, using Ruby 2.3.0 latest and above should work fine with Magnum.
+Currently, using Ruby 2.3.0 latest and above should work fine with puppet-magnum.
 Additionally, ensure that [bundler](http://bundler.io/) (a Ruby gem manager) is installed and available in your gem path.
 
 ## Installation
 
-Install Magnum for yourself by doing the following inside a copy of this repo:
+Install puppet-magnum for yourself by doing the following inside a copy of this repo:
 
     % bundle install && rake install
 
 ## Usage
 
-    % magnum --help
+    % puppet-magnum --help
     Commands:
-      magnum help [COMMAND]  # Describe available commands or one specific command
-      magnum module          # Module related tasks. Type 'magnum module' for more help.
-      magnum version         # Display version and copyright information
+      puppet-magnum help [COMMAND]  # Describe available commands or one specific command
+      puppet-magnum module          # Module related tasks. Type 'puppet-magnum module' for more help.
+      puppet-magnum version         # Display version and copyright information
 
 ## Example Creating An 'nginx' Puppet Module
 
 The following shows how one can get started quickly creating an 'nginx' Puppet module:
 
-    % magnum module create nginx
+    % puppet-magnum module create nginx
           create  nginx/manifests
           create  nginx/templates
           create  nginx/files
@@ -80,7 +80,7 @@ The following shows how one can get started quickly creating an 'nginx' Puppet m
 
 ## Parameters
 
-Magnum can take several parameters which will be used for populating the templates of things like manifest documentation, licensing and maintainer information.
+puppet-magnum can take several parameters which will be used for populating the templates of things like manifest documentation, licensing and maintainer information.
 
 - maintainer: maintainer name of module.
 - maintainer_email: maintainer email of module.
@@ -97,17 +97,17 @@ The values above can be set via a file in your home directory called *_.magnumrc
   copyright_holder: Example.com LLC
 ```
 
-## Testing within a Magnum Managed Puppet Module
+## Testing within a puppet-magnum Managed Puppet Module
 
-Magnum provides the following Puppet testing tools to allow the Puppet module developer a means to test their Puppet code. The tools provided are [puppet-lint](http://puppet-lint.com/), [rspec-puppet](http://rspec-puppet.com/), [serverspec](http://serverspec.org/), and [vagrant](http://vagrantup.com).
+puppet-magnum provides the following Puppet testing tools to allow the Puppet module developer a means to test their Puppet code. The tools provided are [puppet-lint](http://puppet-lint.com/), [rspec-puppet](http://rspec-puppet.com/), [serverspec](http://serverspec.org/), and [vagrant](http://vagrantup.com).
 
-The following will describe what each tool provided does and how it can be used within a Magnum managed Puppet module.
+The following will describe what each tool provided does and how it can be used within a puppet-magnum managed Puppet module.
 
 ### puppet-lint
 
 [puppet-lint](http://puppet-lint.com/) allows the Puppet module developer to statically check that the content of their Puppet code conforms to the Puppet style standard. It checks for trailing whitespace, indentation and tabs, and many other Puppet style guidelines as listed [here](http://puppet-lint.com/checks/). With puppet-lint checking for unconformity, it's a lot easier for a team of Puppet developers to adhere to a general style guideline.
 
-Magnum sets up the puppet-lint tool in the Puppet module directory and provides the Rake task 'lint' to run puppet-lint against your code, as shown:
+puppet-magnum sets up the puppet-lint tool in the Puppet module directory and provides the Rake task 'lint' to run puppet-lint against your code, as shown:
 
     % rake lint
       manifests/client.pp - WARNING: class not documented on line 1
@@ -127,7 +127,7 @@ For more details about puppet-lint, please check the [project website](http://pu
 
 [rspec-puppet](http://rspec-puppet.com/) allows the Puppet module developer to write [RSpec](https://relishapp.com/rspec) unit tests for their Puppet code.
 
-Each Magnum managed Puppet module directory will have a subdirectory called 'spec' with a directory tree as follows:
+Each puppet-magnum managed Puppet module directory will have a subdirectory called 'spec' with a directory tree as follows:
 
     spec
     ├── spec/classes
@@ -157,7 +157,7 @@ All rspec-puppet tests for Puppet define types should be written in the 'spec/de
 
 As you can see above there are numerous files underneath the 'spec' subdirectory. A lot of these files - especially the files under 'spec/fixtures' - exist to glue together our RSpec testing tools. The 'spec/fixtures' directory is unique in that all module dependencies, including the module being developed, should be found under the 'spec/fixtures' directory. rspec-puppet, serverspec, and vagrant will all make use of this special 'spec/fixtures' directory.
 
-In order to add additional module dependencies into your Puppet module, Magnum provides a .fixtures.yml file which can be modified to add additional Puppet modules to your project. The default .fixtures.yml file will look like the following:
+In order to add additional module dependencies into your Puppet module, puppet-magnum provides a .fixtures.yml file which can be modified to add additional Puppet modules to your project. The default .fixtures.yml file will look like the following:
 
     fixtures:
     # repositories:
@@ -185,7 +185,7 @@ For more details about rspec-puppet and how to write the actual rspec-puppet tes
 
 [serverspec](http://serverspec.org/) allows the Puppet module developer to write [RSpec](https://relishapp.com/rspec) integration tests for their Puppet code. serverspec integration tests work in conjunction with [vagrant](http://www.vagrantup.com/) and allow a Puppet developer the ability to quickly provision a vagrant virtual box Linux system and then run these tests against this live system.
 
-Each Magnum managed Puppet module directory will have a subdirectory called 'serverspec' with a directory tree as follows:
+Each puppet-magnum managed Puppet module directory will have a subdirectory called 'serverspec' with a directory tree as follows:
 
     serverspec
     ├── serverspec/spec
@@ -211,9 +211,9 @@ For more details about serverspec and how to write the actual serverspec tests, 
 
 ### vagrant
 
-[vagrant](http://vagrantup.com) allows the Puppet developer to start local VirtualBox instances in their Puppet module project and provision the instance with the Puppet module being tested. vagrant requires a Vagrantfile which specifies how to launch a VirtualBox instance. Magnum sets up the required Vagrantfile with the proper configurations required to start the VirtualBox VM (w/ 'vagrant up') and provision the instance with the module being tested.
+[vagrant](http://vagrantup.com) allows the Puppet developer to start local VirtualBox instances in their Puppet module project and provision the instance with the Puppet module being tested. vagrant requires a Vagrantfile which specifies how to launch a VirtualBox instance. puppet-magnum sets up the required Vagrantfile with the proper configurations required to start the VirtualBox VM (w/ 'vagrant up') and provision the instance with the module being tested.
 
-Magnum also creates a .vagrant_puppet/ directory in your Puppet module project and more importantly a .vagrant_puppet/init.pp file containing the necessary configuration for Puppet provisioning your VirtualBox instance. The Puppet module developer should change the .vagrant_puppet/init.pp file to provision their VirtualBox instance according to their needs. The best way to understand this is to take a look at some of the Puppet module examples below.
+puppet-magnum also creates a .vagrant_puppet/ directory in your Puppet module project and more importantly a .vagrant_puppet/init.pp file containing the necessary configuration for Puppet provisioning your VirtualBox instance. The Puppet module developer should change the .vagrant_puppet/init.pp file to provision their VirtualBox instance according to their needs. The best way to understand this is to take a look at some of the Puppet module examples below.
 
 During the development of a Puppet module, the Puppet module developer can run 'vagrant provision' to continuously test their Puppet module changes. The developer can login to the VirtualBox instance (w/ 'vagrant ssh') and check the state of their Puppet provisioning.
 
