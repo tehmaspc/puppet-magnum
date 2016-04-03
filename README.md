@@ -62,10 +62,11 @@ The following values can be set via a file in your *home* directory called `.mag
 
 ## Credits
 
-Thanks to the following projects for inspiration!:
+Thanks to the following projects and folks!:
 
 * [Thor](http://whatisthor.com/)
 * [Berkshelf](http://berkshelf.com/)
+* [Contributors](https://github.com/tehmaspc/puppet-magnum/graphs/contributors), including [@sepulworld](https://github.com/sepulworld)
 
 ## Authors and License
 
