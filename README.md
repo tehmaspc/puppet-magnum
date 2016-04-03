@@ -9,7 +9,7 @@
 * [puppet-lint](http://puppet-lint.com)
 * [rspec-puppet](http://rspec-puppet.com)
 * [puppetlabs_spec_helper](http://github.com/puppetlabs/puppetlabs_spec_helper)
-* [serverspec](http://serverspec.org) (via `vagrant-serverspec`)
+* [serverspec](http://serverspec.org) (via [vagrant-serverspec](https://github.com/jvoorhis/vagrant-serverspec))
 
 ## Installation
 
