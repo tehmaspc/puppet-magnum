@@ -2,7 +2,9 @@
 
 [![Build Status](https://travis-ci.org/tehmaspc/puppet-magnum.svg?branch=master)](https://travis-ci.org/tehmaspc/puppet-magnum)
 
-`puppet-magnum` is a tool for rapid, consistent, and best practice Puppet module development. It helps the Puppet module developer to create or maintain a Puppet module and test the module with tools like the following:
+`puppet-magnum` is a tool for rapid, consistent, and best practice Puppet module development.
+
+`puppet-magnum` helps the Puppet module developer to create or maintain a Puppet module and test the module with tools like the following:
 
 * [puppet-lint](http://puppet-lint.com)
 * [rspec-puppet](http://rspec-puppet.com)
