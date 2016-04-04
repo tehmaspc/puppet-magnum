@@ -14,7 +14,7 @@
 ## Installation
 
 * `install ruby 2.3.0+`
-* `gem install puppet-magnum`
+* `%: gem install puppet-magnum`
 
 ## Usage
 
