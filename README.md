@@ -13,7 +13,14 @@
 
 ## Installation
 
-* install ruby 2.3.0+
+### Requirements
+
+* install Ruby 2.3.0+.
+* install Vagrant.
+* install vagrant-serverspec Vagrant plugin.
+
+### Install `puppet-magnum`
+
 * `% gem install puppet-magnum`
 
 ## Usage
