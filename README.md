@@ -16,8 +16,8 @@
 ### Requirements
 
 * Install Ruby 2.3.0+.
-* Install Vagrant.
-* Install vagrant-serverspec Vagrant plugin.
+* Install [Vagrant](https://www.vagrantup.com).
+* Install [vagrant-serverspec](https://github.com/jvoorhis/vagrant-serverspec) Vagrant plugin.
 
 ### Install `puppet-magnum`
 
