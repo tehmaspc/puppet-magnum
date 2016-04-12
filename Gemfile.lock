@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    puppet-magnum (3.0.0)
+    puppet-magnum (3.0.1)
       bundler (>= 1.11.2)
       colorize (>= 0.7.7)
       puppet (~> 4.4.1)
