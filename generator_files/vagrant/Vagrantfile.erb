@@ -29,5 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 end
 
 unless Vagrant.has_plugin?('vagrant-serverspec')
-  raise 'vagrant-serverspec is not installed!'
+  raise "\n\n'vagrant-serverspec' is NOT installed." +
+        "\nTo install, run: 'vagrant plugin install vagrant-serverspec'."
 end
