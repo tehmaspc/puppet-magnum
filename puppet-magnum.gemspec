@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'version', '>= 1.0.0'
 
   spec.add_runtime_dependency 'puppet', '~> 4.4.2'
-  spec.add_runtime_dependency 'rspec', '~> 3.1.0'
+  spec.add_runtime_dependency 'rspec', '~> 3.4.0'
   spec.add_runtime_dependency 'puppet-lint', '~> 1.1.0'
   spec.add_runtime_dependency 'rspec-puppet', '~> 2.4.0'
   spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 1.1.1'

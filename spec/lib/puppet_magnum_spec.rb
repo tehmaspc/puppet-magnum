@@ -1,4 +1,4 @@
-# Magnum rspec tests
+# PuppetMagnum rspec tests
 #
 # The following spec tests try to follow the best practices laid
 # out on the following websites:
