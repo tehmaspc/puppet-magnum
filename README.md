@@ -18,6 +18,7 @@
 * Install Ruby 2.3.0+.
 * Install [Vagrant](https://www.vagrantup.com).
 * Install [vagrant-serverspec](https://github.com/jvoorhis/vagrant-serverspec) Vagrant plugin.
+* Install [vagrant-cachier](https://github.com/fgrehm/vagrant-cachier) Vagrant plugin (optional).
 
 ### Install `puppet-magnum`
 
