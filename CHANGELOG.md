@@ -1,9 +1,5 @@
+## 3.0.6
 ## 3.0.5
-
-IMPROVEMENTS:
-
-  * Adding required Ruby version (`2.3.0`) in Gemfile.
-
 ## 3.0.4
 
 IMPROVEMENTS:
