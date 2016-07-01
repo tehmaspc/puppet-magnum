@@ -1,3 +1,9 @@
+## 3.0.9
+
+IMPROVEMENTS:
+
+  * Switch to `https` for rubygems.org in the Gemfile template.
+
 ## 3.0.8
 
 IMPROVEMENTS:
