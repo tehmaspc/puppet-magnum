@@ -1,3 +1,9 @@
+## 3.0.10
+
+FIXES:
+
+  * Use `https://apt.puppetlabs.com/pubkey.gpg` for puppetlabs GPG key; fixes puppetlabs' ubuntu vagrant box.
+
 ## 3.0.9
 
 IMPROVEMENTS:
