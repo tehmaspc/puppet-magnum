@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    puppet-magnum (3.0.9)
+    puppet-magnum (3.0.10)
       bundler (>= 1.11.2)
       colorize (>= 0.7.7)
-      puppet (~> 4.5.1)
+      puppet (~> 4.5.3)
       puppet-lint (~> 1.1.0)
       puppetlabs_spec_helper (~> 1.1.1)
       redcarpet (>= 3.3.4)
@@ -23,11 +23,11 @@ GEM
       CFPropertyList (~> 2.2.6)
     hiera (3.2.0)
       json_pure
-    json_pure (1.8.3)
+    json_pure (2.0.1)
     metaclass (0.0.4)
     mocha (1.1.0)
       metaclass (~> 0.0.1)
-    puppet (4.5.2)
+    puppet (4.5.3)
       CFPropertyList (~> 2.2.6)
       facter (> 2.0, < 4)
       hiera (>= 2.0, < 4)
