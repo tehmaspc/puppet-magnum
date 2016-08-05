@@ -1,3 +1,9 @@
+## 3.0.11
+
+IMPROVEMENTS:
+
+  * Upgrade to `puppet-lint` 2.0.0.
+
 ## 3.0.10
 
 FIXES:
