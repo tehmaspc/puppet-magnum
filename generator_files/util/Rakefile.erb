@@ -17,6 +17,12 @@ task :test do
   Rake::Task[:syntax].invoke
   Rake::Task[:lint].invoke
   Rake::Task[:unit].invoke
+  Rake::Task[:up].invoke
+end
+
+task :up do
+    Rake::Task[:spec_prep].invoke
+    sh "vagrant up --provision"
 end
 
 # puppet-lint options
