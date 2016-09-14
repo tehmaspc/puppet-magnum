@@ -1,3 +1,9 @@
+## 3.0.12
+
+IMPROVEMENTS:
+
+  * Add back an `integ` Rake task to automatically run Vagrant. This task runs `spec_prep` Rake task prior to running Vagrant.
+
 ## 3.0.11
 
 IMPROVEMENTS:
