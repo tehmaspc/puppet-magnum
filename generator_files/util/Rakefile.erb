@@ -12,17 +12,20 @@ end
 task :spec => []; Rake::Task[:spec].clear
 task :spec => :unit
 
+desc 'Run integration tests'
+task :integ do
+  Rake::Task[:spec_prep].invoke
+
+  puts 'Launching Vagrant to run integration tests...'
+  sh 'vagrant up --provision'
+end
+
 desc 'Run syntax, lint and unit tests'
 task :test do
   Rake::Task[:syntax].invoke
   Rake::Task[:lint].invoke
   Rake::Task[:unit].invoke
-  Rake::Task[:up].invoke
-end
-
-task :up do
-    Rake::Task[:spec_prep].invoke
-    sh "vagrant up --provision"
+  Rake::Task[:integ].invoke
 end
 
 # puppet-lint options
