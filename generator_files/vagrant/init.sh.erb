@@ -16,8 +16,13 @@ if [ ! -e $STAGE ]; then
   wget -q -O $KEYFILE https://apt.puppetlabs.com/pubkey.gpg &>/dev/null
   apt-key add $KEYFILE
 
-  apt-get update
+  echo "Updating system packages..."
+  apt-get update &>/dev/null
 
+  echo "Updating Puppet packages..."
+  DEBIAN_FRONTEND=noninteractive apt-get install -y puppet-agent &>/dev/null
+
+  echo "Creating test environment..."
   mkdir -p $VAGRANT_PUPPET_ENV_DIR
   ln -sfn $FIXTURES_DIR $VAGRANT_PUPPET_ENV_DIR/modules
 

@@ -1,3 +1,11 @@
+## 3.1.0
+
+IMPROVEMENTS:
+
+  * Upgraded all Puppet gems; tested with Ruby 2.3.1.
+  * Vagrant init.sh script installs latest `puppet-agent` on test VM.
+  * Silenced Vagrant init.sh script output.
+
 ## 3.0.12
 
 IMPROVEMENTS:

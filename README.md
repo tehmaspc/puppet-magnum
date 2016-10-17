@@ -15,7 +15,7 @@
 
 ### Requirements
 
-* Install Ruby 2.3.0.
+* Install Ruby 2.3.x.
 * Install [Vagrant](https://www.vagrantup.com).
 * Install [vagrant-serverspec](https://github.com/jvoorhis/vagrant-serverspec).
 * Install [vagrant-cachier](https://github.com/fgrehm/vagrant-cachier) (optional).
@@ -78,7 +78,7 @@ Thanks to the following projects and folks!:
 
 ## Authors and License
 
-Copyright 2013-2016 Tehmasp Chaudhri <tehmasp@gmail.com>
+Copyright 2013-2016 Tehmasp Chaudhri <tehmasp@chaudhri.me>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
