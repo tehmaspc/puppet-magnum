@@ -6,7 +6,7 @@
 # See {http://www.relishapp.com/rspec/rspec-core/v/2-11/docs}
 # See {http://betterspecs.org}
 #
-# @author Tehmasp Chaudhri {mailto:tehmasp@gmail.com}
+# @author Tehmasp Chaudhri {mailto:tehmasp@chaudhri.me}
 require 'spec_helper'
 
 describe PuppetMagnum do
