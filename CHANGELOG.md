@@ -1,3 +1,9 @@
+## 3.1.1
+
+IMPROVEMENTS:
+
+  * Upgraded all Puppet gems; tested with Ruby 2.3.3.
+
 ## 3.1.0
 
 IMPROVEMENTS:
