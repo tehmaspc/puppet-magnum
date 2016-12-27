@@ -9,7 +9,7 @@ module PuppetMagnum
 
     desc 'version', 'Display version information.'
     def version
-      puts "puppet-magnum (#{PuppetMagnum::VERSION.chomp})"
+      puts "puppet-magnum (#{PuppetMagnum::VERSION})"
     end
 
   end

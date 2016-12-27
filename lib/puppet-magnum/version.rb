@@ -1,3 +1,3 @@
 module PuppetMagnum
-  VERSION = File.open(File.expand_path('../../../VERSION', __FILE__)).read
+  VERSION = File.open(File.expand_path('../../../VERSION', __FILE__)).read.chomp
 end

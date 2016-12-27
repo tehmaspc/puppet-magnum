@@ -1,3 +1,10 @@
+## 3.1.2
+
+IMPROVEMENTS:
+
+  * Addded a `verify` subcommand to verify `puppet-magnum` module compliance.
+  * Updated to latest `thor` gem.
+
 ## 3.1.1
 
 IMPROVEMENTS:

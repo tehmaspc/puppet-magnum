@@ -1,24 +1,13 @@
 module PuppetMagnum
   class CreateGenerator < BaseGenerator
 
-    argument :module_name,
-      type: :string,
-      required: true
+    argument :module_name,    type: :string, required: true
 
-    class_option :license,
-      type: :string,
-      default: 'reserved'
+    class_option :license,    type: :string, default: 'reserved'
+    class_option :maintainer, type: :string, default: 'Example, Inc.'
 
-    class_option :maintainer,
-      type: :string,
-      default: 'Example, Inc.'
-
-    class_option :maintainer_email,
-      type: :string,
-      default: 'puppet@example.com'
-
-    class_option :copyright_holder,
-      type: :string
+    class_option :maintainer_email, type: :string, default: 'puppet@example.com'
+    class_option :copyright_holder, type: :string
 
     def write_emptydirs
       empty_directory target.join('manifests')
@@ -151,12 +140,14 @@ module PuppetMagnum
 
     def which(cmd)
       exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
+
       ENV['PATH'].split(File::PATH_SEPARATOR).each do |path|
         exts.each { |ext|
           exe = File.join(path, "#{cmd}#{ext}")
           return exe if File.executable? exe
         }
       end
+
       return nil
     end
 
