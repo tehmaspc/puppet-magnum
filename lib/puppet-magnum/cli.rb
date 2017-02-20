@@ -1,5 +1,5 @@
 require 'thor'
-require_relative './version'
+require_relative './defaults'
 
 module PuppetMagnum
   class Cli < Thor

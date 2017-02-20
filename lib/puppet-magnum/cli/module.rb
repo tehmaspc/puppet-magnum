@@ -25,15 +25,15 @@ module PuppetMagnum
 
     private
 
-      def options
-        original_options = super
+    def options
+      original_options = super
 
-        config_file = File.expand_path('~/.magnumrc')
-        return original_options unless File.exists?(config_file)
+      config_file = File.expand_path('~/.magnumrc')
+      return original_options unless File.exists?(config_file)
 
-        defaults = ::YAML::load_file(config_file) || {}
-        Thor::CoreExt::HashWithIndifferentAccess.new(defaults.merge(original_options))
-      end
+      defaults = ::YAML::load_file(config_file) || {}
+      Thor::CoreExt::HashWithIndifferentAccess.new(defaults.merge(original_options))
+    end
 
   end
 end

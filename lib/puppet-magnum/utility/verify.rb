@@ -1,4 +1,5 @@
 require 'pathname'
+require_relative '../defaults'
 
 module PuppetMagnum
   class Verify < Thor::Group
@@ -17,6 +18,7 @@ module PuppetMagnum
       version = init_file.scan( /\((.*)\)/).first.to_s
 
       puts "version: #{version}"
+      puts PuppetMagnum::INIT_FILE
 
     end
 
