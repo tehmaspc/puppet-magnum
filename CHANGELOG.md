@@ -1,3 +1,13 @@
+## [3.1.3]
+
+### FIXES:
+
+  * Fix puppet-lint linenumber config change in Rakefile.
+
+### IMPROVEMENTS:
+
+  * Upgraded all Puppet gems; tested with Ruby 2.3.3.
+
 ## [3.1.2]
 
 ### IMPROVEMENTS:
