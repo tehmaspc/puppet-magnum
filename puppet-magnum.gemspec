@@ -31,10 +31,10 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'colorize', '>= 0.8.1'
   spec.add_runtime_dependency 'version', '>= 1.0.0'
 
-  spec.add_runtime_dependency 'puppet', '~> 4.9.2'
+  spec.add_runtime_dependency 'puppet', '~> 4.9.4'
   spec.add_runtime_dependency 'rspec', '~> 3.5.0'
   spec.add_runtime_dependency 'puppet-lint', '~> 2.1.1'
   spec.add_runtime_dependency 'rspec-puppet', '~> 2.5.0'
-  spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 2.0.1'
+  spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 2.1.0'
 
 end
