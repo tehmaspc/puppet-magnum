@@ -102,6 +102,8 @@ module PuppetMagnum
       # create default puppet environment
       template 'vagrant/environment/environment.conf.erb',
                 target.join('.vagrant_puppet/environments/vagrant/environment.conf')
+      template 'vagrant/environment/hiera.yaml.erb',
+                target.join('.vagrant_puppet/environments/vagrant/hiera.yaml.conf')
       template 'vagrant/environment/manifests/init.pp.erb',
                 target.join('.vagrant_puppet/environments/vagrant/manifests/init.pp')
     end
