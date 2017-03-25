@@ -35,6 +35,9 @@ if [ ! -e $STAGE ]; then
 
   ln -sfn ${VAGRANT_PUPPET_ENV_DIR} ${PUPPET_ENV_DIR}
 
+  rm -rf /etc/puppetlabs/code/hiera.yaml
+  ln -sfn ${VAGRANT_PUPPET_ENV_DIR}/hiera.yaml /etc/puppetlabs/code/
+
   touch $STAGE
 
 else
