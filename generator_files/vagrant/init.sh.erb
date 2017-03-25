@@ -5,7 +5,9 @@ set -e
 STAGE='/tmp/magnum-vagrant-stage'
 KEYFILE='/tmp/puppetlabs-gpg'
 
+HIERADATA_DIR='/vagrant/hieradata'
 FIXTURES_DIR='/vagrant/spec/fixtures/modules'
+PUPPET_ENV_DIR='/etc/puppetlabs/code/environments'
 PUPPET_MODULES_DIR='/etc/puppetlabs/code/modules'
 VAGRANT_PUPPET_ENV_DIR='/tmp/vagrant-puppet/environments/vagrant'
 
@@ -28,6 +30,10 @@ if [ ! -e $STAGE ]; then
 
   rm -rf $PUPPET_MODULES_DIR
   ln -sfn $VAGRANT_PUPPET_ENV_DIR/modules $PUPPET_MODULES_DIR
+
+  ln -sfn ${HIERADATA_DIR} ${VAGRANT_PUPPET_ENV_DIR}/hieradata
+
+  ln -sfn ${VAGRANT_PUPPET_ENV_DIR} ${PUPPET_ENV_DIR}
 
   touch $STAGE
 

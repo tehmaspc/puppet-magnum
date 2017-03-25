@@ -21,6 +21,7 @@ module PuppetMagnum
       type: :string
 
     def write_emptydirs
+      empty_directory target.join('hieradata')
       empty_directory target.join('manifests')
       empty_directory target.join('templates')
       empty_directory target.join('files')
@@ -48,6 +49,10 @@ module PuppetMagnum
     def write_manifests_templates_files
       template 'puppet/init.pp.erb', target.join('manifests/init.pp')
       template 'puppet/params.pp.erb', target.join('manifests/params.pp')
+    end
+
+    def write_hiera_files
+      template 'puppet/common.yaml.erb', target.join('hieradata/common.yaml')
     end
 
     def write_spec_setup
