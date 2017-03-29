@@ -7,7 +7,7 @@ Vagrant.require_version '>= 1.8.0'
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Using Puppet Labs official Vagrant boxes, from: https://atlas.hashicorp.com/puppetlabs
-  config.vm.box = 'puppetlabs/ubuntu-14.04-64-puppet'
+  config.vm.box = 'puppetlabs/ubuntu-16.04-64-puppet'
 
   config.vm.provider 'virtualbox' do |vbox|
     vbox.memory = 1024
