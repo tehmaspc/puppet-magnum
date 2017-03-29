@@ -51,7 +51,7 @@ module PuppetMagnum
     end
 
     def write_spec_setup
-      spec_dirs = [ 'classes', 'defines', 'functions', 'hosts', 'unit' ]
+      spec_dirs = [ 'acceptance', 'classes', 'defines', 'functions', 'hosts', 'unit' ]
       spec_dirs.each do |dir|
         empty_directory target.join("spec/#{dir}")
       end
@@ -65,6 +65,11 @@ module PuppetMagnum
         remove_file target.join("spec/fixtures/modules/#{module_name}/#{spec_dir}")
         create_link target.join("spec/fixtures/modules/#{module_name}/#{spec_dir}"), "../../../../#{spec_dir}"
       }
+
+      template 'spec/acceptance/init_spec.rb.erb', target.join("spec/acceptance/#{module_name}_spec.rb")
+      empty_directory target.join('spec/acceptance/nodesets')
+      template 'spec/acceptance/nodesets.yml.erb', target.join('spec/acceptance/nodesets.yml')
+      template 'spec/acceptance/spec_helper_acceptance.rb.erb', target.join('spec/spec_helper_acceptance.rb')
 
       template 'spec/rspec/spec_helper.rb.erb', target.join('spec/spec_helper.rb')
       template 'spec/rspec/init_spec.rb.erb', target.join("spec/classes/#{module_name}_spec.rb")
