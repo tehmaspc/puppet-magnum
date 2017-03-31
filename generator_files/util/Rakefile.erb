@@ -25,6 +25,7 @@ task :test do
   Rake::Task[:lint].invoke
   Rake::Task[:unit].invoke
   Rake::Task[:integ].invoke
+  Rake::Task[:beaker].invoke
 end
 
 # puppet-lint options
