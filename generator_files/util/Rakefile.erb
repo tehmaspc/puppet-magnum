@@ -25,7 +25,7 @@ task :test do
   Rake::Task[:lint].invoke
   Rake::Task[:unit].invoke
   Rake::Task[:integ].invoke
-  Rake::Task[:beaker].invoke
+  Rake::Task[:beaker_test].invoke
 end
 
 # puppet-lint options
@@ -42,3 +42,12 @@ task :build => []; Rake::Task[:build].clear
 task :clean => []; Rake::Task[:clean].clear
 task :default => []; Rake::Task[:default].clear
 task :default => :test
+
+# configure beaker test environment and explicitly run SUTs
+task :beaker_test do
+  ENV['PUPPET_INSTALL_TYPE'] = 'agent'
+  ENV['PUPPET_INSTALL_VERSION'] = '1.9.3'
+  ENV['BEAKER_destroy'] = 'onpass'
+  Rake::Task["beaker:default"].invoke
+  Rake::Task["beaker:foo"].invoke
+end

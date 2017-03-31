@@ -68,7 +68,8 @@ module PuppetMagnum
 
       template 'spec/acceptance/init_spec.rb.erb', target.join("spec/acceptance/#{module_name}_spec.rb")
       empty_directory target.join('spec/acceptance/nodesets')
-      template 'spec/acceptance/default.yml.erb', target.join('spec/acceptance/nodesets/default.yml')
+      template 'spec/acceptance/ubuntu-server-1404-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1404-x64.yml')
+      template 'spec/acceptance/ubuntu-server-1604-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1604-x64.yml')
       template 'spec/acceptance/spec_helper_acceptance.rb.erb', target.join('spec/spec_helper_acceptance.rb')
 
       template 'spec/rspec/spec_helper.rb.erb', target.join('spec/spec_helper.rb')
