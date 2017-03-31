@@ -48,6 +48,6 @@ task :beaker_test do
   ENV['PUPPET_INSTALL_TYPE'] = 'agent'
   ENV['PUPPET_INSTALL_VERSION'] = '1.9.3'
   ENV['BEAKER_destroy'] = 'onpass'
-  Rake::Task["beaker:default"].invoke
-  Rake::Task["beaker:foo"].invoke
+  Rake::Task["beaker:ubuntu-server-1404-x64"].invoke
+  Rake::Task["beaker:ubuntu-server-1604-x64"].invoke
 end
