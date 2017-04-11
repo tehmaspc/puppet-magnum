@@ -11,7 +11,6 @@ EOS
   end
 
   it 'should apply a second time without changes' do
-    @result = apply_manifest(manifest)
-    expect(@result.exit_code).to be_zero
+    apply_manifest(manifest, :catch_changes => true)
   end
 end
