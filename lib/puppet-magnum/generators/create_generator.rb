@@ -48,6 +48,11 @@ module PuppetMagnum
       template 'puppet/init.pp.erb', target.join('manifests/init.pp')
     end
 
+    def write_hiera_files
+      template 'puppet/common.yaml.erb', target.join('data/common.yaml')
+      template 'puppet/hiera.yaml.erb', target.join('hiera.yaml')
+    end
+
     def write_spec_setup
       spec_dirs = [ 'acceptance' ]
       spec_dirs.each do |dir|
