@@ -25,8 +25,7 @@ module PuppetMagnum
       empty_directory target.join('templates')
       empty_directory target.join('files')
       empty_directory target.join('spec')
-      empty_directory target.join('serverspec')
-      empty_directory target.join('.vagrant_puppet')
+      empty_directory target.join('data')
     end
 
     def write_readme
@@ -47,43 +46,20 @@ module PuppetMagnum
 
     def write_manifests_templates_files
       template 'puppet/init.pp.erb', target.join('manifests/init.pp')
-      template 'puppet/params.pp.erb', target.join('manifests/params.pp')
     end
 
     def write_spec_setup
-      spec_dirs = [ 'acceptance', 'classes', 'defines', 'functions', 'hosts', 'unit' ]
+      spec_dirs = [ 'acceptance' ]
       spec_dirs.each do |dir|
         empty_directory target.join("spec/#{dir}")
       end
-
-      empty_directory target.join('spec/fixtures/manifests')
-      create_file target.join('spec/fixtures/manifests/site.pp')
-
-      empty_directory target.join("spec/fixtures/modules/#{module_name}")
-      spec_dirs = ['manifests', 'templates', 'files']
-      spec_dirs.each { |spec_dir|
-        remove_file target.join("spec/fixtures/modules/#{module_name}/#{spec_dir}")
-        create_link target.join("spec/fixtures/modules/#{module_name}/#{spec_dir}"), "../../../../#{spec_dir}"
-      }
 
       template 'spec/acceptance/init_spec.rb.erb', target.join("spec/acceptance/#{module_name}_spec.rb")
       empty_directory target.join('spec/acceptance/nodesets')
       template 'spec/acceptance/ubuntu-server-1404-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1404-x64.yml')
       template 'spec/acceptance/ubuntu-server-1604-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1604-x64.yml')
       template 'spec/acceptance/spec_helper_acceptance.rb.erb', target.join('spec/spec_helper_acceptance.rb')
-
-      template 'spec/rspec/spec_helper.rb.erb', target.join('spec/spec_helper.rb')
-      template 'spec/rspec/init_spec.rb.erb', target.join("spec/classes/#{module_name}_spec.rb")
-
       template 'spec/rspec.erb', target.join('.rspec')
-    end
-
-    def write_serverspec_setup
-      template 'spec/serverspec/init_spec.rb.erb', target.join("serverspec/#{module_name}_spec.rb")
-    end
-
-    def write_fixtures
-       template 'spec/fixtures.yml.erb', target.join('.fixtures.yml')
     end
 
     def write_gemfile
@@ -94,17 +70,6 @@ module PuppetMagnum
     def write_rakefile
       remove_file target.join('Rakefile')
       template 'util/Rakefile.erb', target.join('Rakefile')
-    end
-
-    def write_vagrantfile
-      template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
-      template 'vagrant/init.sh.erb', target.join('.vagrant_puppet/init.sh')
-
-      # create default puppet environment
-      template 'vagrant/environment/environment.conf.erb',
-                target.join('.vagrant_puppet/environments/vagrant/environment.conf')
-      template 'vagrant/environment/manifests/init.pp.erb',
-                target.join('.vagrant_puppet/environments/vagrant/manifests/init.pp')
     end
 
     def write_puppet_magnum_init
