@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    puppet-magnum (4.0.1)
+    puppet-magnum (4.0.2)
       bundler (>= 1.13.6)
       colorize (>= 0.8.1)
       puppet (~> 4.9.4)
@@ -43,7 +43,6 @@ GEM
       rake
     puppetlabs_spec_helper (2.1.2)
       mocha (~> 1.0)
-      parallel_tests
       puppet-lint (~> 2.0)
       puppet-syntax (~> 2.0)
       rspec-puppet (~> 2.0)
