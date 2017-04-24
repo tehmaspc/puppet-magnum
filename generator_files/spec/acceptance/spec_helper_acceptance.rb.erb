@@ -3,6 +3,10 @@ require 'beaker/puppet_install_helper'
 
 run_puppet_install_helper
 
+forge_modules = [
+  "puppetlabs-stdlib --version 4.16.0"
+]
+
 RSpec.configure do |c|
   proj_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
 
@@ -10,8 +14,22 @@ RSpec.configure do |c|
 
   c.before :suite do
     hosts.each do |host|
+
+      forge_modules.each do |install_module|
+        on host, puppet("module install #{install_module}"), {:acceptable_exit_codes => [0]}
+      end
+
       copy_module_to(host, :source => proj_root, :module_name => '<%= module_name %>')
-      on host, puppet('module install puppetlabs-stdlib'), {:acceptable_exit_codes => [0]}
     end
+  end
+end
+
+shared_examples "a idempotent resource" do
+  it 'should apply without errors' do
+    apply_manifest(manifest, :catch_failures => true)
+  end
+
+  it 'should apply a second time without changes' do
+    apply_manifest(manifest, :catch_changes => true)
   end
 end

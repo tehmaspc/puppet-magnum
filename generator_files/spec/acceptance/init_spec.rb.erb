@@ -6,11 +6,7 @@ describe '<%= module_name %>' do
 include <%= module_name %>
 EOS
   }
-  it 'should apply without errors' do
-    apply_manifest(manifest, :catch_failures => true)
-  end
 
-  it 'should apply a second time without changes' do
-    apply_manifest(manifest, :catch_changes => true)
-  end
+  it_behaves_like "a idempotent resource"
+
 end
