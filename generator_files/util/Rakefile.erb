@@ -3,28 +3,11 @@ require 'rspec/core/rake_task'
 require 'puppet-lint/tasks/puppet-lint'
 require 'puppetlabs_spec_helper/rake_tasks'
 
-desc 'Run unit tests'
-task :unit do
-  Rake::Task[:spec_prep].invoke
-  Rake::Task[:spec_standalone].invoke
-end
-task :spec => []; Rake::Task[:spec].clear
-task :spec => :unit
-
-desc 'Run integration tests'
-task :integ do
-  Rake::Task[:spec_prep].invoke
-
-  puts 'Launching Vagrant to run integration tests...'
-  sh 'vagrant up --provision'
-end
-
 desc 'Run syntax, lint and unit tests'
 task :test do
   Rake::Task[:syntax].invoke
   Rake::Task[:lint].invoke
-  Rake::Task[:unit].invoke
-  Rake::Task[:integ].invoke
+  Rake::Task[:beaker_test].invoke
 end
 
 # puppet-lint options
@@ -41,3 +24,13 @@ task :build => []; Rake::Task[:build].clear
 task :clean => []; Rake::Task[:clean].clear
 task :default => []; Rake::Task[:default].clear
 task :default => :test
+
+# configure beaker test environment and explicitly run SUTs
+task :beaker_test do
+  ENV['PUPPET_INSTALL_TYPE'] = 'agent'
+  ENV['PUPPET_INSTALL_VERSION'] = '1.10.0'
+  ENV['BEAKER_destroy'] = 'onpass'
+
+  Rake::Task["beaker:ubuntu-server-1404-x64"].invoke
+  Rake::Task["beaker:ubuntu-server-1604-x64"].invoke
+end
