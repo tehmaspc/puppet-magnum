@@ -1,3 +1,10 @@
+## [3.1.4]
+
+### IMPROVEMENTS:
+
+  * Upgraded all Puppet gems; tested with Ruby 2.3.3.
+  * Removed unnecessary `colorize` and `redcarpet` gems.
+
 ## [3.1.3]
 
 ### FIXES:
