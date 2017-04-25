@@ -1,31 +1,26 @@
 PATH
   remote: .
   specs:
-    puppet-magnum (3.1.3)
-      bundler (>= 1.13.6)
-      colorize (>= 0.8.1)
-      puppet (~> 4.9.4)
-      puppet-lint (~> 2.1.1)
-      puppetlabs_spec_helper (~> 2.1.0)
-      redcarpet (>= 3.4.0)
+    puppet-magnum (3.1.4)
+      bundler (>= 1.14.6)
+      puppet (~> 4.10.0)
+      puppet-lint (~> 2.2.1)
+      puppetlabs_spec_helper (~> 2.1.2)
       rspec (~> 3.5.0)
       rspec-puppet (~> 2.5.0)
       thor (>= 0.19.4)
-      version (>= 1.0.0)
+      version (>= 1.1.1)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    CFPropertyList (2.2.8)
-    colorize (0.8.1)
     diff-lcs (1.3)
     facter (2.4.6)
-      CFPropertyList (~> 2.2.6)
     fast_gettext (1.1.0)
     gettext (3.2.2)
       locale (>= 2.0.5)
       text (>= 1.3.0)
-    gettext-setup (0.16)
+    gettext-setup (0.24)
       fast_gettext (~> 1.1.0)
       gettext (>= 3.0.2)
       locale
@@ -35,23 +30,21 @@ GEM
     metaclass (0.0.4)
     mocha (1.2.1)
       metaclass (~> 0.0.1)
-    puppet (4.9.4)
-      CFPropertyList (~> 2.2.6)
+    puppet (4.10.0)
       facter (> 2.0, < 4)
       gettext-setup (>= 0.10, < 1)
       hiera (>= 2.0, < 4)
       json_pure (~> 1.8)
       locale (~> 2.1)
-    puppet-lint (2.1.1)
+    puppet-lint (2.2.1)
     puppet-syntax (2.4.0)
       rake
-    puppetlabs_spec_helper (2.1.0)
+    puppetlabs_spec_helper (2.1.2)
       mocha (~> 1.0)
       puppet-lint (~> 2.0)
       puppet-syntax (~> 2.0)
       rspec-puppet (~> 2.0)
     rake (12.0.0)
-    redcarpet (3.4.0)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -70,10 +63,11 @@ GEM
     sem_ver (0.1.1)
     text (1.3.1)
     thor (0.19.4)
-    version (1.0.0)
+    version (1.1.1)
 
 PLATFORMS
   ruby
+  x86_64-darwin-16
 
 DEPENDENCIES
   puppet-magnum!
@@ -81,4 +75,4 @@ DEPENDENCIES
   sem_ver (>= 0.1.1)
 
 BUNDLED WITH
-   1.13.6
+   1.14.6
