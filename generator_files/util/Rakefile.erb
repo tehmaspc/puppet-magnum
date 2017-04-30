@@ -3,11 +3,11 @@ require 'rspec/core/rake_task'
 require 'puppet-lint/tasks/puppet-lint'
 require 'puppetlabs_spec_helper/rake_tasks'
 
-desc 'Run syntax, lint and unit tests'
+desc 'Run syntax, lint and acceptance tests'
 task :test do
   Rake::Task[:syntax].invoke
   Rake::Task[:lint].invoke
-  Rake::Task[:beaker_test].invoke
+  Rake::Task[:acceptance].invoke
 end
 
 # puppet-lint options
@@ -19,18 +19,18 @@ PuppetLint::RakeTask.new :lint do |config|
   config.fail_on_warnings = false
 end
 
-# remove undesired rake tasks
-task :build => []; Rake::Task[:build].clear
-task :clean => []; Rake::Task[:clean].clear
-task :default => []; Rake::Task[:default].clear
-task :default => :test
-
-# configure beaker test environment and explicitly run SUTs
-task :beaker_test do
+desc 'Run acceptance tests'
+task :acceptance do
+  # beaker options
   ENV['PUPPET_INSTALL_TYPE'] = 'agent'
-  ENV['PUPPET_INSTALL_VERSION'] = '1.10.0'
   ENV['BEAKER_destroy'] = 'onpass'
 
   Rake::Task["beaker:ubuntu-server-1404-x64"].invoke
   Rake::Task["beaker:ubuntu-server-1604-x64"].invoke
 end
+
+# remove undesired rake tasks
+task :build => []; Rake::Task[:build].clear
+task :clean => []; Rake::Task[:clean].clear
+task :default => []; Rake::Task[:default].clear
+task :default => :test

@@ -1,3 +1,12 @@
+## [4.0.0]
+
+### IMPROVEMENTS:
+
+  * Upgrading to use Ruby `2.4.x`.
+  * Switching over to [Beaker](https://github.com/puppetlabs/beaker) for acceptance/integration testing.
+  * Adding `hiera` support.
+  * NOT backwards compatiable with PM 3.x.
+
 ## [3.1.5]
 
 ### IMPROVEMENTS:

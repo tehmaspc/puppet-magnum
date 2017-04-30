@@ -20,66 +20,47 @@ module PuppetMagnum
     class_option :copyright_holder,
       type: :string
 
-    def write_emptydirs
-      empty_directory target.join('manifests')
-      empty_directory target.join('templates')
-      empty_directory target.join('files')
-      empty_directory target.join('spec')
-      empty_directory target.join('data')
+    def write_dirs
+      dirs = ['manifests', 'data', 'templates', 'files',
+              'spec', 'spec/acceptance', 'spec/acceptance/nodesets',
+             ]
+
+      dirs.each do |dir|
+        empty_directory target.join("#{dir}")
+      end
     end
 
-    def write_readme
-      template 'README.md.erb', target.join('README.md')
-    end
-
-    def write_changelog
+    def write_util_files
+      template license_file,       target.join('LICENSE')
+      template 'README.md.erb',    target.join('README.md')
       template 'CHANGELOG.md.erb', target.join('CHANGELOG.md')
     end
 
-    def write_license
-      template license_file, target.join('LICENSE')
-    end
-
-    def write_metadata_json
+    def write_puppet_files
       template 'puppet/metadata.json.erb', target.join('metadata.json')
-    end
-
-    def write_manifests_templates_files
-      template 'puppet/init.pp.erb', target.join('manifests/init.pp')
-    end
-
-    def write_hiera_files
-      template 'puppet/common.yaml.erb', target.join('data/common.yaml')
-      template 'puppet/hiera.yaml.erb', target.join('hiera.yaml')
+      template 'puppet/init.pp.erb',       target.join('manifests/init.pp')
+      template 'puppet/hiera.yaml.erb',    target.join('hiera.yaml')
+      template 'puppet/common.yaml.erb',   target.join('data/common.yaml')
     end
 
     def write_spec_setup
-      spec_dirs = [ 'acceptance' ]
-      spec_dirs.each do |dir|
-        empty_directory target.join("spec/#{dir}")
-      end
-
+      template 'spec/rspec.erb', target.join('.rspec')
       template 'spec/acceptance/init_spec.rb.erb', target.join("spec/acceptance/#{module_name}_spec.rb")
-      empty_directory target.join('spec/acceptance/nodesets')
+
+      # beaker test files
+      template 'spec/acceptance/spec_helper_acceptance.rb.erb',  target.join('spec/spec_helper_acceptance.rb')
       template 'spec/acceptance/ubuntu-server-1404-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1404-x64.yml')
       template 'spec/acceptance/ubuntu-server-1604-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1604-x64.yml')
-      template 'spec/acceptance/spec_helper_acceptance.rb.erb', target.join('spec/spec_helper_acceptance.rb')
-      template 'spec/rspec.erb', target.join('.rspec')
     end
 
-    def write_gemfile
+    def write_util_files
       remove_file target.join('Gemfile')
-      template 'util/Gemfile.erb', target.join('Gemfile')
-    end
-
-    def write_rakefile
       remove_file target.join('Rakefile')
-      template 'util/Rakefile.erb', target.join('Rakefile')
-    end
-
-    def write_puppet_magnum_init
       remove_file target.join('.puppet-magnum.init')
-      template 'puppet-magnum.init.erb', target.join('.puppet-magnum.init')
+
+      template 'util/Gemfile.erb', target.join('Gemfile')
+      template 'util/Rakefile.erb', target.join('Rakefile')
+      template 'util/puppet-magnum.init.erb', target.join('.puppet-magnum.init')
     end
 
     # due to the 'git add' operation, this function should be called last
@@ -96,10 +77,6 @@ module PuppetMagnum
     end
 
     private
-
-    def commented(content)
-      content.split("\n").collect { |s| "# #{s}" }.join("\n")
-    end
 
     def license_name
       case options[:license]
@@ -123,17 +100,6 @@ module PuppetMagnum
       else
         raise "Unknown license: '#{options[:license]}'"
       end
-    end
-
-    def which(cmd)
-      exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
-      ENV['PATH'].split(File::PATH_SEPARATOR).each do |path|
-        exts.each { |ext|
-          exe = File.join(path, "#{cmd}#{ext}")
-          return exe if File.executable? exe
-        }
-      end
-      return nil
     end
 
     def maintainer
