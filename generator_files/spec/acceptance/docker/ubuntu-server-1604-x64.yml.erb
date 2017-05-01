@@ -1,0 +1,14 @@
+---
+HOSTS:
+  ubuntu-1604-x64:
+    roles:
+      - agent
+    platform: ubuntu-16.04-amd64
+    hypervisor: docker
+    image: ubuntu:16.04
+    docker_preserve_image: true
+CONFIG:
+  trace_limit: 200
+  masterless: true
+  log_level: verbose
+  type: aio

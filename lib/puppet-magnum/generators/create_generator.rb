@@ -22,7 +22,7 @@ module PuppetMagnum
 
     def write_dirs
       dirs = ['manifests', 'data', 'templates', 'files',
-              'spec', 'spec/acceptance', 'spec/acceptance/nodesets',
+              'spec', 'spec/acceptance', 'spec/acceptance/nodesets', 'spec/acceptance/nodesets/docker',
              ]
 
       dirs.each do |dir|
@@ -51,6 +51,8 @@ module PuppetMagnum
       template 'spec/acceptance/spec_helper_acceptance.rb.erb',  target.join('spec/spec_helper_acceptance.rb')
       template 'spec/acceptance/ubuntu-server-1404-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1404-x64.yml')
       template 'spec/acceptance/ubuntu-server-1604-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1604-x64.yml')
+      template 'spec/acceptance/docker/ubuntu-server-1404-x64.yml.erb', target.join('spec/acceptance/nodesets/docker/ubuntu-server-1404-x64.yml')
+      template 'spec/acceptance/docker/ubuntu-server-1604-x64.yml.erb', target.join('spec/acceptance/nodesets/docker/ubuntu-server-1604-x64.yml')
     end
 
     def write_util_files

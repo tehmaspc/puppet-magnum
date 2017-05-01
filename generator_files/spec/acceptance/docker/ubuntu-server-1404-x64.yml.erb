@@ -1,0 +1,14 @@
+---
+HOSTS:
+  ubuntu-1404-x64:
+    roles:
+      - agent
+    platform: ubuntu-14.04-amd64
+    hypervisor: docker
+    image: ubuntu:14.04
+    docker_preserve_image: true
+CONFIG:
+  trace_limit: 200
+  masterless: true
+  log_level: verbose
+  type: aio
