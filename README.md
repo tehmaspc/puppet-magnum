@@ -19,8 +19,8 @@
 
 * Install Ruby 2.4.x.
 * Install [Vagrant](https://www.vagrantup.com).
+* Install [VirtualBox](https://www.virtualbox.org/wiki/VirtualBox).
 * Install [Docker](https://www.docker.com) (optional).
-* Install [vagrant-cachier](https://github.com/fgrehm/vagrant-cachier) (optional).
 
 ### Install `puppet-magnum`
 
