@@ -15,18 +15,48 @@ Rake::Task[:lint].clear
 PuppetLint::RakeTask.new :lint do |config|
   config.ignore_paths = ['spec/**/*.pp']
   config.log_format = '%{path}:%{line}:%{check}:%{KIND}:%{message}'
-  config.disable_checks = [ "class_inherits_from_params_class", "80chars" ]
+  config.disable_checks = [ 'class_inherits_from_params_class', '80chars' ]
   config.fail_on_warnings = false
 end
 
-desc 'Run acceptance tests'
-task :acceptance do
-  # beaker options
+desc 'Run acceptance tests (VirtualBox)'
+task :acceptance, [:all] do |t, args|
+
+  # beaker default options
   ENV['PUPPET_INSTALL_TYPE'] = 'agent'
   ENV['BEAKER_destroy'] = 'onpass'
 
-  Rake::Task["beaker:ubuntu-server-1404-x64"].invoke
-  Rake::Task["beaker:ubuntu-server-1604-x64"].invoke
+  all = args[:all]
+
+  unless all.nil?
+    Rake::Task['beaker:ubuntu-server-1404-x64'].invoke
+  end
+
+  Rake::Task['beaker:ubuntu-server-1604-x64'].invoke
+end
+
+desc 'Run acceptance tests (Docker/Ubuntu 1404)'
+task :acceptance_docker1404 do
+
+  # beaker default options
+  ENV['PUPPET_INSTALL_TYPE'] = 'agent'
+  ENV['BEAKER_destroy'] = 'onpass'
+
+  ENV['BEAKER_set'] = 'docker/ubuntu-server-1404-x64'
+
+  Rake::Task['beaker'].invoke
+end
+
+desc 'Run acceptance tests (Docker/Ubuntu 1604)'
+task :acceptance_docker1604 do
+
+  # beaker default options
+  ENV['PUPPET_INSTALL_TYPE'] = 'agent'
+  ENV['BEAKER_destroy'] = 'onpass'
+
+  ENV['BEAKER_set'] = 'docker/ubuntu-server-1604-x64'
+
+  Rake::Task['beaker'].invoke
 end
 
 # remove undesired rake tasks
