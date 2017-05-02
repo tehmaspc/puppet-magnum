@@ -30,7 +30,7 @@ module PuppetMagnum
       end
     end
 
-    def write_util_files
+    def write_base_files
       template license_file,       target.join('LICENSE')
       template 'README.md.erb',    target.join('README.md')
       template 'CHANGELOG.md.erb', target.join('CHANGELOG.md')
@@ -49,8 +49,10 @@ module PuppetMagnum
 
       # beaker test files
       template 'spec/acceptance/spec_helper_acceptance.rb.erb',  target.join('spec/spec_helper_acceptance.rb')
+
       template 'spec/acceptance/ubuntu-server-1404-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1404-x64.yml')
       template 'spec/acceptance/ubuntu-server-1604-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1604-x64.yml')
+
       template 'spec/acceptance/docker/ubuntu-server-1404-x64.yml.erb', target.join('spec/acceptance/nodesets/docker/ubuntu-server-1404-x64.yml')
       template 'spec/acceptance/docker/ubuntu-server-1604-x64.yml.erb', target.join('spec/acceptance/nodesets/docker/ubuntu-server-1604-x64.yml')
     end
