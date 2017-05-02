@@ -2,10 +2,10 @@
 
 ### IMPROVEMENTS:
 
-  * Upgrading to use Ruby `2.4.x`.
-  * Switching over to [Beaker](https://github.com/puppetlabs/beaker) for acceptance/integration testing.
-  * Adding `hiera` support.
-  * NOT backwards compatiable with PM 3.x.
+  * Upgrading to use Ruby `2.4.x` by default.
+  * Switching over to [Beaker](https://github.com/puppetlabs/beaker) for acceptance/integration testing. All tests are now through Beaker.
+  * Adding `hiera` v5 support; more [details](https://docs.puppet.com/puppet/4.10/hiera_migrate_modules.html).
+  * `puppet-magnum` 4.x is NOT backwards compatible with `puppet-magnum` 3.x managed repos.
 
 ## [3.1.5]
 

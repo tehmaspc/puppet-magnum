@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/tehmaspc/puppet-magnum.svg?branch=master)](https://travis-ci.org/tehmaspc/puppet-magnum)
 
+**NOTE: `puppet-magnum` 4.x is NOT backwards compatible with `puppet-magnum` 3.x managed repos.**
+
 `puppet-magnum` is a tool for rapid, consistent, and best practice Puppet (4+) module development.
 
 `puppet-magnum` helps the Puppet module developer create or maintain a Puppet module and test the module with tools like the following:
@@ -17,7 +19,7 @@
 
 * Install Ruby 2.4.x.
 * Install [Vagrant](https://www.vagrantup.com).
-* Install [vagrant-serverspec](https://github.com/jvoorhis/vagrant-serverspec).
+* Install [Docker](https://www.docker.com) (optional).
 * Install [vagrant-cachier](https://github.com/fgrehm/vagrant-cachier) (optional).
 
 ### Install `puppet-magnum`
@@ -32,7 +34,7 @@
       puppet-magnum module          # Module related tasks. Type 'puppet-magnum module' for more help.
       puppet-magnum version         # Display version and copyright information
 
-## Example: Creating An `nginx` Puppet Module
+## Example: Creating an `nginx` Puppet Module
 
 The following shows how one can get started quickly creating an 'nginx' Puppet module:
 
