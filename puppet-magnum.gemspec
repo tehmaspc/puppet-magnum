@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = '>= 2.3.0'
+  spec.required_ruby_version = '>= 2.4.0'
 
   spec.add_development_dependency 'sem_ver', '>= 0.1.1'
   spec.add_development_dependency 'rake', '>= 12.0.0'
@@ -34,5 +34,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'puppet-lint', '~> 2.2.1'
   spec.add_runtime_dependency 'rspec-puppet', '~> 2.5.0'
   spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 2.1.2'
+  spec.add_runtime_dependency 'beaker-hostgenerator', '~> 0.8.4'
 
 end

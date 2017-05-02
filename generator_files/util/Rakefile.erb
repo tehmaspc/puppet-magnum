@@ -3,28 +3,11 @@ require 'rspec/core/rake_task'
 require 'puppet-lint/tasks/puppet-lint'
 require 'puppetlabs_spec_helper/rake_tasks'
 
-desc 'Run unit tests'
-task :unit do
-  Rake::Task[:spec_prep].invoke
-  Rake::Task[:spec_standalone].invoke
-end
-task :spec => []; Rake::Task[:spec].clear
-task :spec => :unit
-
-desc 'Run integration tests'
-task :integ do
-  Rake::Task[:spec_prep].invoke
-
-  puts 'Launching Vagrant to run integration tests...'
-  sh 'vagrant up --provision'
-end
-
-desc 'Run syntax, lint and unit tests'
+desc 'Run syntax, lint and acceptance tests'
 task :test do
   Rake::Task[:syntax].invoke
   Rake::Task[:lint].invoke
-  Rake::Task[:unit].invoke
-  Rake::Task[:integ].invoke
+  Rake::Task[:acceptance].invoke
 end
 
 # puppet-lint options
@@ -32,8 +15,48 @@ Rake::Task[:lint].clear
 PuppetLint::RakeTask.new :lint do |config|
   config.ignore_paths = ['spec/**/*.pp']
   config.log_format = '%{path}:%{line}:%{check}:%{KIND}:%{message}'
-  config.disable_checks = [ "class_inherits_from_params_class", "80chars" ]
+  config.disable_checks = [ 'class_inherits_from_params_class', '80chars' ]
   config.fail_on_warnings = false
+end
+
+desc 'Run acceptance tests (VirtualBox)'
+task :acceptance, [:all] do |t, args|
+
+  # beaker default options
+  ENV['PUPPET_INSTALL_TYPE'] = 'agent'
+  ENV['BEAKER_destroy'] = 'onpass'
+
+  all = args[:all]
+
+  unless all.nil?
+    Rake::Task['beaker:ubuntu-server-1404-x64'].invoke
+  end
+
+  Rake::Task['beaker:ubuntu-server-1604-x64'].invoke
+end
+
+desc 'Run acceptance tests (Docker/Ubuntu 1404)'
+task :acceptance_docker1404 do
+
+  # beaker default options
+  ENV['PUPPET_INSTALL_TYPE'] = 'agent'
+  ENV['BEAKER_destroy'] = 'onpass'
+
+  ENV['BEAKER_set'] = 'docker/ubuntu-server-1404-x64'
+
+  Rake::Task['beaker'].invoke
+end
+
+desc 'Run acceptance tests (Docker/Ubuntu 1604)'
+task :acceptance_docker1604 do
+
+  # beaker default options
+  ENV['PUPPET_INSTALL_TYPE'] = 'agent'
+  ENV['BEAKER_destroy'] = 'onpass'
+
+  ENV['BEAKER_set'] = 'docker/ubuntu-server-1604-x64'
+
+  Rake::Task['beaker'].invoke
 end
 
 # remove undesired rake tasks

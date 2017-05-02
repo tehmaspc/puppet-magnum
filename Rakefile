@@ -10,11 +10,4 @@ RSpec::Core::RakeTask.new(:spec) do |t|
   t.rspec_opts = ['--color --format progress']
 end
 
-desc 'Display the list of available rake tasks'
-task :help do
-  system 'rake -T'
-end
-
-task :unit    => 'spec'
-task :test    => 'spec'
 task :default => 'spec'

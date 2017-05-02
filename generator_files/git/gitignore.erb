@@ -15,6 +15,8 @@
 *.log
 *.sql
 *.sqlite
+*.swp
+*.vdi
 .DS_Store*
 ._*
 *~
@@ -30,11 +32,7 @@ Thumbs.db
 Gemfile.lock
 bin/*
 .bundle/*
+.vagrant/*
 pkg
-
-.vagrant
-.vagrant_puppet/environments/vagrant/modules
-
-# ignore all fixtures modules, except this module.
-spec/fixtures/modules/*
-!spec/fixtures/modules/<%= module_name %>
+junit
+log

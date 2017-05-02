@@ -1,0 +1,16 @@
+require_relative '../spec_helper_acceptance'
+
+describe '<%= module_name %>' do
+  let(:manifest) {
+    <<-EOS
+include <%= module_name %>
+EOS
+  }
+
+  it_behaves_like "an idempotent resource"
+
+  describe "something" do
+    it "does something"
+  end
+
+end

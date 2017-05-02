@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/tehmaspc/puppet-magnum.svg?branch=master)](https://travis-ci.org/tehmaspc/puppet-magnum)
 
+**NOTE: `puppet-magnum` 4.x is NOT backwards compatible with `puppet-magnum` 3.x managed repos.**
+
 `puppet-magnum` is a tool for rapid, consistent, and best practice Puppet (4+) module development.
 
 `puppet-magnum` helps the Puppet module developer create or maintain a Puppet module and test the module with tools like the following:
@@ -15,10 +17,10 @@
 
 ### Requirements
 
-* Install Ruby 2.3.x.
+* Install Ruby 2.4.x.
 * Install [Vagrant](https://www.vagrantup.com).
-* Install [vagrant-serverspec](https://github.com/jvoorhis/vagrant-serverspec).
-* Install [vagrant-cachier](https://github.com/fgrehm/vagrant-cachier) (optional).
+* Install [VirtualBox](https://www.virtualbox.org/wiki/VirtualBox).
+* Install [Docker](https://www.docker.com) (optional).
 
 ### Install `puppet-magnum`
 
@@ -32,23 +34,29 @@
       puppet-magnum module          # Module related tasks. Type 'puppet-magnum module' for more help.
       puppet-magnum version         # Display version and copyright information
 
-## Example: Creating An `nginx` Puppet Module
+## Example: Creating an `nginx` Puppet Module
 
 The following shows how one can get started quickly creating an 'nginx' Puppet module:
 
     % puppet-magnum module create nginx
           create  nginx/manifests
+          create  nginx/data
           create  nginx/templates
           create  nginx/files
           create  nginx/spec
-          create  nginx/serverspec
+          create  nginx/spec/acceptance
+          create  nginx/spec/acceptance/nodesets
           ...
-          create  nginx/Vagrantfile
-          create  nginx/.vagrant_puppet/init.sh
-          create  nginx/.vagrant_puppet/environments/vagrant/environment.conf
-          create  nginx/.vagrant_puppet/environments/vagrant/manifests/init.pp
-          remove  nginx/.puppet-magnum.init
           create  nginx/.puppet-magnum.init
+          create  nginx/metadata.json
+          create  nginx/manifests/init.pp
+          create  nginx/hiera.yaml
+          create  nginx/data/common.yaml
+          create  nginx/.rspec
+          create  nginx/spec/acceptance/nginx_spec.rb
+          create  nginx/spec/spec_helper_acceptance.rb
+          create  nginx/spec/acceptance/nodesets/ubuntu-server-1404-x64.yml
+          create  nginx/spec/acceptance/nodesets/ubuntu-server-1604-x64.yml
           remove  nginx/.gitignore
           create  nginx/.gitignore
              run  git init from "./nginx"
@@ -78,7 +86,7 @@ Thanks to the following projects and folks!:
 
 ## Authors and License
 
-Copyright 2013-2016 Tehmasp Chaudhri <tehmasp@chaudhri.me>
+Copyright 2013-2017 Tehmasp Chaudhri <tehmasp@chaudhri.me>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

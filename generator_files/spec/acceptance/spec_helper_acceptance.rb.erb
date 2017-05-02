@@ -1,0 +1,33 @@
+require 'beaker-rspec'
+require 'beaker/puppet_install_helper'
+
+default_modules = [
+  "puppetlabs-stdlib",
+]
+
+run_puppet_install_helper
+
+RSpec.configure do |c|
+  proj_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+
+  c.before :suite do
+    hosts.each do |host|
+
+      default_modules.each do |default_module|
+        on host, puppet("module install #{default_module}"), {:acceptable_exit_codes => [0]}
+      end
+
+      copy_module_to(host, :source => proj_root, :module_name => '<%= module_name %>')
+    end
+  end
+end
+
+shared_examples "an idempotent resource" do
+  it 'should apply without errors' do
+    apply_manifest(manifest, :catch_failures => true)
+  end
+
+  it 'should apply a second time without changes' do
+    apply_manifest(manifest, :catch_changes => true)
+  end
+end

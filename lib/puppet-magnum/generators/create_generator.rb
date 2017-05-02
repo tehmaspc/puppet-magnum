@@ -20,90 +20,51 @@ module PuppetMagnum
     class_option :copyright_holder,
       type: :string
 
-    def write_emptydirs
-      empty_directory target.join('manifests')
-      empty_directory target.join('templates')
-      empty_directory target.join('files')
-      empty_directory target.join('spec')
-      empty_directory target.join('serverspec')
-      empty_directory target.join('.vagrant_puppet')
+    def write_dirs
+      dirs = ['manifests', 'data', 'templates', 'files',
+              'spec', 'spec/acceptance', 'spec/acceptance/nodesets', 'spec/acceptance/nodesets/docker',
+             ]
+
+      dirs.each do |dir|
+        empty_directory target.join("#{dir}")
+      end
     end
 
-    def write_readme
-      template 'README.md.erb', target.join('README.md')
-    end
-
-    def write_changelog
+    def write_base_files
+      template license_file,       target.join('LICENSE')
+      template 'README.md.erb',    target.join('README.md')
       template 'CHANGELOG.md.erb', target.join('CHANGELOG.md')
     end
 
-    def write_license
-      template license_file, target.join('LICENSE')
-    end
-
-    def write_metadata_json
+    def write_puppet_files
       template 'puppet/metadata.json.erb', target.join('metadata.json')
-    end
-
-    def write_manifests_templates_files
-      template 'puppet/init.pp.erb', target.join('manifests/init.pp')
-      template 'puppet/params.pp.erb', target.join('manifests/params.pp')
+      template 'puppet/init.pp.erb',       target.join('manifests/init.pp')
+      template 'puppet/hiera.yaml.erb',    target.join('hiera.yaml')
+      template 'puppet/common.yaml.erb',   target.join('data/common.yaml')
     end
 
     def write_spec_setup
-      spec_dirs = [ 'classes', 'defines', 'functions', 'hosts', 'unit' ]
-      spec_dirs.each do |dir|
-        empty_directory target.join("spec/#{dir}")
-      end
-
-      empty_directory target.join('spec/fixtures/manifests')
-      create_file target.join('spec/fixtures/manifests/site.pp')
-
-      empty_directory target.join("spec/fixtures/modules/#{module_name}")
-      spec_dirs = ['manifests', 'templates', 'files']
-      spec_dirs.each { |spec_dir|
-        remove_file target.join("spec/fixtures/modules/#{module_name}/#{spec_dir}")
-        create_link target.join("spec/fixtures/modules/#{module_name}/#{spec_dir}"), "../../../../#{spec_dir}"
-      }
-
-      template 'spec/rspec/spec_helper.rb.erb', target.join('spec/spec_helper.rb')
-      template 'spec/rspec/init_spec.rb.erb', target.join("spec/classes/#{module_name}_spec.rb")
-
       template 'spec/rspec.erb', target.join('.rspec')
+      template 'spec/acceptance/init_spec.rb.erb', target.join("spec/acceptance/#{module_name}_spec.rb")
+
+      # beaker test files
+      template 'spec/acceptance/spec_helper_acceptance.rb.erb',  target.join('spec/spec_helper_acceptance.rb')
+
+      template 'spec/acceptance/ubuntu-server-1404-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1404-x64.yml')
+      template 'spec/acceptance/ubuntu-server-1604-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1604-x64.yml')
+
+      template 'spec/acceptance/docker/ubuntu-server-1404-x64.yml.erb', target.join('spec/acceptance/nodesets/docker/ubuntu-server-1404-x64.yml')
+      template 'spec/acceptance/docker/ubuntu-server-1604-x64.yml.erb', target.join('spec/acceptance/nodesets/docker/ubuntu-server-1604-x64.yml')
     end
 
-    def write_serverspec_setup
-      template 'spec/serverspec/init_spec.rb.erb', target.join("serverspec/#{module_name}_spec.rb")
-    end
-
-    def write_fixtures
-       template 'spec/fixtures.yml.erb', target.join('.fixtures.yml')
-    end
-
-    def write_gemfile
+    def write_util_files
       remove_file target.join('Gemfile')
-      template 'util/Gemfile.erb', target.join('Gemfile')
-    end
-
-    def write_rakefile
       remove_file target.join('Rakefile')
-      template 'util/Rakefile.erb', target.join('Rakefile')
-    end
-
-    def write_vagrantfile
-      template 'vagrant/Vagrantfile.erb', target.join('Vagrantfile')
-      template 'vagrant/init.sh.erb', target.join('.vagrant_puppet/init.sh')
-
-      # create default puppet environment
-      template 'vagrant/environment/environment.conf.erb',
-                target.join('.vagrant_puppet/environments/vagrant/environment.conf')
-      template 'vagrant/environment/manifests/init.pp.erb',
-                target.join('.vagrant_puppet/environments/vagrant/manifests/init.pp')
-    end
-
-    def write_puppet_magnum_init
       remove_file target.join('.puppet-magnum.init')
-      template 'puppet-magnum.init.erb', target.join('.puppet-magnum.init')
+
+      template 'util/Gemfile.erb', target.join('Gemfile')
+      template 'util/Rakefile.erb', target.join('Rakefile')
+      template 'util/puppet-magnum.init.erb', target.join('.puppet-magnum.init')
     end
 
     # due to the 'git add' operation, this function should be called last
@@ -120,10 +81,6 @@ module PuppetMagnum
     end
 
     private
-
-    def commented(content)
-      content.split("\n").collect { |s| "# #{s}" }.join("\n")
-    end
 
     def license_name
       case options[:license]
@@ -147,17 +104,6 @@ module PuppetMagnum
       else
         raise "Unknown license: '#{options[:license]}'"
       end
-    end
-
-    def which(cmd)
-      exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
-      ENV['PATH'].split(File::PATH_SEPARATOR).each do |path|
-        exts.each { |ext|
-          exe = File.join(path, "#{cmd}#{ext}")
-          return exe if File.executable? exe
-        }
-      end
-      return nil
     end
 
     def maintainer
