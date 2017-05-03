@@ -31,9 +31,9 @@ module PuppetMagnum
     end
 
     def write_base_files
-      template license_file,       target.join('LICENSE')
-      template 'README.md.erb',    target.join('README.md')
-      template 'CHANGELOG.md.erb', target.join('CHANGELOG.md')
+      template license_file,            target.join('LICENSE')
+      template 'base/README.md.erb',    target.join('README.md')
+      template 'base/CHANGELOG.md.erb', target.join('CHANGELOG.md')
     end
 
     def write_puppet_files
@@ -48,13 +48,15 @@ module PuppetMagnum
       template 'spec/acceptance/init_spec.rb.erb', target.join("spec/acceptance/#{module_name}_spec.rb")
 
       # beaker test files
-      template 'spec/acceptance/spec_helper_acceptance.rb.erb',  target.join('spec/spec_helper_acceptance.rb')
+      template 'spec/acceptance/spec_helper_acceptance.rb.erb', target.join('spec/spec_helper_acceptance.rb')
 
-      template 'spec/acceptance/ubuntu-server-1404-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1404-x64.yml')
-      template 'spec/acceptance/ubuntu-server-1604-x64.yml.erb', target.join('spec/acceptance/nodesets/ubuntu-server-1604-x64.yml')
-
-      template 'spec/acceptance/docker/ubuntu-server-1404-x64.yml.erb', target.join('spec/acceptance/nodesets/docker/ubuntu-server-1404-x64.yml')
-      template 'spec/acceptance/docker/ubuntu-server-1604-x64.yml.erb', target.join('spec/acceptance/nodesets/docker/ubuntu-server-1604-x64.yml')
+      beaker_sut_files = ['ubuntu-server-1404-x64.yml', 'ubuntu-server-1604-x64.yml']
+      beaker_sut_files.each do |beaker_sut_file|
+        # VirtualBox
+        template "spec/acceptance/#{beaker_sut_file}.erb", target.join("spec/acceptance/nodesets/#{beaker_sut_file}")
+        # Docker
+        template "spec/acceptance/docker/#{beaker_sut_file}.erb", target.join("spec/acceptance/nodesets/docker/#{beaker_sut_file}")
+      end
     end
 
     def write_util_files

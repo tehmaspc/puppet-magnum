@@ -35,5 +35,4 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rspec-puppet', '~> 2.5.0'
   spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 2.1.2'
   spec.add_runtime_dependency 'beaker-hostgenerator', '~> 0.8.4'
-
 end
