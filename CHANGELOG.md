@@ -1,3 +1,9 @@
+## [4.0.1]
+
+### IMPROVEMENTS:
+
+  * Minor code cleanup.
+
 ## [4.0.0]
 
 ### IMPROVEMENTS:
