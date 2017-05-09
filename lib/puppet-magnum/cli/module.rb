@@ -14,6 +14,11 @@ module PuppetMagnum
       PuppetMagnum::CreateGenerator.new([File.join(Dir.pwd, module_name), module_name], options).invoke_all
     end
 
+    desc 'verify [MODULE_NAME]', 'Verifies the Puppet module.'
+    def verify(module_name)
+      PuppetMagnum::Verify.new([File.join(Dir.pwd, module_name), module_name], options).invoke_all
+    end
+
     def self.banner(task, namespace = false, subcommand = true)
       "#{basename} #{task.formatted_usage(self, namespace, subcommand).split(':').join(' ')}"
     end

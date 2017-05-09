@@ -20,6 +20,30 @@ module PuppetMagnum
     class_option :copyright_holder,
       type: :string
 
+    # first, remove ANY unused legacy files and directories.
+    # (migration function from `puppet-magnum` 3.x to 4.x)
+    def write_remove_legacy_files_dirs
+      if File.exist?(target.join('.puppet-magnum.init'))
+
+        legacy_files = ['.fixtures.yml', '.vagrant_puppet', 'Vagrantfile']
+        legacy_files.each do |legacy_file|
+          if File.exist?(target.join("#{legacy_file}"))
+            remove_file target.join("#{legacy_file}")
+          end
+        end
+
+        legacy_dirs = ['spec', 'serverspec']
+        legacy_dirs.each do |legacy_dir|
+          if File.exist?(target.join("#{legacy_dir}"))
+            directory target.join("#{legacy_dir}"), target.join("#{legacy_dir}.old")
+            remove_file target.join("#{legacy_dir}")
+          end
+        end
+
+        remove_file target.join('.puppet-magnum.init')
+      end
+    end
+
     def write_dirs
       dirs = ['manifests', 'data', 'templates', 'files',
               'spec', 'spec/acceptance', 'spec/acceptance/nodesets', 'spec/acceptance/nodesets/docker',
@@ -36,6 +60,16 @@ module PuppetMagnum
       template 'base/CHANGELOG.md.erb', target.join('CHANGELOG.md')
     end
 
+    def write_util_files
+      remove_file target.join('Gemfile')
+      remove_file target.join('Rakefile')
+      remove_file target.join('.puppet-magnum')
+
+      template 'util/Gemfile.erb', target.join('Gemfile')
+      template 'util/Rakefile.erb', target.join('Rakefile')
+      template 'util/puppet-magnum.erb', target.join('.puppet-magnum')
+    end
+
     def write_puppet_files
       template 'puppet/metadata.json.erb', target.join('metadata.json')
       template 'puppet/init.pp.erb',       target.join('manifests/init.pp')
@@ -50,7 +84,11 @@ module PuppetMagnum
       # beaker test files
       template 'spec/acceptance/spec_helper_acceptance.rb.erb', target.join('spec/spec_helper_acceptance.rb')
 
-      beaker_sut_files = ['ubuntu-server-1404-x64.yml', 'ubuntu-server-1604-x64.yml']
+      beaker_sut_files = [
+        'ubuntu-server-1404-x64.yml',
+        'ubuntu-server-1604-x64.yml',
+      ]
+
       beaker_sut_files.each do |beaker_sut_file|
         # VirtualBox
         template "spec/acceptance/#{beaker_sut_file}.erb", target.join("spec/acceptance/nodesets/#{beaker_sut_file}")
@@ -59,17 +97,7 @@ module PuppetMagnum
       end
     end
 
-    def write_util_files
-      remove_file target.join('Gemfile')
-      remove_file target.join('Rakefile')
-      remove_file target.join('.puppet-magnum.init')
-
-      template 'util/Gemfile.erb', target.join('Gemfile')
-      template 'util/Rakefile.erb', target.join('Rakefile')
-      template 'util/puppet-magnum.init.erb', target.join('.puppet-magnum.init')
-    end
-
-    # due to the 'git add' operation, this function should be called last
+    # due to the 'git add' operation, this function should be called last.
     def write_git_setup
       remove_file target.join('.gitignore')
       template 'git/gitignore.erb', target.join('.gitignore')
@@ -124,8 +152,12 @@ module PuppetMagnum
       options[:copyright_holder] || maintainer
     end
 
-    def puppet_magnum_init_timestamp
-      "puppet-magnum (#{PuppetMagnum::VERSION.chomp}) last initialized this Puppet module directory on #{Time.now.ctime}."
+    def puppet_magnum_init_date
+      Time.now.ctime
+    end
+
+    def puppet_magnum_init_version
+      PuppetMagnum::VERSION.chomp
     end
 
     def default_options

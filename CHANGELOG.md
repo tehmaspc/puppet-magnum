@@ -1,3 +1,16 @@
+## [4.0.2]
+
+### IMPROVEMENTS:
+
+  * Added a function to remove any unused files and directories in `puppet-magnum` 4.x.
+    This will make upgrading PM repos from 3.x to 4.x easier.
+    A `module init` using `puppet-magnum` 4.x will remove/rename the following files:
+      - .fixtures.yml (removed)
+      - .vagrant_puppet/ (removed)
+      - Vagrantfile (removed)
+      - spec => spec.old (renamed)
+      - serverspec => serverspec.old (renamed)
+
 ## [4.0.1]
 
 ### IMPROVEMENTS:
