@@ -10,6 +10,7 @@
       - Vagrantfile (removed)
       - spec => spec.old (renamed)
       - serverspec => serverspec.old (renamed)
+    * In `puppet-magnum` 4.x - `.puppet-magnum.init` is now `.puppet-magnum` and it is in YAML format.
 
 ## [4.0.1]
 
