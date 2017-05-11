@@ -1,3 +1,13 @@
+## [4.0.3]
+
+### FIXES:
+
+  * Reintro .fixtures.yml support since Beaker doesn't support private git repos properly.
+
+### IMPROVEMENTS:
+
+  * Update gem versions.
+
 ## [4.0.2]
 
 ### IMPROVEMENTS:

@@ -25,7 +25,7 @@ module PuppetMagnum
     def write_remove_legacy_files_dirs
       if File.exist?(target.join('.puppet-magnum.init'))
 
-        legacy_files = ['.fixtures.yml', '.vagrant_puppet', 'Vagrantfile']
+        legacy_files = ['.vagrant_puppet', 'Vagrantfile']
         legacy_files.each do |legacy_file|
           if File.exist?(target.join("#{legacy_file}"))
             remove_file target.join("#{legacy_file}")
@@ -46,7 +46,8 @@ module PuppetMagnum
 
     def write_dirs
       dirs = ['manifests', 'data', 'templates', 'files',
-              'spec', 'spec/acceptance', 'spec/acceptance/nodesets', 'spec/acceptance/nodesets/docker',
+              'spec', 'spec/fixtures', 'spec/fixtures/modules',
+              'spec/acceptance', 'spec/acceptance/nodesets', 'spec/acceptance/nodesets/docker',
              ]
 
       dirs.each do |dir|
@@ -78,11 +79,10 @@ module PuppetMagnum
     end
 
     def write_spec_setup
-      template 'spec/rspec.erb', target.join('.rspec')
-      template 'spec/acceptance/init_spec.rb.erb', target.join("spec/acceptance/#{module_name}_spec.rb")
-
-      # beaker test files
-      template 'spec/acceptance/spec_helper_acceptance.rb.erb', target.join('spec/spec_helper_acceptance.rb')
+      template 'spec/fixtures.yml.erb',              target.join('.fixtures.yml')
+      template 'spec/rspec.erb',                     target.join('.rspec')
+      template 'spec/spec_helper_acceptance.rb.erb', target.join('spec/spec_helper_acceptance.rb')
+      template 'spec/acceptance/init_spec.rb.erb',   target.join("spec/acceptance/#{module_name}_spec.rb")
 
       beaker_sut_files = [
         'ubuntu-server-1404-x64.yml',

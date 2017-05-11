@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'thor', '>= 0.19.4'
   spec.add_runtime_dependency 'version', '>= 1.1.1'
 
-  spec.add_runtime_dependency 'puppet', '~> 4.10.0'
+  spec.add_runtime_dependency 'puppet', '~> 4.10.1'
   spec.add_runtime_dependency 'rspec', '~> 3.5.0'
   spec.add_runtime_dependency 'puppet-lint', '~> 2.2.1'
   spec.add_runtime_dependency 'rspec-puppet', '~> 2.5.0'

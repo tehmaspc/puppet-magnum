@@ -1,5 +1,5 @@
-require 'thor'
 require 'pathname'
+require 'thor'
 
 module PuppetMagnum
 

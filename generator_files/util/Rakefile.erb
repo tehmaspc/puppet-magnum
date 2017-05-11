@@ -7,6 +7,8 @@ desc 'Run syntax, lint and acceptance tests'
 task :test do
   Rake::Task[:syntax].invoke
   Rake::Task[:lint].invoke
+
+  Rake::Task[:spec_prep].invoke
   Rake::Task[:acceptance].invoke
 end
 
