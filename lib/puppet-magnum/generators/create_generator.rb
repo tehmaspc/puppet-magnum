@@ -35,7 +35,7 @@ module PuppetMagnum
         legacy_dirs = ['spec', 'serverspec']
         legacy_dirs.each do |legacy_dir|
           if File.exist?(target.join("#{legacy_dir}"))
-            directory target.join("#{legacy_dir}"), target.join("#{legacy_dir}.old")
+            FileUtils.cp_r target.join("#{legacy_dir}"), target.join("#{legacy_dir}.old")
             remove_file target.join("#{legacy_dir}")
           end
         end
