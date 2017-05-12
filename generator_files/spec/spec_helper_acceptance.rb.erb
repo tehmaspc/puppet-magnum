@@ -24,7 +24,7 @@ RSpec.configure do |c|
   end
 end
 
-shared_examples "an idempotent resource" do
+shared_examples "a idempotent resource" do
   it 'should apply without errors' do
     apply_manifest(manifest, :catch_failures => true)
   end
