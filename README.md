@@ -10,9 +10,8 @@ Re-initializing a `puppet-magnum` 3.x repo with 4.x will update and remove certa
 `puppet-magnum` helps the Puppet module developer create or maintain a Puppet module and test the module with tools like the following:
 
 * [puppet-lint](http://puppet-lint.com)
-* [rspec-puppet](http://rspec-puppet.com)
 * [puppetlabs_spec_helper](http://github.com/puppetlabs/puppetlabs_spec_helper)
-* [serverspec](http://serverspec.org) (via [vagrant-serverspec](https://github.com/jvoorhis/vagrant-serverspec))
+* [serverspec](http://serverspec.org) (via [Beaker](https://github.com/puppetlabs/beaker))
 
 ## Installation
 
