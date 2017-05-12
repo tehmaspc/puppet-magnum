@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/tehmaspc/puppet-magnum.svg?branch=master)](https://travis-ci.org/tehmaspc/puppet-magnum)
 
-**NOTE: `puppet-magnum` 4.x is NOT backwards compatible with `puppet-magnum` 3.x managed repos.**
+**NOTE: `puppet-magnum` 4.x is NOT backwards compatible with `puppet-magnum` 3.x managed repos.  
+Re-initializing a `puppet-magnum` 3.x repo with 4.x will update and remove certain files in order to work with 4.x.**
 
 `puppet-magnum` is a tool for rapid, consistent, and best practice Puppet (4+) module development.
 
