@@ -1,3 +1,9 @@
+## [4.0.4]
+
+### FIXES:
+
+* Fix spec test naming.
+
 ## [4.0.3]
 
 ### FIXES:

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    puppet-magnum (4.0.3)
+    puppet-magnum (4.0.4)
       beaker-hostgenerator (~> 0.8.4)
       bundler (>= 1.14.6)
       puppet (~> 4.10.1)
