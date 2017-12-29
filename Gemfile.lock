@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    puppet-magnum (4.0.4)
+    puppet-magnum (4.1.0)
       beaker-hostgenerator (~> 0.8.4)
       bundler (>= 1.14.6)
       puppet (~> 4.10.1)
@@ -18,33 +18,33 @@ GEM
     beaker-hostgenerator (0.8.4)
       deep_merge (~> 1.0)
       stringify-hash (~> 0.0.0)
-    deep_merge (1.1.1)
+    deep_merge (1.2.1)
     diff-lcs (1.3)
-    facter (2.4.6)
+    facter (2.5.1)
     fast_gettext (1.1.0)
-    gettext (3.2.2)
+    gettext (3.2.6)
       locale (>= 2.0.5)
       text (>= 1.3.0)
-    gettext-setup (0.24)
+    gettext-setup (0.29)
       fast_gettext (~> 1.1.0)
       gettext (>= 3.0.2)
       locale
-    hiera (3.3.1)
+    hiera (3.4.2)
     json_pure (1.8.6)
     locale (2.1.2)
     metaclass (0.0.4)
-    mocha (1.2.1)
+    mocha (1.3.0)
       metaclass (~> 0.0.1)
-    puppet (4.10.1)
+    puppet (4.10.9)
       facter (> 2.0, < 4)
       gettext-setup (>= 0.10, < 1)
       hiera (>= 2.0, < 4)
       json_pure (~> 1.8)
       locale (~> 2.1)
     puppet-lint (2.2.1)
-    puppet-syntax (2.4.0)
+    puppet-syntax (2.4.1)
       rake
-    puppetlabs_spec_helper (2.1.2)
+    puppetlabs_spec_helper (2.1.5)
       mocha (~> 1.0)
       puppet-lint (~> 2.0)
       puppet-syntax (~> 2.0)
@@ -68,7 +68,7 @@ GEM
     sem_ver (0.1.1)
     stringify-hash (0.0.2)
     text (1.3.1)
-    thor (0.19.4)
+    thor (0.20.0)
     version (1.1.1)
 
 PLATFORMS
@@ -81,4 +81,4 @@ DEPENDENCIES
   sem_ver (>= 0.1.1)
 
 BUNDLED WITH
-   1.14.6
+   1.16.1
