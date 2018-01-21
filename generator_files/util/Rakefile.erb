@@ -42,7 +42,7 @@ task :vbox do
   unless ARGV[3].nil?
     sut = ARGV[3]
   end
-  ENV['BEAKER_set']= sut
+  ENV['BEAKER_set'] = sut
 
   case ARGV[1]
   when "up"
@@ -67,7 +67,7 @@ task :vbox do
 
 end
 
-desc 'Run tests using Docker: <up|provision|ssh|destroy|ci> [spec test] [sut]'
+desc 'Run tests using Docker: <up|provision|ssh|destroy> [spec test] [sut]'
 task :docker do
 
   ARGV.each { |a| task a.to_sym do ; end }
@@ -89,7 +89,7 @@ task :docker do
   unless ARGV[3].nil?
     sut = ARGV[3]
   end
-  ENV['BEAKER_set']= sut
+  ENV['BEAKER_set'] = sut
 
   case ARGV[1]
   when "up"
@@ -123,4 +123,9 @@ end
 task :build => []; Rake::Task[:build].clear
 task :clean => []; Rake::Task[:clean].clear
 task :default => []; Rake::Task[:default].clear
+
+task :rubocop => []; Rake::Task[:rubocop].clear
+task :compute_dev_version => []; Rake::Task[:compute_dev_version].clear
+
+# default task
 task :default => :test
