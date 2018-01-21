@@ -23,7 +23,7 @@ PuppetLint::RakeTask.new :lint do |config|
   config.fail_on_warnings = false
 end
 
-desc 'Run tests using Virtualbox: <up|provision|ssh|destroy> [spec test] [sut]'
+desc 'Run tests using VirtualBox: <up|provision|ssh|destroy> [spec test] [sut]'
 task :vbox do
 
   ARGV.each { |a| task a.to_sym do ; end }

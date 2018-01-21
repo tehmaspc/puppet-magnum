@@ -17,7 +17,7 @@ Re-initializing a `puppet-magnum` 3.x repo with 4.x will update and remove certa
 
 ### Requirements
 
-* Install Ruby 2.4.x.
+* Install Ruby 2.5.x.
 * Install [Vagrant](https://www.vagrantup.com).
 * Install [VirtualBox](https://www.virtualbox.org/wiki/VirtualBox).
 * Install [Docker](https://www.docker.com) (optional).
@@ -86,7 +86,7 @@ Thanks to the following projects and folks!:
 
 ## Authors and License
 
-Copyright 2013-2017 Tehmasp Chaudhri <tehmasp@chaudhri.me>
+Copyright 2013-2018 Tehmasp Chaudhri <tehmasp@chaudhri.me>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
