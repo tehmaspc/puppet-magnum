@@ -1,3 +1,13 @@
+## [4.1.0]
+
+### IMPROVEMENTS:
+
+  * Upgraded to Ruby 2.5.x
+  * Updated gem versions.
+  * Improved and streamlined beaker workflows with VirtualBox and Docker.
+  * Updated defaults for better CI workflows.
+  * Updated SUTs with more current settings.
+
 ## [4.0.4]
 
 ### FIXES:

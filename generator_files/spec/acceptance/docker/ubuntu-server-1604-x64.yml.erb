@@ -1,14 +1,17 @@
 ---
 HOSTS:
   ubuntu-1604-x64:
-    roles:
-      - agent
-    platform: ubuntu-16.04-amd64
+    platform: ubuntu-1604-amd64
     hypervisor: docker
     image: ubuntu:16.04
     docker_preserve_image: true
+    docker_container_name: beaker-test
+    roles:
+      - agent
+      - default
+    docker_cmd: '["/sbin/init"]'
+    docker_image_commands:
+      - 'apt-get install -y net-tools wget curl'
 CONFIG:
-  trace_limit: 200
-  masterless: true
-  log_level: verbose
+  log_level: info
   type: aio
