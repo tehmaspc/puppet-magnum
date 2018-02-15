@@ -1,12 +1,12 @@
 PATH
   remote: .
   specs:
-    puppet-magnum (4.1.0)
-      beaker-hostgenerator (~> 1.1.5)
+    puppet-magnum (4.1.1)
+      beaker-hostgenerator (~> 1.1.7)
       bundler (>= 1.16.1)
-      puppet (~> 4.10.9)
+      puppet (~> 4.10.10)
       puppet-lint (~> 2.3.3)
-      puppetlabs_spec_helper (~> 2.6.1)
+      puppetlabs_spec_helper (~> 2.6.2)
       rspec (~> 3.7.0)
       rspec-puppet (~> 2.6.9)
       thor (>= 0.20.0)
@@ -15,7 +15,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    beaker-hostgenerator (1.1.5)
+    beaker-hostgenerator (1.1.7)
       deep_merge (~> 1.0)
       stringify-hash (~> 0.0.0)
     deep_merge (1.2.1)
@@ -25,7 +25,7 @@ GEM
     gettext (3.2.6)
       locale (>= 2.0.5)
       text (>= 1.3.0)
-    gettext-setup (0.29)
+    gettext-setup (0.30)
       fast_gettext (~> 1.1.0)
       gettext (>= 3.0.2)
       locale
@@ -35,7 +35,7 @@ GEM
     metaclass (0.0.4)
     mocha (1.3.0)
       metaclass (~> 0.0.1)
-    puppet (4.10.9)
+    puppet (4.10.10)
       facter (> 2.0, < 4)
       gettext-setup (>= 0.10, < 1)
       hiera (>= 2.0, < 4)
@@ -44,7 +44,7 @@ GEM
     puppet-lint (2.3.3)
     puppet-syntax (2.4.1)
       rake
-    puppetlabs_spec_helper (2.6.1)
+    puppetlabs_spec_helper (2.6.2)
       mocha (~> 1.0)
       puppet-lint (~> 2.0)
       puppet-syntax (~> 2.0)
@@ -64,7 +64,7 @@ GEM
       rspec-support (~> 3.7.0)
     rspec-puppet (2.6.9)
       rspec
-    rspec-support (3.7.0)
+    rspec-support (3.7.1)
     sem_ver (0.1.1)
     stringify-hash (0.0.2)
     text (1.3.1)

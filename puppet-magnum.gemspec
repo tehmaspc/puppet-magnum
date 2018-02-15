@@ -29,10 +29,10 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'thor', '>= 0.20.0'
   spec.add_runtime_dependency 'version', '>= 1.1.1'
 
-  spec.add_runtime_dependency 'puppet', '~> 4.10.9'
+  spec.add_runtime_dependency 'puppet', '~> 4.10.10'
   spec.add_runtime_dependency 'rspec', '~> 3.7.0'
   spec.add_runtime_dependency 'puppet-lint', '~> 2.3.3'
   spec.add_runtime_dependency 'rspec-puppet', '~> 2.6.9'
-  spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 2.6.1'
-  spec.add_runtime_dependency 'beaker-hostgenerator', '~> 1.1.5'
+  spec.add_runtime_dependency 'puppetlabs_spec_helper', '~> 2.6.2'
+  spec.add_runtime_dependency 'beaker-hostgenerator', '~> 1.1.7'
 end

@@ -1,3 +1,9 @@
+## [4.1.1]
+
+### IMPROVEMENTS:
+
+  * Upgraded gems.
+
 ## [4.1.0]
 
 ### IMPROVEMENTS:
